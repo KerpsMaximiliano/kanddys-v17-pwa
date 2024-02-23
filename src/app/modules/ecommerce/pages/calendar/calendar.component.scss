@@ -1,0 +1,13 @@
+.btn {
+	border: 1px solid var(--grey-light);
+	display: flex;
+	flex-direction: column;
+
+	& span {
+		font-size: 17px;
+	}
+}
+
+.active {
+	border: 1px solid var(--violet);
+}

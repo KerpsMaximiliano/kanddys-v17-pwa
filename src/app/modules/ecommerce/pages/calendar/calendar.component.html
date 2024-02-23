@@ -1,0 +1,29 @@
+<header class="flex bet pd-12">
+	<app-button [type]="'ICON'" [icon]="'arrow_back_ios'" (click)="back()" />
+
+	<button type="button" class="option">Guardar</button>
+</header>
+
+<main>
+	<h1 class="tx-center">Fecha de Entrega</h1>
+
+	<p class="tx-center my-12">Seleccione el día</p>
+
+	<mat-calendar
+		[(selected)]="selected"
+		(selectedChange)="onDateChange($event)"
+		[dateFilter]="filter"
+		[minDate]="minDate"
+		[maxDate]="maxDate"
+		[headerComponent]="calendarHeader"
+	></mat-calendar>
+
+	<p class="tx-center my-12">En que tanda lo recibiras</p>
+
+	<section class="grid gp-12 pd-12">
+		<button type="button" class="bd fle col w br-12 pd-12 tx-left gp-8"><b>TandaNameID</b>de horaID a horaID</button>
+		<button type="button" class="bd fle col w br-12 pd-12 tx-left gp-8 bd-active">
+			<b>TandaNameID</b>de horaID a horaID
+		</button>
+	</section>
+</main>

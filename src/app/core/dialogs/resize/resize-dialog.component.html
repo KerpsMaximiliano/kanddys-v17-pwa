@@ -1,0 +1,13 @@
+<button class="w h" (click)="close()" aria-label="Close"></button>
+<div [style.height.px]="ht" id="resizable" class="w pd-12">
+	<div id="rsz" class="w" (touchstart)="touchstart($event)" (touchmove)="touchmove($event)">
+		<div class="br-12"></div>
+	</div>
+	<div id="content">
+		(some content)
+		<p class="tx-visible">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae veritatis necessitatibus velit sed nostrum? Hic,
+			voluptates autem vel aliquam esse consequuntur vitae, id repellat eos ducimus, obcaecati nemo magni. Dolorum?
+		</p>
+	</div>
+</div>

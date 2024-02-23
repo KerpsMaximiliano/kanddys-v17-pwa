@@ -1,0 +1,51 @@
+.img {
+	width: calc(100vw - 48px);
+	height: calc(100vw - 48px);
+	object-fit: contain;
+	aspect-ratio: 1 / 1;
+}
+
+.portal {
+	width: 100%;
+	height: auto;
+	object-fit: contain;
+	aspect-ratio: 16 / 9;
+}
+
+hr {
+	border: none;
+	background-color: var(--grey-light);
+	height: 1px;
+}
+
+mat-panel-title {
+	font-size: 21px;
+	font-weight: 600;
+}
+
+.dot {
+	background-color: var(--grey-light);
+	border-radius: 50%;
+	min-width: 10px;
+	min-height: 10px;
+}
+
+.carousel {
+	display: flex;
+	scroll-snap-type: x mandatory;
+	overflow-x: scroll;
+	overflow-y: hidden;
+
+	& div {
+		scroll-snap-align: start;
+		scroll-snap-stop: always;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-color: var(--white);
+	}
+}
+
+.active {
+	background-color: var(--violet);
+}

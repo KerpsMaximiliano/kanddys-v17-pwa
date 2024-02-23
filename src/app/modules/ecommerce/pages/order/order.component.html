@@ -1,0 +1,109 @@
+<header class="flex bet" style="padding: 8px 12px 0">
+	<button class="flex" (click)="back()">
+		<app-button [type]="'ICON'" [icon]="'close'" color="var(--grey)" />
+		Artículos que comprarás
+	</button>
+
+	<div>
+		<app-button [type]="'MINI'" [icon]="'person'" />
+	</div>
+</header>
+
+<main class="grid gp-12 pd-24">
+	<h1>Revisa lo que comprarás.</h1>
+
+	<p>Entrega gratis en algunas zonas.</p>
+
+	<img class="br-12" src="https://via.placeholder.com/300" alt="Imagen del producto" />
+
+	<div class="flex bet">
+		<h2>Studio display</h2>
+		<button>Eliminar</button>
+	</div>
+
+	<div class="flex bet">
+		<mat-form-field appearance="outline" class="w" style="max-width: max-content">
+			<mat-label>Cantidad</mat-label>
+			<mat-select>
+				<mat-option [value]="1">1</mat-option>
+				@for (item of count; track $index) {
+					<mat-option [value]="item">{{ item }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+		<h3 style="min-width: max-content; margin-bottom: 22px">$22.000,05</h3>
+	</div>
+
+	<img class="br-12" src="https://via.placeholder.com/300" alt="Imagen del producto" />
+
+	<div class="flex bet">
+		<h2>Studio display</h2>
+		<button>Eliminar</button>
+	</div>
+
+	<div class="flex bet">
+		<mat-form-field appearance="outline" class="w" style="max-width: max-content">
+			<mat-label>Cantidad</mat-label>
+			<mat-select>
+				<mat-option [value]="1">1</mat-option>
+				@for (item of count; track $index) {
+					<mat-option [value]="item">{{ item }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+		<h3 style="min-width: max-content; margin-bottom: 22px">$22.000,05</h3>
+	</div>
+
+	<div class="flex">
+		<app-button [type]="'ICON'" [icon]="'local_shipping'" color="var(--grey)" />
+		<p>En Inventario y listo para entregar</p>
+	</div>
+
+	<div class="flex">
+		<app-button [type]="'ICON'" [icon]="'store'" color="var(--grey)" />
+		<p>Puedes buscarlo por la tienda</p>
+	</div>
+
+	<div class="flex bet">
+		<p>Subtotal</p>
+		<p>$98.000,28</p>
+	</div>
+
+	<div class="flex bet">
+		<p><b>Total</b></p>
+		<p><b>$97.000,15</b></p>
+	</div>
+
+	<section class="grid gp-12 pd-12 br-12" style="border: 1px solid #e0e0e3">
+		<button class="grid gp-12 w tx-left" style="grid-template-columns: 1fr max-content">
+			<div class="flex-col">
+				<p class="w"><b>Dedicatoria de Regalo </b><span class="optional">(optional)</span></p>
+				<p class="w">Añade un texto de dedicatoria</p>
+			</div>
+			<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" />
+		</button>
+
+		<hr style="background-color: #e0e0e3; border: none; height: 1px; margin: 0 -12px" />
+
+		<button class="grid gp-12 w tx-left" style="grid-template-columns: 1fr max-content">
+			<div class="flex-col">
+				<p class="w"><b>Fecha de Entrega </b><span class="optional">(optional)</span></p>
+				<p class="w">Fecha de entrega Pre asignada</p>
+			</div>
+			<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" />
+		</button>
+
+		<hr style="background-color: #e0e0e3; border: none; height: 1px; margin: 0 -12px" />
+
+		<button class="grid gp-12 w tx-left" style="grid-template-columns: 1fr max-content">
+			<div class="flex-col">
+				<p class="w required">Requerido</p>
+				<p class="w"><b>Dirección de Entrega </b></p>
+				<p class="w">Añade o selecciona la dirección de entrega</p>
+			</div>
+			<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" />
+		</button>
+	</section>
+
+	<app-button [type]="'XR'" [label]="'Ir a pagar $93.547,32'" />
+</main>

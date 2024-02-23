@@ -1,0 +1,42 @@
+<header class="flex bet pd-12">
+	<app-button [type]="'ICON'" [icon]="'arrow_back_ios'" (click)="back()" />
+
+	<button type="button" class="option">Guardar</button>
+</header>
+
+<main class="grid gp-12" style="padding: 0 12px">
+	<h1 class="tx-center">Dirección de Entrega</h1>
+
+	<p class="tx-center">Selecciona donde lo recibirás</p>
+
+	<section class="grid btns" style="grid-template-columns: repeat(2, 1fr)">
+		<button type="button" class="bd pd-24 bd-active">Quiero que lo envién</button>
+		<button type="button" class="bd pd-24">Pasaré a buscarlo</button>
+	</section>
+
+	<section class="fle" style="justify-content: flex-end">
+		<button type="button" class="option">Nueva</button>
+	</section>
+
+	<section class="grid gp-12">
+		<article class="fle col gp-8 bd br-12" style="padding: 12px 24px">
+			<b>Dirección de la casa</b>
+			<p>
+				Av, Joaquin Sabina, 2345, Banfield, ARG Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione commodi
+				enim illo, recusandae necessitatibus, reiciendis eligendi sequi harum maxime nam nihil? Tenetur ut tempore eos
+				architecto officiis? Numquam, neque iusto?
+			</p>
+			<button type="button" class="tx-left" style="color: var(--violet)">Editar</button>
+		</article>
+
+		<article class="fle col gp-8 bd br-12 bd-active" style="padding: 12px 24px">
+			<b>Dirección de la casa</b>
+			<p>
+				Av, Joaquin Sabina, 2345, Banfield, ARG Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione commodi
+				enim illo, recusandae necessitatibus, reiciendis eligendi sequi harum maxime nam nihil? Tenetur ut tempore eos
+				architecto officiis? Numquam, neque iusto?
+			</p>
+			<button type="button" class="tx-left" style="color: var(--violet)">Editar</button>
+		</article>
+	</section>
+</main>

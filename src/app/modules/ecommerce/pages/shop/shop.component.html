@@ -1,0 +1,42 @@
+<div class="box">
+	<header class="flex bet pd-12">
+		<div class="flex">
+			<app-button [type]="'ICON'" [icon]="'done'" />
+			<h1>{{ merchant().slug }}</h1>
+			<app-button [type]="'ICON'" [icon]="'info'" />
+		</div>
+
+		<div class="flex">
+			<app-button [type]="'MINI'" [icon]="'shopping_cart'" />
+			<app-button [type]="'MINI'" [icon]="'person'" />
+		</div>
+	</header>
+
+	<main class="flex col gp-12">
+		<section class="organize flex gp-8 pd-8 w">
+			<p style="color: #939393">Organizado Por:</p>
+			<button [matMenuTriggerFor]="menu" class="flex menu">{{ organize }}<mat-icon>arrow_drop_down</mat-icon></button>
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item (click)="organize = 'Más Relevantes'">Más Relevantes</button>
+				<button mat-menu-item (click)="organize = 'Nuevos'">Nuevos</button>
+				<button mat-menu-item (click)="organize = 'Desde más barato'">Desde más barato</button>
+				<button mat-menu-item (click)="organize = 'Desde más caro'">Desde más caro</button>
+			</mat-menu>
+		</section>
+
+		<section class="grid gp-8" style="grid-template-columns: repeat(2, 1fr); padding-bottom: 12px">
+			@for (product of products(); track $index) {
+				<button class="product flex gp-12" (click)="redirect('product', product.id)">
+					@if (product.images[0]) {
+						<img class="br-12" [src]="product.images[0]" [alt]="product.title ?? 'Imagen sin texto alternativo.'" />
+					} @else {
+						<div class="no-image br-12 grid">Sin imagen</div>
+					}
+					<p style="color: #b68949">Free Engraving</p>
+					<p class="product__title tx-center tx-3">{{ product.title }}</p>
+					<p>{{ currency(product.price) }}</p>
+				</button>
+			}
+		</section>
+	</main>
+</div>

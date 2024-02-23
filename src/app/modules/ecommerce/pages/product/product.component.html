@@ -1,0 +1,74 @@
+<header class="flex bet pd-12">
+	<app-button [type]="'ICON'" [icon]="'arrow_back_ios'" (click)="back()" />
+
+	<div class="flex">
+		<app-button [type]="'MINI'" [icon]="'shopping_cart'" />
+		<app-button [type]="'MINI'" [icon]="'person'" />
+	</div>
+</header>
+
+<main class="grid gp-12 pd-24">
+	<section class="grid gp-12">
+		<h1>{{ product().title ?? 'Producto' }}</h1>
+		<h2>{{ currency(product().price) }}</h2>
+
+		<div #carousel class="carousel">
+			@for (image of product().images; track $index) {
+				<div>
+					<img class="img" [src]="image" [alt]="product().title ?? 'Imagen sin texto alternativo'" />
+				</div>
+			}
+		</div>
+
+		@if (product().images.length > 1) {
+			<div class="flex cen gp-12">
+				@for (dot of product().images; track $index) {
+					<button
+						type="button"
+						class="dot"
+						aria-label="Dot"
+						[class.active]="$index === index"
+						(click)="scrollToImage($index)"
+					></button>
+				}
+			</div>
+		}
+
+		<div>
+			<div class="flex">
+				<app-button [type]="'ICON'" [icon]="'local_shipping'" color="var(--grey)" />
+				<p><b>Entrega:</b></p>
+			</div>
+			<p class="tx-3" style="padding-left: 32px">
+				En Inventario: {{ product().stock }} tallos. <br />
+				Se envia el Lunes, 14 Febrero o puedes pasarlo a buscar en DireccionID el FechaID
+			</p>
+		</div>
+
+		<app-button [type]="'XR'" [label]="'Agregar al Carrito'" />
+	</section>
+
+	@defer (when product().detail?.length) {
+		<mat-accordion class="expansion-panel-pd">
+			<mat-expansion-panel style="box-shadow: none" [expanded]="true">
+				<mat-expansion-panel-header style="padding: 0; height: 48px">
+					<mat-panel-title>Información del Producto</mat-panel-title>
+				</mat-expansion-panel-header>
+				<div class="expansion-panel-body">
+					@for (product of product().detail; track $index) {
+						<article class="my-12">
+							@if (product.title) {
+								<h3>{{ product.title }}</h3>
+								<hr class="my-12" />
+							}
+							@if (product.url) {
+								<img class="portal br-12" [src]="product.url" [alt]="product.title ?? 'Imagen sin texto alternativo'" />
+							}
+							<p class="tx-visible">{{ product.description }}</p>
+						</article>
+					}
+				</div>
+			</mat-expansion-panel>
+		</mat-accordion>
+	}
+</main>
