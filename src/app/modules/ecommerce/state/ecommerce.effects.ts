@@ -7,6 +7,8 @@ import { CoreService } from '@core/services/core.service';
 
 // * GraphQL.
 import {
+	CREATE_INVOICE,
+	QUERY_INVOICE,
 	QUERY_MERCHANT,
 	QUERY_PRODUCT,
 	QUERY_PRODUCT_DETAIL,
@@ -15,8 +17,9 @@ import {
 } from './ecommerce.graphql';
 
 // * Interfaces.
-import { IProduct } from '@ecommerce/interfaces/ecommerce.interface';
+import { IInvoice, IProduct } from '@ecommerce/interfaces/ecommerce.interface';
 import {
+	IInvoiceResponse,
 	IMerchantResponse,
 	IProductDetailResponse,
 	IProductInfoResponse,
@@ -26,11 +29,13 @@ import {
 
 // * Actions.
 import {
+	LOAD_ECOMMERCE_INVOICE,
 	LOAD_ECOMMERCE_MERCHANT,
 	LOAD_ECOMMERCE_PRODUCT,
 	LOAD_ECOMMERCE_PRODUCT_DETAIL,
 	LOAD_ECOMMERCE_PRODUCT_INFO,
 	LOAD_ECOMMERCE_PRODUCTS,
+	LOADED_ECOMMERCE_INVOICE,
 	LOADED_ECOMMERCE_MERCHANT,
 	LOADED_ECOMMERCE_PRODUCT,
 	LOADED_ECOMMERCE_PRODUCT_DETAIL,
@@ -153,4 +158,47 @@ export class EcommerceEffects {
 			};
 		});
 	}
+
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceInvoice$ = createEffect(() => {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_INVOICE),
+			exhaustMap((action) => {
+				if (action.user) {
+					return this._core
+						.query<IInvoiceResponse['data']>(QUERY_INVOICE, {
+							user: action.user,
+							merchant: action.merchant,
+							status: 'INITIAL'
+						})
+						.pipe(
+							map((res) => {
+								const invoice: IInvoice = {
+									id: res.gInvoice.id,
+									merchant: res.gInvoice.merchantId,
+									user: res.gInvoice.userId,
+									count: res.gInvoice.count ?? 0
+								};
+								return LOADED_ECOMMERCE_INVOICE({ invoice });
+							}),
+							catchError(() => of({ type: 'ERROR_ECOMMERCE_INVOICE' }))
+						);
+				} else {
+					return this._core.mutation<IInvoiceResponse['data']>(CREATE_INVOICE, { merchant: action.merchant }).pipe(
+						map((res) => {
+							this._core.local = res.cInvoice.userId;
+							const invoice: IInvoice = {
+								id: res.cInvoice.id,
+								merchant: res.cInvoice.merchantId,
+								user: res.cInvoice.userId,
+								count: 0
+							};
+							return LOADED_ECOMMERCE_INVOICE({ invoice });
+						}),
+						catchError(() => of({ type: 'ERROR_ECOMMERCE_CREATE_INVOICE' }))
+					);
+				}
+			})
+		);
+	});
 }

@@ -86,9 +86,8 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	public scrollToImage(index: number): void {
-		if (!this._rendered) this._listen();
 		if (!this._elements) return;
-
+		if (!this._rendered) this._listen();
 		this._elements[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
 	}
 
@@ -110,13 +109,10 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
 	private _listen(): void {
 		if (this._rendered) return;
 		if (!this.carousel) return;
-
 		if (this._listener) {
 			this.carousel.nativeElement.removeEventListener('scroll', this._listener);
 		}
-
 		this._elements = this.carousel.nativeElement.children;
-
 		if (this._elements?.length === 1) return;
 		this._listener = this._scroll.bind(this);
 		this.carousel.nativeElement.addEventListener('scroll', this._listener);

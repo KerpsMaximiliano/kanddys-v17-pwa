@@ -58,7 +58,7 @@ export const ecommerceReducer = createReducer(
 	on(LOADED_ECOMMERCE_PRODUCT_INFO, (state, { id, stock, images }): IEcommerce => {
 		const products = state.products.map((product) => {
 			if (product.id === id) {
-				return { ...product, stock, images };
+				return { ...product, stock, images: [...product.images, ...images] };
 			}
 			return product;
 		});

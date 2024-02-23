@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 // * Interfaces.
-import { IProduct } from '@ecommerce/interfaces/ecommerce.interface';
+import { IInvoice, IProduct } from '@ecommerce/interfaces/ecommerce.interface';
 
 // * LOAD MERCHANT.
 export const LOAD_ECOMMERCE_MERCHANT = createAction('[Ecommerce] Load Merchant', props<{ slug: string }>());
@@ -34,3 +34,10 @@ export const LOADED_ECOMMERCE_PRODUCT_DETAIL = createAction(
 	'[Ecommerce] Loaded Product Detail',
 	props<{ id: number; detail: IProduct['detail'] }>()
 );
+
+// * LOAD INVOICE.
+export const LOAD_ECOMMERCE_INVOICE = createAction(
+	'[Ecommerce] Load Invoice',
+	props<{ merchant: number; user?: number; status?: 'COMPLETE' | 'INITIAL' | 'PENDING' }>()
+);
+export const LOADED_ECOMMERCE_INVOICE = createAction('[Ecommerce] Loaded Invoice', props<{ invoice: IInvoice }>());

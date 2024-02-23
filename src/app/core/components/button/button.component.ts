@@ -23,7 +23,6 @@ type Type = 'ICON' | 'MINI' | 'XR';
 type Icon =
 	| 'arrow_back_ios'
 	| 'arrow_forward_ios'
-	| 'close'
 	| 'done'
 	| 'info'
 	| 'local_shipping'

@@ -23,6 +23,13 @@ export interface IDetail {
 	url: string | null;
 }
 
+export interface IInvoice {
+	id: number;
+	merchant: number;
+	user: number;
+	count: number;
+}
+
 // // * CORE.
 // import { ILoading } from '@core/interfaces/app.interface';
 

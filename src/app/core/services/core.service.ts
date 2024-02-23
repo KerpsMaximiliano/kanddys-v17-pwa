@@ -20,18 +20,18 @@ export class CoreService {
 	private readonly _apollo: Apollo = inject(Apollo);
 	private readonly _dialog: MatDialog = inject(MatDialog);
 
-	private _hash: string = localStorage.getItem('hash') ?? this.create();
 	private _merchant: { id: number | undefined; slug: string | undefined } = {
 		slug: undefined,
 		id: undefined
 	};
-
-	public get hash(): string {
-		return this._hash;
-	}
+	private _local: number = Number(localStorage.getItem('h')) || 0;
 
 	public get merchant(): number | undefined {
 		return this._merchant.id;
+	}
+
+	public get local(): number | undefined {
+		return this._local;
 	}
 
 	public get slug(): string | undefined {
@@ -40,6 +40,11 @@ export class CoreService {
 
 	public set merchant(id: number) {
 		this._merchant.id = id;
+	}
+
+	public set local(local: number) {
+		this._local = local;
+		localStorage.setItem('h', local.toString());
 	}
 
 	public set slug(slug: string) {
@@ -53,7 +58,7 @@ export class CoreService {
 	public query<T>(request: string, variables?: Record<string, unknown>): Observable<T> {
 		return this._apollo
 			.watchQuery<T>({
-				query: gql(request),
+				query: gql(`query ${request}`),
 				variables
 			})
 			.valueChanges.pipe(map((res) => res.data));
@@ -76,14 +81,6 @@ export class CoreService {
 			void this._router.navigate([url], { relativeTo: this._route });
 			return;
 		}
-	}
-
-	public create(): string {
-		const first = Math.random().toString(36).substring(2);
-		const last = Math.random().toString(36).substring(2);
-		const time = Date.now().toString(36);
-		localStorage.setItem('hash', `${first}-${time}-${last}`);
-		return `${first}-${time}-${last}`;
 	}
 
 	public open(dialog: string, config?: MatDialogConfig<unknown>): Observable<MatDialogRef<unknown>> {

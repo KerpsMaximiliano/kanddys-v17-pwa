@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, Signal, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, Signal, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 // * Services.
@@ -10,7 +10,7 @@ import { IState } from '@core/interfaces/state.interface';
 import { IMerchant, IProduct } from '@ecommerce/interfaces/ecommerce.interface';
 
 // * Actions.
-import { LOAD_ECOMMERCE_PRODUCTS } from '@ecommerce/state/ecommerce.actions';
+import { LOAD_ECOMMERCE_INVOICE, LOAD_ECOMMERCE_PRODUCTS } from '@ecommerce/state/ecommerce.actions';
 
 // * Selectors.
 import { selectEcommerceMerchant, selectEcommerceProducts } from '@ecommerce/state/ecommerce.selectors';
@@ -33,7 +33,7 @@ import { ButtonComponent } from '@core/components/button/button.component';
 	templateUrl: './shop.component.html',
 	styleUrl: './shop.component.scss'
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, AfterViewInit {
 	public currency = currency;
 	public organize: string = 'Más Relevantes';
 
@@ -50,6 +50,15 @@ export class ShopComponent implements OnInit {
 	public ngOnInit(): void {
 		// if (this._core.merchant)
 		this._store.dispatch(LOAD_ECOMMERCE_PRODUCTS({ merchant: 1, page: 1 }));
+	}
+
+	public ngAfterViewInit(): void {
+		const options: { merchant: number; user?: number; status?: 'COMPLETE' | 'INITIAL' | 'PENDING' } = {
+			merchant: 1,
+			user: this._core.local,
+			status: 'INITIAL'
+		};
+		this._store.dispatch(LOAD_ECOMMERCE_INVOICE(options));
 	}
 
 	public redirect(route: string, id?: number): void {
