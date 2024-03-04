@@ -1,12 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 // * Material.
 import { MatButtonModule } from '@angular/material/button';
-import { DateAdapter, MatDateFormats, MAT_DATE_FORMATS } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MatDateFormats } from '@angular/material/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
+import { IState } from '../../../../core/interfaces/state.interface';
+import { LOAD_ECOMMERCE_CALENDAR } from '../../state/ecommerce.actions';
 
 @Component({
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,38 +33,42 @@ import { MatIconModule } from '@angular/material/icon';
 	`
 })
 export class CalendarHeaderComponent<D> implements OnDestroy {
+	// eslint-disable-next-line @ngrx/use-consistent-global-store-name
+	private readonly _store: Store<IState> = inject(Store);
 	private _destroyed: Subject<void> = new Subject<void>();
 
 	public constructor(
-		@Inject(MAT_DATE_FORMATS) private _dateFormats: MatDateFormats,
-		private _calendar: MatCalendar<D>,
-		private _dateAdapter: DateAdapter<D>,
-		private _cdr: ChangeDetectorRef
+		@Inject(MAT_DATE_FORMATS) private readonly _formats: MatDateFormats,
+		private readonly _calendar: MatCalendar<D>,
+		private readonly _adapter: DateAdapter<D>,
+		private readonly _cdr: ChangeDetectorRef
 	) {
-		_calendar.stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
-			_cdr.markForCheck();
+		this._calendar.stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
+			this._cdr.markForCheck();
 		});
 	}
 
 	public get label(): string {
-		return this._dateAdapter
-			.format(this._calendar.activeDate, this._dateFormats.display.monthYearLabel)
-			.toLocaleUpperCase();
+		return this._adapter.format(this._calendar.activeDate, this._formats.display.monthYearLabel).toLocaleUpperCase();
 	}
 
 	public shouldShowPreviousButton(): boolean {
-		const now = this._dateAdapter.today();
-		const currentMonth = this._dateAdapter.getYear(now) * 12 + this._dateAdapter.getMonth(now);
+		const now = this._adapter.today();
+		const currentMonth = this._adapter.getYear(now) * 12 + this._adapter.getMonth(now);
 		const activeMonth =
-			this._dateAdapter.getYear(this._calendar.activeDate) * 12 + this._dateAdapter.getMonth(this._calendar.activeDate);
+			this._adapter.getYear(this._calendar.activeDate) * 12 + this._adapter.getMonth(this._calendar.activeDate);
 		return activeMonth > currentMonth;
 	}
 
 	public onClick(mode: 'AFTER' | 'BEFORE'): void {
 		this._calendar.activeDate =
 			mode === 'BEFORE'
-				? this._dateAdapter.addCalendarMonths(this._calendar.activeDate, -1)
-				: this._dateAdapter.addCalendarMonths(this._calendar.activeDate, 1);
+				? this._adapter.addCalendarMonths(this._calendar.activeDate, -1)
+				: this._adapter.addCalendarMonths(this._calendar.activeDate, 1);
+		const date: Date = this._calendar.activeDate as Date;
+		const month: number = date.getMonth() + 1;
+		const year: number = date.getFullYear();
+		this._store.dispatch(LOAD_ECOMMERCE_CALENDAR({ year, month }));
 	}
 
 	public ngOnDestroy(): void {

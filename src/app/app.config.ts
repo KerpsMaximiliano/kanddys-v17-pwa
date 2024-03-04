@@ -1,7 +1,7 @@
 import { ApplicationConfig, isDevMode } from '@angular/core';
 
 // * HTTP.
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withJsonpSupport } from '@angular/common/http';
 
 // * Animations.
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -30,7 +30,7 @@ import { ROUTES } from './app.routes';
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideAnimations(),
-		provideHttpClient(),
+		provideHttpClient(withJsonpSupport()),
 		GRAPHQL_PROVIDER,
 		provideRouter(ROUTES),
 		provideStore(ROOT_REDUCERS),

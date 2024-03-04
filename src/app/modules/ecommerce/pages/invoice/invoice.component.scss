@@ -1,20 +1,33 @@
-img {
-	width: 32px;
-	height: 32px;
-	border-radius: 50%;
-	object-fit: contain;
-}
-
 h1 {
 	font-size: 17px;
-	font-weight: 400;
+	font-weight: 600;
 }
 
 h2 {
-	font-size: 15px;
+	font-size: 31px;
 	font-weight: 400;
+	color: #707070;
 }
 
-h2 span {
-	font-size: 31px;
+h3,
+strong {
+	font-size: 17px;
+	font-weight: 600;
+}
+
+main {
+	gap: 24px;
+}
+
+article {
+	& div img {
+		aspect-ratio: 1/1;
+		height: 48px;
+		width: 48px;
+		object-fit: cover;
+	}
+
+	& div p {
+		color: var(--grey);
+	}
 }

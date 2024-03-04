@@ -2,7 +2,6 @@
 	--vh: 0px;
 	--violet: #9747ff;
 	--required: #b64400;
-	--optional: #008000;
 	--black: #403d3d;
 	--grey: #7b7b7b;
 	--grey-light: #d9d9d9;
@@ -48,9 +47,23 @@ body {
 	overflow-x: hidden;
 }
 
+body {
+	max-width: 450px;
+	max-height: 950px;
+}
+
 button {
 	background-color: transparent;
 	border: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+b,
+p {
+	line-height: 1.3;
 }
 
 h1,
@@ -88,17 +101,13 @@ button {
 	font-size: 15px;
 }
 
-p {
-	line-height: 1;
-}
-
-img {
+/* img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
 	border-radius: 12px;
-	background-color: var(--white);
-}
+	background-color: transparent;
+} */
 
 /* -------------------- VIEWPORT --------------------  */
 
@@ -111,6 +120,10 @@ img {
 		min-height: 100%;
 		overflow-y: scroll;
 	}
+}
+
+.three {
+	grid-template-rows: max-content 1fr max-content;
 }
 
 /* -------------------- TEXT OVERFLOW --------------------  */
@@ -137,6 +150,10 @@ p {
 	-webkit-line-clamp: 3;
 }
 
+.tx-4 {
+	-webkit-line-clamp: 4;
+}
+
 .tx-visible {
 	-webkit-line-clamp: inherit;
 }
@@ -151,7 +168,6 @@ p {
 .flex {
 	display: flex;
 	align-items: center;
-	gap: 8px;
 }
 
 .fle {
@@ -178,6 +194,10 @@ p {
 	gap: 12px;
 }
 
+.gp-16 {
+	gap: 16px;
+}
+
 .pd-8 {
 	padding: 8px;
 }
@@ -186,8 +206,20 @@ p {
 	padding: 12px;
 }
 
+.pd-16 {
+	padding: 16px;
+}
+
+.pd-0-12 {
+	padding: 0 12px 12px 12px;
+}
+
 .pd-24 {
 	padding: 24px;
+}
+
+.pd-0-24 {
+	padding: 0 24px 24px 24px;
 }
 
 .br-8 {
@@ -196,6 +228,10 @@ p {
 
 .br-12 {
 	border-radius: 12px;
+}
+
+.br-50 {
+	border-radius: 50%;
 }
 
 .my-8 {
@@ -234,6 +270,10 @@ p {
 	border: 1px solid var(--violet);
 }
 
+.over-y {
+	overflow-y: scroll;
+}
+
 /* -------------------- MATERIAL -------------------- */
 
 html {
@@ -248,10 +288,6 @@ html {
 /* -------------------- OPTIONS -------------------- */
 .required {
 	color: var(--required);
-}
-
-.optional {
-	color: var(--optional);
 }
 
 .option {

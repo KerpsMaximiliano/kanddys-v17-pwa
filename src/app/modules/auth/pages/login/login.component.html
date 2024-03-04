@@ -1,0 +1,71 @@
+@defer (when user().data.id !== 0) {
+	<main class="grid tx-center">
+		<h1>{{ user().data.check === null ? 'Ingresar' : '¡Bienvenido de Vuelta!' }}</h1>
+
+		<form [formGroup]="form" class="grid tx-center" style="gap: 24px">
+			<mat-form-field appearance="outline">
+				<mat-label>Correo electrónico</mat-label>
+
+				<div class="flex">
+					<input matInput type="email" formControlName="mail" placeholder="Ingrese su correo electrónico" />
+
+					@if (user().data.check === null) {
+						<app-button
+							[type]="'ICON'"
+							[icon]="'arrow_circle_right'"
+							[suffix]="true"
+							[color]="form.get('mail')?.valid ? 'var(--violet)' : ''"
+							[loading]="user().status === loading && user().data.check === null"
+							(click)="login('CHECK')"
+							(keydown.enter)="login('CHECK')"
+						/>
+					}
+				</div>
+
+				@if (form.get('mail')?.invalid && form.get('mail')?.touched) {
+					<mat-error>{{ getErrorMessage(form.get('mail')!) }}</mat-error>
+				}
+			</mat-form-field>
+
+			@defer (when user().data.check) {
+				@if (user().data.check) {
+					<mat-form-field appearance="outline">
+						<mat-label>Contraseña</mat-label>
+
+						<div class="flex">
+							<input matInput type="password" formControlName="password" placeholder="Ingrese su contraseña" />
+
+							<app-button
+								[type]="'ICON'"
+								[icon]="'arrow_circle_right'"
+								[color]="form.get('password')?.valid ? 'var(--violet)' : ''"
+								[suffix]="true"
+								[loading]="user().status === loading && user().data.check !== null"
+								(click)="login('LOGIN')"
+							/>
+						</div>
+
+						@if ((form.get('password')?.invalid && form.get('password')?.touched) || error) {
+							<mat-error>
+								{{ error ? 'Correo o contraseña incorrectos' : getErrorMessage(form.get('password')!) }}
+							</mat-error>
+						}
+					</mat-form-field>
+				}
+			}
+
+			<button type="button" (click)="back()" [class.disabled]="user().status === loading">Volver</button>
+
+			@defer (when user().data.check === 1) {
+				@if (user().data.check === 1) {
+					<p class="flex cen gp-8"><input type="checkbox" checked />Recuerdame en este dispositivo</p>
+
+					<button type="button" class="flex gp-8 cen">
+						Recibir acceso directo
+						<app-button [type]="'ICON'" [icon]="'open_in_new'" color="var(--violet)" />
+					</button>
+				}
+			}
+		</form>
+	</main>
+}

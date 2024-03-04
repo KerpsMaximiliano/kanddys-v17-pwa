@@ -2,6 +2,16 @@ h1 {
 	font-size: 17px;
 }
 
+img {
+	width: calc((100vw / 2) - 64px);
+	max-width: 161px;
+	height: calc((100vw / 2) - 64px);
+	max-height: 161px;
+	aspect-ratio: 1 / 1;
+	object-fit: contain;
+	background-color: #fff;
+}
+
 .menu {
 	font-weight: 600;
 	font-size: 15px;
@@ -31,4 +41,42 @@ h1 {
 	height: calc((100vw / 2) - 28px);
 	background-color: var(--white);
 	place-items: center;
+}
+
+.cLoading {
+	border-radius: 50%;
+	border: 2px solid #fff;
+	padding: 4px;
+}
+
+.cLoaded {
+	border: 2px solid #000;
+}
+
+.skeleton-loader {
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+	width: calc((100vw / 2) - 64px);
+	max-width: 161px;
+	height: calc((100vw / 2) - 64px);
+	max-height: 161px;
+	background-size: 400% 100%;
+	animation: skeleton-loading 1.5s ease infinite;
+}
+
+@keyframes skeleton-loading {
+	0% {
+		background-position: 100% 0;
+	}
+	100% {
+		background-position: -100% 0;
+	}
+}
+
+@-webkit-keyframes skeleton-loading {
+	0% {
+		background-position: 100% 0;
+	}
+	100% {
+		background-position: -100% 0;
+	}
 }

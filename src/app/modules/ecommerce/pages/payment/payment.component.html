@@ -1,40 +1,77 @@
 <div class="box">
-	<header class="flex bet" style="padding: 8px 12px 0">
-		<app-button [type]="'ICON'" [icon]="'arrow_back_ios'" color="var(--grey)" (click)="back()" />
-		@if (image) {
-			<button>Confirmar el pago</button>
+	<header class="flex bet pd-12">
+		<app-button [type]="'MINI'" [icon]="'arrow_back_ios'" color="var(--grey)" (click)="back()" />
+		@if (payment && image) {
+			<button class="h" type="button" (click)="save()">{{ request ? 'Confirmando...' : 'Confirmar el pago' }}</button>
 		}
 	</header>
 
-	<main class="pd-24" [class.image]="!mode">
-		@if (mode) {
-			<h1 class="tx-center">¿Cómo pagaras tu compra?</h1>
+	<main class="pd-12 fle col gp-16" [class.image]="payment">
+		@if (!payment) {
+			<h1 class="tx-center tx-visible">¿Cómo pagaras tu compra?</h1>
 
-			<h2 class="tx-center">Selecciona el método de pago</h2>
+			<h2 class="tx-center tx-visible">Selecciona el método de pago</h2>
 
-			<section class="grid gp-12 pd-12 br-12" style="border: 1px solid #e0e0e3">
-				<button class="grid gp-12 w tx-left" style="grid-template-columns: 1fr max-content">
-					<div class="flex-col">
-						<p class="w"><b>Transferencia Bancaria</b></p>
-						<p class="w">En el Banco Popular</p>
-					</div>
-					<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" />
-				</button>
+			@defer (when payments().status === complete) {
+				@if (payments().items.length > 0) {
+					<section class="grid gp-16 pd-12 br-12" style="border: 1px solid #e0e0e3">
+						@for (item of payments().items; track $index) {
+							<button
+								type="button"
+								class="grid gp-16 w tx-left"
+								style="grid-template-columns: 1fr max-content"
+								(click)="payment = item"
+							>
+								<div class="flex-col">
+									<p class="w"><b>Transferencia Bancaria</b></p>
+									<p class="w">En el {{ item.title }}</p>
+								</div>
+								<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" />
+							</button>
+						}
 
-				<!-- <hr style="background-color: #e0e0e3; border: none; height: 1px; margin: 0 -12px" /> -->
-			</section>
+						<!-- <hr style="background-color: #e0e0e3; border: none; height: 1px; margin: 0 -12px" /> -->
+					</section>
+				}
+			} @placeholder {
+				<app-loading />
+			}
 		} @else {
 			<div>
 				<h1>Transferencia Bancaria</h1>
-				<p>En el Banco Popular</p>
+				<p>En el {{ payment.title }}</p>
 			</div>
 
-			<p class="tx-visible text my-12">
-				Por favor transfiera en el <b>Banco Popular</b>, cuenta <b>4156 4521 451</b> y suba aquí una foto de la
-				pantalla.
+			<p class="tx-visible text">
+				Por favor transfiera en el <b>{{ payment.title }}</b
+				>, cuenta <b>{{ payment.cvu }}</b> y suba aquí una foto de la pantalla.
 			</p>
 
-			<section class="grid w h br-12" style="place-items: center">+</section>
+			@if (!image) {
+				<button
+					type="button"
+					aria-label="Subir imagen"
+					class="w h grid br-12 update"
+					style="place-items: center"
+					(click)="onClickInput()"
+				>
+					+
+				</button>
+			} @else {
+				<div class="w h" style="position: relative; display: grid; place-items: center">
+					<img [src]="image" alt="Comprobante de pago" />
+					<app-button
+						class="delete"
+						[type]="'MINI'"
+						[icon]="'delete'"
+						color="#fff"
+						background="red"
+						(click)="reset()"
+					/>
+				</div>
+			}
+
+			<input type="file" #fileInput hidden (change)="onFileSelected($event)" accept="image/png, image/jpeg" />
 		}
 	</main>
 </div>

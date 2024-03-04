@@ -27,7 +27,7 @@ export const ECOMMERCE_ROUTES: Routes = [
 				loadComponent: () => import('./pages/product/product.component').then((m) => m.ProductComponent)
 			},
 			{
-				path: 'order',
+				path: 'order/:id',
 				// eslint-disable-next-line @typescript-eslint/promise-function-async
 				loadComponent: () => import('./pages/order/order.component').then((m) => m.OrderComponent)
 			},
@@ -47,12 +47,12 @@ export const ECOMMERCE_ROUTES: Routes = [
 				loadComponent: () => import('./pages/address/address.component').then((m) => m.AddressComponent)
 			},
 			{
-				path: 'payment',
+				path: 'payments',
 				// eslint-disable-next-line @typescript-eslint/promise-function-async
 				loadComponent: () => import('./pages/payment/payment.component').then((m) => m.PaymentComponent)
 			},
 			{
-				path: 'invoice',
+				path: 'invoice/:id',
 				// eslint-disable-next-line @typescript-eslint/promise-function-async
 				loadComponent: () => import('./pages/invoice/invoice.component').then((m) => m.InvoiceComponent)
 			},

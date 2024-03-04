@@ -1,80 +1,180 @@
-interface IResponse<T> {
+export interface IResponse<T> {
 	data: T;
 }
 
-interface IMerchant {
+// ! USER.
+
+interface IUser {
 	id: number;
+	name: string | null;
+	email: string | null;
+	password: string | null;
+	phone: string | null;
+	image: string | null;
+	first: number;
+	operationStatus: number;
 }
 
-interface IProduct {
+interface IUserLogin {
+	name: string | null;
+	phone: string | null;
+	image: string | null;
+	first: number;
+	operationStatus: number;
+}
+
+interface IUserAddress {
+	id: number;
+	// title: string | null;
+	lng: string | null;
+	lat: string | null;
+	direction: string | null;
+}
+
+// ! MERCHANT.
+
+interface IMerchantAddress {
+	address: string | null;
+}
+
+interface IPageShop {
+	merchantId: number;
+	merchantTitle: string | null;
+	invoiceId: number;
+	invoiceCount: number;
+	userId: number;
+	products: {
+		id: number;
+		title: string | null;
+		price: number;
+		frontPage: string | null;
+	}[];
+	merchantDirection: string | null;
+	firstShippingDate: string | null;
+	batchId: number | null;
+	batchFrom: string | null;
+	batchTo: string | null;
+}
+
+interface IPageProduct {
+	merchantId: number;
+	merchantTitle: string | null;
+	productId: number;
+	productTitle: string | null;
+	productFrontPage: string | null;
+	productPrice: number;
+	productStock: number;
+	invoiceId: number;
+	invoiceCount: number;
+	userId: number;
+	images: {
+		url: string;
+	}[];
+	details: {
+		title: string | null;
+		description: string | null;
+		url: string | null;
+	}[];
+	check: number;
+	merchantDirection: string | null;
+	firstShippingDate: string | null;
+	batchId: number | null;
+	batchFrom: string | null;
+	batchTo: string | null;
+}
+
+interface IProducts {
 	id: number;
 	title: string | null;
 	price: number;
 	frontPage: string | null;
 }
 
-interface IProductInfo {
+interface IProduct {
 	stock: number;
+	check: 0 | 1;
 	images: {
 		url: string;
 	}[];
+	details: {
+		title: string | null;
+		description: string | null;
+		url: string | null;
+	}[];
+	merchantDirection: string | null;
+	firstShippingDate: string | null;
+	batchId: number | null;
+	batchFrom: string | null;
+	batchTo: string | null;
 }
 
-interface IProductDetail {
-	title: string | null;
-	description: string | null;
-	url: string | null;
+interface ICart {
+	quantity: number;
+	product: {
+		id: number;
+		title: string | null;
+		price: number;
+		stock: number;
+		frontPage: string | null;
+	};
 }
 
-interface IInvoice {
+interface IOrder {
+	reservation: string | null;
+	total: number;
+	message: string | null;
+	addressDirection: string | null;
+	addressLat: string | null;
+	addressLng: string | null;
+	addressNumber: number | null;
+	type?: 'DELIVERY' | 'PICK-UP';
+	batchId: number | null;
+	merchantLng: string | null;
+	merchantLat: string | null;
+}
+
+interface ICalendar {
+	calendarId: number;
+	delay: number;
+	typeDelay: 'DY' | 'HR' | 'MN';
+	disabledDates: string[];
+	workingDays: string[];
+	exceptionsDates: string[];
+}
+
+interface IBatch {
 	id: number;
-	merchantId: number;
-	userId: number;
-	count?: number;
+	title: string | null;
+	from: string;
+	to: string;
 }
 
-export type IMerchantResponse = IResponse<{ merchantS: IMerchant }>;
-export type IProductsResponse = IResponse<{ products: IProduct[] }>;
-export type IProductResponse = IResponse<{ productId: IProduct }>;
-export type IProductInfoResponse = IResponse<{ productDSId: IProductInfo }>;
-export type IProductDetailResponse = IResponse<{ productDId: IProductDetail[] }>;
-export type IInvoiceResponse = IResponse<{ gInvoice: IInvoice; cInvoice: IInvoice }>;
+interface IPayment {
+	id: number;
+	typePayment: 'BT';
+	title: string | null;
+	cvu: string | null;
+}
 
-// {
-// 	"data": {
-// 			"cInvoice": {
-// 					"id": 13,
-// 					"merchantId": 1,
-// 					"userId": 9,
-// 					"paymentId": null,
-// 					"code": "2024-02-23 17:55:19MV1N0",
-// 					"shoppingCartId": null,
-// 					"reservation": null,
-// 					"total": null,
-// 					"message": null,
-// 					"status": "INITIAL",
-// 					"voucher": null,
-// 					"note": null
-// 			}
-// 	}
-// }
+// ! USER.
 
-// {
-// 	"data": {
-// 			"gInvoice": {
-// 					"id": 10,
-// 					"merchantId": 1,
-// 					"userId": 6,
-// 					"paymentId": null,
-// 					"code": "2024-02-23 15:22:11MV1N0",
-// 					"shoppingCartId": null,
-// 					"reservation": null,
-// 					"total": null,
-// 					"message": null,
-// 					"status": "INITIAL",
-// 					"voucher": null,
-// 					"note": null,
-// 					"count": 0
-// 			}
-// 	}
-// }
+export type IUserCheckResponse = IResponse<{ lUser: IUser }>;
+export type IUserLoginResponse = IResponse<{ lUser: IUserLogin }>;
+export type IUserAddressesResponse = IResponse<{ gAddressUId: IUserAddress[] }>;
+export type IUserAddAddressResponse = IResponse<{ aAddress: number }>;
+
+// ! MERCHANT.
+
+export type IMerchantAddressesResponse = IResponse<{ merchantId: IMerchantAddress }>;
+
+// ! PAGE.
+
+export type IPageShopResponse = IResponse<{ combinedShop: IPageShop }>;
+export type IPageProductResponse = IResponse<{ combinedProduct: IPageProduct }>;
+export type IProductsResponse = IResponse<{ products: IProducts[] }>;
+export type IProductResponse = IResponse<{ rProduct: IProduct }>;
+export type ICartResponse = IResponse<{ gIProducts: ICart[] }>;
+export type IOrderResponse = IResponse<{ gInvoice: IOrder }>;
+export type ICalendarResponse = IResponse<{ gCalendar: ICalendar }>;
+export type IBatchesResponse = IResponse<{ gBatches: IBatch[] }>;
+export type IPaymentsResponse = IResponse<{ payments: IPayment[] }>;

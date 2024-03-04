@@ -1,0 +1,24 @@
+<header style="padding: 24px 0">
+	<h1 class="tx-center tx-visible">Comprobante de pago</h1>
+</header>
+
+<main class="grid" style="place-items: center">
+	@if (!image) {
+		<button
+			type="button"
+			aria-label="Subir imagen"
+			class="w h grid br-12 update"
+			style="place-items: center"
+			(click)="onClickInput()"
+		>
+			<p>+</p>
+		</button>
+	} @else {
+		<div class="w h" style="position: relative; display: grid; place-items: center">
+			<img [src]="image" alt="Comprobante de pago" />
+			<app-button class="delete" [type]="'MINI'" [icon]="'delete'" color="#fff" background="red" (click)="reset()" />
+		</div>
+	}
+
+	<input type="file" #fileInput hidden (change)="onFileSelected($event)" accept="image/png, image/jpeg" />
+</main>

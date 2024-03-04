@@ -1,0 +1,17 @@
+main {
+	gap: 24px;
+	padding: 48px 24px;
+}
+
+button {
+	font-size: 17px;
+	color: var(--violet);
+}
+
+mat-form-field {
+	width: 100%;
+}
+
+.disabled {
+	color: var(--grey-light);
+}

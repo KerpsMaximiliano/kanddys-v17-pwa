@@ -12,18 +12,23 @@ import { Routes } from '@angular/router';
 
 export const AUTH_ROUTES: Routes = [
 	{
-		path: '',
+		path: 'login',
 		// eslint-disable-next-line @typescript-eslint/promise-function-async
-		loadComponent: () => import('./pages/auth/auth.component').then((m) => m.AuthComponent)
+		loadComponent: () => import('./pages/login/login.component').then((m) => m.LoginComponent)
 	},
+	// {
+	// 	path: 'info',
+	// 	// eslint-disable-next-line @typescript-eslint/promise-function-async
+	// 	loadComponent: () => import('./pages/info/info.component').then((m) => m.InfoComponent)
+	// },
 	{
-		path: 'info',
+		path: 'first',
 		// eslint-disable-next-line @typescript-eslint/promise-function-async
-		loadComponent: () => import('./pages/info/info.component').then((m) => m.InfoComponent)
+		loadComponent: () => import('./pages/first/first.component').then((m) => m.FirstComponent)
 	},
 	{
 		path: '**',
-		redirectTo: '',
+		redirectTo: 'login',
 		pathMatch: 'full'
 	}
 ];

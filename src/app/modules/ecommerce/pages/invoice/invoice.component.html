@@ -1,40 +1,74 @@
 <header class="flex bet pd-12">
-	<app-button [type]="'ICON'" [icon]="'arrow_back_ios'" />
-	<app-button [type]="'ICON'" [icon]="'more_vert'" />
+	<app-button [type]="'MINI'" [icon]="'arrow_back_ios'" (click)="back()" />
+	<app-button [type]="'MINI'" [icon]="'more_vert'" (click)="open('share')" />
 </header>
 
-<main class="grid gp-12 pd-12">
-	<section class="grid gp-8" style="grid-template-columns: 1fr max-content">
-		<div class="flex">
-			<img src="https://via.placeholder.com/300" alt="Imagen del comerciante" />
-			<h1>Nombre del comerciante</h1>
+<main class="grid pd-0-12">
+	<article class="flex bet">
+		<div class="flex gp-8">
+			<img class="br-50" src="https://placehold.co/100x100" alt="placeholder" />
+			<h1>Dlicianthus</h1>
 		</div>
 
 		<div>
-			<h2 class="tx-visible tx-right">
-				<span>Factura</span><br />
-				Septiembre 04, 2024
-			</h2>
+			<h2 class="tx-right">Factura</h2>
+			<p style="color: #707070">Enero 04, 2024</p>
 		</div>
+	</article>
+
+	<section class="grid gp-16">
+		<p><strong>ID Venta:</strong> 24234242342423423423423</p>
+		<p><strong>Comprador:</strong> MerchantID</p>
 	</section>
 
-	<p><b>ID Venta:</b> 20240101MV012N365</p>
-
-	<p><b>Comprador:</b> CompradorID</p>
-
-	<section class="grid gp-12 pd-12 br-12" style="border: 1px solid #e0e0e3">
-		<button>
-			<img src="https://via.placeholder.com/300" alt="Imagen del producto" />
-			<b>ArticuloID</b>
-			$99.999,99
-		</button>
-
-		<hr style="background-color: #e0e0e3; border: none; height: 1px; margin: 0 -12px" />
-
-		<button>
-			<img src="https://via.placeholder.com/300" alt="Imagen del producto" />
-			<b>ArticuloID</b>
-			$99.999,99
-		</button>
+	<section class="grid gp-12 bd pd-12 br-12">
+		@for (product of products; track $index) {
+			@if ($index < 3) {
+				@if ($index === 1 || $index === 2) {
+					<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
+				}
+				<button class="grid gp-12 w tx-left" style="grid-template-columns: 60px 1fr">
+					<!-- @if (product.image) { -->
+					<!-- <img
+						class="br-12"
+						[src]="product"
+						alt="Imagen del producto"
+						style="width: 60px; height: 60px; aspect-ratio: 1/1; object-fit: cover"
+					/> -->
+					<!-- } @else { -->
+					<div class="br-12" style="width: 60px; height: 60px; background-color: var(--grey-light)"></div>
+					<!-- } -->
+					<div class="grid h" style="grid-template-rows: repeat(2, 1fr)">
+						<p>
+							<!-- <b>{{ product.title }}</b> -->
+						</p>
+						<div class="fle bet">
+							<!-- <p style="color: var(--grey)">Cantidad: {{ product.quantity }}</p> -->
+							<!-- <p>{{ currency(product.price) }}</p> -->
+						</div>
+					</div>
+				</button>
+			}
+		}
 	</section>
+
+	<section class="flex bet">
+		<h3><strong>Total</strong></h3>
+		<p>$92 - $97</p>
+	</section>
+
+	<button type="button" class="option flex gp-8" (click)="open('voucher')">
+		<app-button [type]="'ICON'" [icon]="'image'" color="var(--violet)" />
+		Pago por confirmar
+	</button>
+
+	<button type="button" class="flex bet">
+		<p><strong>Dedicatoria de Regalo</strong></p>
+		<p class="option">Ver</p>
+	</button>
+
+	<button type="button" class="flex bet" (click)="open('map')">
+		<p><strong>Dirección y contacto de entrega</strong></p>
+		<p class="option">Ver</p>
+	</button>
 </main>

@@ -1,40 +1,62 @@
-<!-- <button
-	aria-label="button"
-	type="button"
-	[class]="type"
-	[style.background]="background"
-	[class.status]="!status"
-	[class.disabled]="disabled"
-	[style.color]="color"
-	[class.light]="light"
-	[class.active]="active"
->
-	@if ((type === 'XR' || type === 'ICON' || type === 'FAV') && icon) {
-		<mat-icon [style.color]="color">{{ icon }}</mat-icon>
-	}
-	{{ legend }}
-	@if (type === 'LI' && !disabled) {
-		<mat-icon [style.color]="color">{{ icon ? icon : 'arrow_forward_ios' }}</mat-icon>
-	}
-	@if (type === 'BLOCK' && active) {
-		<mat-icon [style.color]="color">done</mat-icon>
-	}
-</button> -->
-
-<button [style.color]="color" [style.background]="background" [id]="type">
-	@if (type === 'ICON' || type === 'MINI') {
-		@if (icon) {
-			<mat-icon [style.color]="color">{{ icon }}</mat-icon>
+@if (type === 'ICON') {
+	@if (icon) {
+		@if (suffix) {
+			@if (loading) {
+				<app-loading />
+			} @else {
+				<mat-icon [style.color]="color" matSuffix aria-label="continuar" aria-hidden="false">{{ icon }}</mat-icon>
+			}
 		} @else {
-			[ICON | MINI] Sin icono.
+			@if (loading) {
+				<app-loading />
+			} @else {
+				<mat-icon [style.color]="color" aria-hidden="false">{{ icon }}</mat-icon>
+			}
 		}
+	} @else {
+		[ICON] Sin icono.
 	}
+} @else {
+	<button
+		[style.color]="color"
+		[style.background]="background"
+		[class]="type"
+		[class.disabled]="disabled"
+		class="br-8"
+		aria-label="Botón de acción"
+		type="button"
+	>
+		@if (type === 'MINI') {
+			@if (icon) {
+				@if (badge && badge > 0) {
+					<mat-icon
+						[style.color]="color"
+						[matBadge]="badge"
+						[matBadgeOverlap]="false"
+						[matBadgeColor]="'warn'"
+						matBadgeSize="small"
+						aria-hidden="false"
+					>
+						{{ icon }}
+					</mat-icon>
+				} @else {
+					@if (loading) {
+						<app-loading />
+					} @else {
+						<mat-icon [style.color]="color">{{ icon }}</mat-icon>
+					}
+				}
+			} @else {
+				[MINI] Sin icono.
+			}
+		}
 
-	@if (type === 'XR') {
-		@if (label) {
-			{{ label }}
-		} @else {
-			Sin label.
+		@if (type === 'XR') {
+			@if (label) {
+				{{ label }}
+			} @else {
+				Sin label.
+			}
 		}
-	}
-</button>
+	</button>
+}

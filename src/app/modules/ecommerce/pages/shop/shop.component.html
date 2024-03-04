@@ -1,19 +1,88 @@
-<div class="box">
-	<header class="flex bet pd-12">
-		<div class="flex">
-			<app-button [type]="'ICON'" [icon]="'done'" />
-			<h1>{{ merchant().slug }}</h1>
-			<app-button [type]="'ICON'" [icon]="'info'" />
+<header class="flex bet pd-12">
+	<button type="button" class="flex gp-8" style="font-size: 21px">
+		<div class="cLoading" [class.cLoaded]="merchant().status === loaded">
+			<app-button [type]="'ICON'" [icon]="'done_all'" [loading]="merchant().status === loading" />
 		</div>
 
-		<div class="flex">
-			<app-button [type]="'MINI'" [icon]="'shopping_cart'" />
-			<app-button [type]="'MINI'" [icon]="'person'" />
-		</div>
-	</header>
+		{{ merchant().data.slug }}
+	</button>
 
-	<main class="flex col gp-12">
-		<section class="organize flex gp-8 pd-8 w">
+	<div class="flex gp-8">
+		@if (!user().logged && merchant().status === loaded) {
+			<app-button [type]="'MINI'" [icon]="'person'" (click)="login()" />
+		}
+
+		<app-button
+			[type]="'MINI'"
+			[icon]="'shopping_cart'"
+			[badge]="cart().count"
+			(click)="open('cart')"
+			style="padding-right: 4px"
+		/>
+
+		<app-button [type]="'MINI'" [icon]="'more_vert'" (click)="open('share')" />
+	</div>
+</header>
+
+@if (merchant().status === loading) {
+	<app-loading [transform]="'2'" />
+} @else {
+	@defer (when merchant().status === loaded) {
+		<main class="h">
+			<section class="gp-8 w h" style="display: grid; grid-template-columns: repeat(2, 1fr)">
+				@for (product of products().items; track $index) {
+					<button class="product flex gp-12" (click)="redirect('product', product.data.id)">
+						<div #content_image class="br-12 skeleton-loader">
+							@if (product.data.images[0]) {
+								<img
+									#img
+									style="display: none"
+									class="br-12"
+									[src]="product.data.images[0]"
+									[alt]="product.data.title ?? 'Imagen sin texto alternativo.'"
+									(load)="loadImage(content_image, img)"
+								/>
+							} @else {
+								<div class="no-image br-12 grid">Sin imagen</div>
+							}
+						</div>
+						<!-- <p style="color: #b68949">Free Engraving</p> -->
+						<p class="product__title tx-center tx-3">{{ product.data.title }}</p>
+						<p>{{ currency(product.data.price) }}</p>
+					</button>
+				}
+			</section>
+		</main>
+	}
+}
+
+<!-- @if (merchant().status === loading) {
+		<app-loading [transform]="'2'" />
+	} @else {
+		@defer (when merchant().status === loaded) {
+			<main class="h">
+				<section class="gp-8 w h" style="display: grid; grid-template-columns: repeat(2, 1fr); padding-bottom: 12px">
+					@for (product of products().items; track $index) {
+						<button class="product flex gp-12" (click)="redirect('product', product.data.id)">
+							@if (product.data.images[0]) {
+								<img
+									class="br-12"
+									[src]="product.data.images[0]"
+									[alt]="product.data.title ?? 'Imagen sin texto alternativo.'"
+								/>
+							} @else {
+								<div class="no-image br-12 grid">Sin imagen</div>
+							}
+							<p class="product__title tx-center tx-3">{{ product.data.title }}</p>
+							<p>{{ currency(product.data.price) }}</p>
+						</button>
+					}
+				</section>
+			</main>
+		}
+	} -->
+
+<!-- <section class="organize flex gp-8 pd-8 w">
 			<p style="color: #939393">Organizado Por:</p>
 			<button [matMenuTriggerFor]="menu" class="flex menu">{{ organize }}<mat-icon>arrow_drop_down</mat-icon></button>
 			<mat-menu #menu="matMenu">
@@ -22,21 +91,4 @@
 				<button mat-menu-item (click)="organize = 'Desde más barato'">Desde más barato</button>
 				<button mat-menu-item (click)="organize = 'Desde más caro'">Desde más caro</button>
 			</mat-menu>
-		</section>
-
-		<section class="grid gp-8" style="grid-template-columns: repeat(2, 1fr); padding-bottom: 12px">
-			@for (product of products(); track $index) {
-				<button class="product flex gp-12" (click)="redirect('product', product.id)">
-					@if (product.images[0]) {
-						<img class="br-12" [src]="product.images[0]" [alt]="product.title ?? 'Imagen sin texto alternativo.'" />
-					} @else {
-						<div class="no-image br-12 grid">Sin imagen</div>
-					}
-					<p style="color: #b68949">Free Engraving</p>
-					<p class="product__title tx-center tx-3">{{ product.title }}</p>
-					<p>{{ currency(product.price) }}</p>
-				</button>
-			}
-		</section>
-	</main>
-</div>
+		</section> -->

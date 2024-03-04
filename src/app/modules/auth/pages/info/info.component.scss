@@ -1,0 +1,21 @@
+/* ! REMOVE */
+div header div mat-icon {
+	display: grid;
+	place-items: center;
+	margin: 8px;
+}
+
+.disabled,
+.disabled * {
+	color: #c3c3c3;
+}
+
+footer {
+	background-color: #d9d9d9;
+	padding: 4px;
+}
+
+footer button {
+	gap: 4px;
+	font-weight: 600;
+}

@@ -7,22 +7,22 @@ header button {
 	height: 100%;
 	display: grid;
 	grid-template-rows: max-content max-content 1fr;
-	gap: 36px;
 
 	& > p {
 		font-size: 17px;
 	}
-
-	& section {
-		border: 2px solid var(--grey);
-		border-style: dashed;
-		font-size: 148px;
-		color: var(--grey);
-	}
 }
 
-main {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
+.update {
+	border: 2px solid var(--grey);
+	border-style: dashed;
+	color: var(--grey);
+	font-size: 148px;
+}
+
+.delete {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 0 12px 12px 0;
 }

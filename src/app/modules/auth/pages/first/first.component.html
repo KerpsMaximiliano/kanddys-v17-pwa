@@ -1,0 +1,64 @@
+<header class="pd-24 fle col gp-16">
+	<h1 class="tx-center">¡Bienvenido!</h1>
+	<p class="tx-visible tx-center">¿Te gustaría añadir más datos?</p>
+	<button type="button" class="option flex gp-8 cen">
+		Lo haré después
+		<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" color="var(--violet)" (click)="back()" />
+	</button>
+</header>
+
+<main style="padding: 0 24px">
+	<form [formGroup]="form" class="flex col cen gp-16">
+		<mat-form-field appearance="outline">
+			<mat-label>Nombre</mat-label>
+			<input matInput formControlName="name" type="text" placeholder="Ingresa tu nombre" />
+			@if (form.get('name')?.invalid && form.get('name')?.touched) {
+				<mat-error>{{ getErrorMessage(form.get('name')!) }}</mat-error>
+			}
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Apellido</mat-label>
+			<input matInput formControlName="surname" type="text" placeholder="Ingresa tu apellido" />
+			@if (form.get('surname')?.invalid && form.get('surname')?.touched) {
+				<mat-error>{{ getErrorMessage(form.get('surname')!) }}</mat-error>
+			}
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Telefono</mat-label>
+			<input matInput formControlName="phone" type="text" placeholder="Ingresa tu número de teléfono" />
+			@if (form.get('phone')?.invalid && form.get('phone')?.touched) {
+				<mat-error>{{ getErrorMessage(form.get('phone')!) }}</mat-error>
+			}
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Adiciona una contraseña</mat-label>
+			<input matInput formControlName="password" type="text" placeholder="Ingresa tu contraseña" />
+			@if (form.get('password')?.invalid && form.get('password')?.touched) {
+				<mat-error>{{ getErrorMessage(form.get('password')!) }}</mat-error>
+			}
+		</mat-form-field>
+
+		<app-button
+			style="width: 90%"
+			[type]="'XR'"
+			label="Guardar y Continuar"
+			(click)="save()"
+			[disabled]="
+				!form.get('name')?.value ||
+				!form.get('surname')?.value ||
+				!form.get('phone')?.value ||
+				!form.get('password')?.value
+			"
+		/>
+	</form>
+</main>
+
+<footer class="pd-24">
+	<p class="tx-center tx-2">
+		Te enviares el acceso <br />
+		directo a tu correo electrónico.
+	</p>
+</footer>

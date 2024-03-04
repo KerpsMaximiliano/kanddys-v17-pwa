@@ -1,11 +1,44 @@
+import { IDays, ILoadableEntities, ILoadableEntity, ILoading } from '@core/interfaces/state.interface';
+
+// * MAIN
+
 export interface IEcommerce {
-	merchant: IMerchant;
-	products: IProduct[];
+	merchant: ILoadableEntity<IMerchant>;
+	order: ILoadableEntity<IOrder>;
+	products: ILoadableEntities<ILoadableEntity<IProduct>>;
+	user: ILoadableEntity<IUser>;
+	batches: ILoadableEntities<IBatch>;
+	info: ILoadableEntity<IInfo>;
+}
+
+export interface IUser {
+	id: number;
+	check: number | null;
+	logged: boolean;
+	name: string | null;
+	surname: string | null;
+	email: string | null;
+	phone: number | null;
+	image: string | null;
+	address: ILoadableEntities<IAddress>;
+}
+
+export interface IAddress {
+	id: number;
+	lng: string | null;
+	lat: string | null;
+	direction: string | null;
+	mode?: 'DELIVERY' | 'PICK-UP';
 }
 
 export interface IMerchant {
 	id: number;
 	slug: string;
+	title: string | null;
+	image: string | null;
+	payments: ILoadableEntities<IPayment>;
+	calendar: ILoadableEntity<ICalendar>;
+	address: ILoadableEntities<string>;
 }
 
 export interface IProduct {
@@ -13,89 +46,126 @@ export interface IProduct {
 	title: string | null;
 	images: string[];
 	price: number;
-	detail?: IDetail[];
-	stock?: number;
+	details: IDetail[];
+	stock: number;
+	check: number;
 }
 
 export interface IDetail {
 	title: string | null;
 	description: string | null;
-	url: string | null;
+	image: string | null;
+}
+
+export interface ICalendar {
+	id: number;
+	delay: number;
+	// eslint-disable-next-line @typescript-eslint/sort-type-constituents
+	typeDelay: 'HR' | 'MN' | 'DY';
+	// eslint-disable-next-line @typescript-eslint/sort-type-constituents
+	days: IDays[];
+	disabled: string[];
+	exceptions: string[];
+}
+
+export interface IBatch {
+	id: number;
+	title: string | null;
+	from: string;
+	to: string;
+}
+
+export interface IPayment {
+	id: number;
+	type: 'BT';
+	title: string | null;
+	cvu: string | null;
+}
+
+export interface IOrder {
+	id: number;
+	count: number;
+	products: {
+		status: ILoading;
+		items: IOrderProduct[];
+	};
+	merchant: number;
+	user: number;
+	calendar: ILoadableEntity<{
+		id: number | null;
+		reservation: string | null;
+	}>;
+	message: ILoadableEntity<string | null>;
+	address: ILoadableEntity<{
+		id: number;
+		direction: string | null;
+		lat: string | null;
+		lng: string | null;
+		mode?: 'DELIVERY' | 'PICK-UP';
+	}>;
+	total: number;
 }
 
 export interface IInvoice {
 	id: number;
 	merchant: number;
 	user: number;
+	code: string;
+	products: {
+		image: string | null;
+		title: string | null;
+		price: number;
+		quantity: number;
+	};
+	total: number;
+	reservation: string;
+	message: string;
+	voucher: string;
+	note: string | null;
+	addressLat: string;
+	addressLng: string;
+	addressDirection: string;
+	status: 'COMPLETE' | 'PENDING';
+}
+
+export interface IInfo {
+	calendar?: string;
+	direction?: string;
+	batch?: number;
+	from?: string;
+	to?: string;
+}
+
+// ! AUX.
+
+interface IOrderProduct {
+	id: number;
+	title: string | null;
+	image: string | null;
+	price: number;
+	stock: number;
+	quantity: number;
+}
+
+export interface ICart {
+	id: number;
+	slug: string;
+	status: ILoading;
+	products: IOrder['products'];
 	count: number;
 }
 
-// // * CORE.
-// import { ILoading } from '@core/interfaces/app.interface';
+export interface IMessage {
+	order: { status: ILoading; id: number };
+	message: ILoadableEntity<string | null>;
+}
 
-// // * INTERFACES.
-// export interface IEcommerce {
-// 	status: ILoading;
-// 	shop: IShop;
-// 	conf: IConf;
-// 	cart: ICart;
-// 	calendar: ICalendar;
-// 	disabled?: string[];
-// }
-
-// export interface IShop {
-// 	merchant: IMerchant;
-// 	products: IProduct[];
-// }
-
-// export interface IMerchant {
-// 	title: string;
-// 	description: string;
-// 	logo: string;
-// 	email: string;
-// }
-
-// export interface IProduct {
-// 	id: string;
-// 	title: string;
-// 	description: string;
-// 	images: string[];
-// 	price: number;
-// 	stock: number;
-// }
-
-// export interface IConf {
-// 	traditional: boolean;
-// 	virtual: boolean;
-// 	delivery: boolean;
-// 	pickup: boolean;
-// 	reservation: boolean;
-// }
-
-// export interface ICart {
-// 	id?: string;
-// 	products: {
-// 		id: string;
-// 		title: string;
-// 		description: string;
-// 		image: string;
-// 		price: number;
-// 		stock: number;
-// 		quantity: number;
-// 	}[];
-// 	traditional: string | null;
-// 	count: number;
-// 	total: number;
-// 	valid: boolean;
-// }
-
-// export interface ICalendar {
-// 	batch: {
-// 		limit: number;
-// 		to: string;
-// 		from: string;
-// 		day: string;
-// 		title: string;
-// 	}[];
-// 	delay: number;
-// }
+export interface IOrderRequest {
+	voucher: File;
+	invoiceId: string;
+	paymentId: string;
+	date: string;
+	batchId: string;
+	merchantId: string;
+	userId: string;
+}

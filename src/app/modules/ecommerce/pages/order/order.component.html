@@ -1,109 +1,133 @@
-<header class="flex bet" style="padding: 8px 12px 0">
+<header class="flex bet pd-12">
 	<button class="flex" (click)="back()">
-		<app-button [type]="'ICON'" [icon]="'arrow_back_ios'" color="var(--grey)" />
+		<app-button [type]="'MINI'" [icon]="'arrow_back_ios'" />
 		Artículos que comprarás
 	</button>
 
-	<div>
-		<app-button [type]="'MINI'" [icon]="'person'" />
-	</div>
+	@if (!user().logged) {
+		<app-button [type]="'MINI'" [icon]="'person'" (click)="redirect('auth')" />
+	}
 </header>
 
-<main class="grid gp-12 pd-24">
+<main class="grid gp-16 pd-12">
 	<h1>Revisa lo que comprarás.</h1>
 
-	<p>Entrega gratis en algunas zonas.</p>
+	<p style="padding-bottom: 12px">Entrega gratis en algunas zonas.</p>
 
-	<img class="br-12" src="https://via.placeholder.com/300" alt="Imagen del producto" />
+	@for (product of invoice().data.products.items; track $index) {
+		@if (product.image) {
+			<img class="br-12" [src]="product.image" [alt]="product.title ?? 'Imagen sin texto alternativo.'" />
+		} @else {
+			<div class="no-image br-12 grid">Sin imagen</div>
+		}
 
-	<div class="flex bet">
-		<h2>Studio display</h2>
-		<button>Eliminar</button>
-	</div>
+		<div class="flex bet">
+			<h2>{{ product.title }}</h2>
+			<button type="button" (click)="change(product.id, 0)">Eliminar</button>
+		</div>
 
-	<div class="flex bet">
-		<mat-form-field appearance="outline" class="w" style="max-width: max-content">
-			<mat-label>Cantidad</mat-label>
-			<mat-select>
-				<mat-option [value]="1">1</mat-option>
-				@for (item of count; track $index) {
-					<mat-option [value]="item">{{ item }}</mat-option>
-				}
-			</mat-select>
-		</mat-form-field>
-		<h3 style="min-width: max-content; margin-bottom: 22px">$22.000,05</h3>
-	</div>
+		<div class="flex bet">
+			<div class="grid bd br-12" style="grid-template-columns: repeat(3, 1fr); border-radius: 36px">
+				<app-button
+					[type]="'MINI'"
+					[icon]="'remove'"
+					[color]="product.quantity === 1 ? '#c3c3c3' : '#000'"
+					(click)="product.quantity > 1 ? change(product.id, product.quantity - 1) : null"
+				/>
+				<p class="tx-visible tx-center">{{ product.quantity }}</p>
+				<app-button
+					[type]="'MINI'"
+					[icon]="'add'"
+					[color]="product.stock !== -1 && product.stock <= product.quantity ? '#c3c3c3' : '#000'"
+					(click)="
+						product.quantity < product.stock || product.stock === -1 ? change(product.id, product.quantity + 1) : null
+					"
+				/>
+			</div>
+			<h3 style="min-width: max-content">{{ currency(product.price) }}</h3>
+		</div>
+	}
 
-	<img class="br-12" src="https://via.placeholder.com/300" alt="Imagen del producto" />
-
-	<div class="flex bet">
-		<h2>Studio display</h2>
-		<button>Eliminar</button>
-	</div>
-
-	<div class="flex bet">
-		<mat-form-field appearance="outline" class="w" style="max-width: max-content">
-			<mat-label>Cantidad</mat-label>
-			<mat-select>
-				<mat-option [value]="1">1</mat-option>
-				@for (item of count; track $index) {
-					<mat-option [value]="item">{{ item }}</mat-option>
-				}
-			</mat-select>
-		</mat-form-field>
-		<h3 style="min-width: max-content; margin-bottom: 22px">$22.000,05</h3>
-	</div>
-
-	<div class="flex">
+	<div class="flex gp-8">
 		<app-button [type]="'ICON'" [icon]="'local_shipping'" color="var(--grey)" />
 		<p>En Inventario y listo para entregar</p>
 	</div>
 
-	<div class="flex">
+	<div class="flex gp-8">
 		<app-button [type]="'ICON'" [icon]="'store'" color="var(--grey)" />
 		<p>Puedes buscarlo por la tienda</p>
 	</div>
 
 	<div class="flex bet">
-		<p>Subtotal</p>
-		<p>$98.000,28</p>
-	</div>
-
-	<div class="flex bet">
 		<p><b>Total</b></p>
-		<p><b>$97.000,15</b></p>
+		@if (invoice().status === 'COMPLETE') {
+			<p>
+				<b>{{ currency(invoice().data.total) }}</b>
+			</p>
+		} @else {
+			<p>Cargando...</p>
+		}
 	</div>
 
-	<section class="grid gp-12 pd-12 br-12" style="border: 1px solid #e0e0e3">
-		<button class="grid gp-12 w tx-left" style="grid-template-columns: 1fr max-content">
-			<div class="flex-col">
-				<p class="w"><b>Dedicatoria de Regalo </b><span class="optional">(optional)</span></p>
-				<p class="w">Añade un texto de dedicatoria</p>
+	<section class="grid gp-12 bd pd-12 br-12">
+		<button
+			type="button"
+			class="grid gp-8 w tx-left"
+			style="grid-template-columns: 1fr max-content"
+			(click)="redirect('message')"
+		>
+			<div class="fle col gp-8">
+				<p class="w"><b>Dedicatoria de Regalo</b></p>
+				<p class="w">{{ invoice().data.message.data ?? 'Añade un texto de dedicatoria' }}</p>
 			</div>
-			<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" />
+			<app-button [type]="'ICON'" [icon]="invoice().data.message.data ? 'edit' : 'arrow_forward_ios'" />
 		</button>
 
-		<hr style="background-color: #e0e0e3; border: none; height: 1px; margin: 0 -12px" />
+		<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
 
-		<button class="grid gp-12 w tx-left" style="grid-template-columns: 1fr max-content">
-			<div class="flex-col">
-				<p class="w"><b>Fecha de Entrega </b><span class="optional">(optional)</span></p>
-				<p class="w">Fecha de entrega Pre asignada</p>
+		<button
+			type="button"
+			class="grid gp-8 w tx-left"
+			style="grid-template-columns: 1fr max-content"
+			(click)="redirect('calendar')"
+		>
+			<div class="fle col gp-8">
+				<p class="w">
+					<b>Fecha de Entrega</b>
+				</p>
+				<p class="w tx-visible tx-2">
+					{{ invoice().data.calendar.data.reservation ?? 'Selecciona una fecha de entrega' }}
+				</p>
 			</div>
-			<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" />
+			<app-button [type]="'ICON'" [icon]="invoice().data.calendar.data.id ? 'edit' : 'arrow_forward_ios'" />
 		</button>
 
-		<hr style="background-color: #e0e0e3; border: none; height: 1px; margin: 0 -12px" />
+		<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
 
-		<button class="grid gp-12 w tx-left" style="grid-template-columns: 1fr max-content">
-			<div class="flex-col">
-				<p class="w required">Requerido</p>
+		<button
+			type="button"
+			class="grid gp-8 w tx-left"
+			style="grid-template-columns: 1fr max-content"
+			(click)="redirect('address')"
+		>
+			<div class="fle col gp-8">
+				<!-- <p class="w required">Requerido</p> -->
 				<p class="w"><b>Dirección de Entrega </b></p>
-				<p class="w">Añade o selecciona la dirección de entrega</p>
+				<p class="w tx-visible tx-2">
+					{{ invoice().data.address.data.direction ?? 'Añade o selecciona la dirección de entrega' }}
+				</p>
 			</div>
-			<app-button [type]="'ICON'" [icon]="'arrow_forward_ios'" />
+			<app-button [type]="'ICON'" [icon]="invoice().data.address.data.direction ? 'edit' : 'arrow_forward_ios'" />
 		</button>
 	</section>
 
-	<app-button [type]="'XR'" [label]="'Ir a pagar $93.547,32'" />
+	<app-button
+		[type]="'XR'"
+		[label]="
+			invoice().data.address.data.direction ? 'Ir a pagar ' + currency(invoice().data.total) : 'Dirección requerida'
+		"
+		(click)="invoice().data.address.data.direction ? redirect('payments') : redirect('address')"
+		[disabled]="invoice().data.address.data.direction ? false : true"
+	/>
+	<!-- [label]="invoice().status === 'LOADING' ? 'Cargando...' : 'Ir a pagar ' + currency(invoice().data.total)" -->
 </main>
