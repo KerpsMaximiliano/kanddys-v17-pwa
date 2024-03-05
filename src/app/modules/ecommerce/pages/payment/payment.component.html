@@ -2,11 +2,13 @@
 	<header class="flex bet pd-12">
 		<app-button [type]="'MINI'" [icon]="'arrow_back_ios'" color="var(--grey)" (click)="back()" />
 		@if (payment && image) {
-			<button class="h" type="button" (click)="save()">
+			<button class="h" (click)="save()">
 				@if (request) {
-					<app-loading />
+					<div class="grid" style="place-items: center; width: 36px; height: 36px">
+						<app-loading />
+					</div>
 				} @else {
-					Comfirmar el pago
+					Confirmar el pago
 				}
 				<!-- {{ request ? <app-loading /> : 'Confirmar el pago' }} -->
 			</button>
@@ -24,7 +26,6 @@
 					<section class="grid gp-16 pd-12 br-12" style="border: 1px solid #e0e0e3">
 						@for (item of payments().items; track $index) {
 							<button
-								type="button"
 								class="grid gp-16 w tx-left"
 								style="grid-template-columns: 1fr max-content"
 								(click)="payment = item"
@@ -56,7 +57,6 @@
 
 			@if (!image) {
 				<button
-					type="button"
 					aria-label="Subir imagen"
 					class="w h grid br-12 update"
 					style="place-items: center"
@@ -70,7 +70,7 @@
 						class="w"
 						[src]="image"
 						alt="Comprobante de pago"
-						style="max-width: 450px; height: auto; max-height: 100%"
+						style="max-width: 450px; height: auto; max-height: 100%; object-fit: contain"
 					/>
 					<app-button
 						class="delete"

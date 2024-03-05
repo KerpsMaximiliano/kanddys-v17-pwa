@@ -8,7 +8,7 @@
 				(mode === 'PICK-UP' && merchant().status === complete) ||
 				(mode === 'DELIVERY' && selected)
 			) {
-				<button type="button" class="option" (click)="save()">Guardar</button>
+				<button class="option" (click)="save()">Guardar</button>
 			}
 		</nav>
 
@@ -17,23 +17,11 @@
 		<p class="tx-center tx-visible">Selecciona la forma de entrega</p>
 
 		<section class="grid btns" style="grid-template-columns: repeat(2, 1fr)">
-			<button
-				type="button"
-				class="bd"
-				style="padding: 16px 8px"
-				[class.bd-active]="mode === 'DELIVERY'"
-				(click)="select('DELIVERY')"
-			>
+			<button class="bd" style="padding: 16px 8px" [class.bd-active]="mode === 'DELIVERY'" (click)="select('DELIVERY')">
 				Envio a domiciilio
 			</button>
 
-			<button
-				type="button"
-				class="bd"
-				style="padding: 16px 8px"
-				[class.bd-active]="mode === 'PICK-UP'"
-				(click)="select('PICK-UP')"
-			>
+			<button class="bd" style="padding: 16px 8px" [class.bd-active]="mode === 'PICK-UP'" (click)="select('PICK-UP')">
 				Retirar en la tienda
 			</button>
 		</section>
@@ -44,7 +32,7 @@
 			@if (mode === 'DELIVERY') {
 				@if (user().logged) {
 					@defer (when user().logged && addresses().status === complete) {
-						<button type="button" class="fle option tx-right" (click)="open('maps')" style="justify-content: flex-end">
+						<button class="fle option tx-right" (click)="open('maps')" style="justify-content: flex-end">
 							Nueva dirección
 						</button>
 
@@ -53,7 +41,6 @@
 						} @else {
 							@for (address of addresses().items; track $index) {
 								<button
-									type="button"
 									class="grid gp-8 bd br-12 pd-12 tx-left"
 									[class.bd-active]="selected?.id === address.id"
 									(click)="selected = address"
@@ -79,14 +66,14 @@
 
 				@defer (when !user().logged) {
 					@if (!user().logged && addresses().items.length === 0) {
-						<button type="button" class="flex bet bd br-12 pd-12 tx-left" (click)="open('maps')">
+						<button class="flex bet bd br-12 pd-12 tx-left" (click)="open('maps')">
 							<b style="font-size: 15px">Elige una dirección</b>
 							<app-button [type]="'ICON'" [icon]="'location_on'" />
 						</button>
 					}
 
 					@if (!user().logged && addresses().items.length === 1) {
-						<button type="button" class="grid gp-8 bd br-12 pd-12 tx-left bd-active" (click)="open('maps')">
+						<button class="grid gp-8 bd br-12 pd-12 tx-left bd-active" (click)="open('maps')">
 							<div class="flex bet">
 								<b>Dirección de envio</b>
 								<app-button [type]="'ICON'" [icon]="'local_shipping'" color="var(--violet)" />
@@ -102,7 +89,7 @@
 			@if (mode === 'PICK-UP') {
 				@if (merchant().status === complete) {
 					@for (address of merchant().items; track $index) {
-						<button type="button" class="grid gp-8 tx-left bd br-12 pd-12 bd-active">
+						<button class="grid gp-8 tx-left bd br-12 pd-12 bd-active">
 							<div class="flex bet">
 								<b>Dirección de la tienda</b>
 								<app-button [type]="'ICON'" [icon]="'store'" color="var(--violet)" />
@@ -122,7 +109,7 @@
 	@defer (when mode === 'DELIVERY' && !user().logged) {
 		@if (mode === 'DELIVERY' && !user().logged) {
 			<footer class="grid pd-12">
-				<button type="button" class="flex cen gp-8 pd-12" style="color: var(--violet)" (click)="redirect('auth')">
+				<button class="flex cen gp-8 pd-12" style="color: var(--violet)" (click)="redirect('auth')">
 					<app-button [type]="'ICON'" [icon]="'person'" color="var(--violet)" />
 					Mira tus direcciones guardadas
 				</button>

@@ -8,9 +8,9 @@ export function date(value?: string, from?: string, to?: string): string | null 
 			const fromHour: string = `${parts[0]}:${parts[1]}`;
 			parts = to.split(':');
 			const toHour = `${parts[0]}:${parts[1]}`;
-			return `${date.getUTCDate()} de ${month} entre las ${fromHour} y las ${toHour} hs`;
+			return `${date.getUTCDate()} de ${month.toLowerCase()} entre las ${fromHour} y las ${toHour} hs`;
 		} else {
-			return `${date.getUTCDate()} de ${month}`;
+			return `${date.getUTCDate()} de ${month.toLowerCase()}`;
 		}
 	} else {
 		return null;

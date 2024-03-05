@@ -28,7 +28,6 @@
 							<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
 						}
 						<button
-							type="button"
 							class="grid gp-12 w tx-left"
 							style="grid-template-columns: 60px 1fr"
 							(click)="redirect('product', product.id)"
@@ -73,11 +72,11 @@
 						<app-button [type]="'ICON'" [icon]="'settings'" color="var(--grey)" /> Tu Cuenta
 					</button> -->
 
-					<button type="button" class="flex gp-8" style="color: var(--grey)" (click)="logout()">
+					<button class="flex gp-8" style="color: var(--grey)" (click)="logout()">
 						<app-button [type]="'ICON'" [icon]="'logout'" color="var(--grey)" /> Cerrar Sesión
 					</button>
 				} @else {
-					<button type="button" class="flex gp-8" style="color: var(--grey)" (click)="redirect('auth')">
+					<button class="flex gp-8" style="color: var(--grey)" (click)="redirect('auth')">
 						<app-button [type]="'ICON'" [icon]="'person'" color="var(--grey)" /> Ingresar
 					</button>
 				}

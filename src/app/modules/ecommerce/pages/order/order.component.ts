@@ -32,7 +32,6 @@ import { MatSelectModule } from '@angular/material/select';
 
 // * Util.
 import { currency } from '@core/util/currency.pipe';
-import { date } from '@core/util/date.pipe';
 
 // * Shared.
 import { ButtonComponent } from '@core/components/button/button.component';
@@ -47,7 +46,6 @@ import { ButtonComponent } from '@core/components/button/button.component';
 })
 export class OrderComponent implements OnInit, OnDestroy {
 	public currency = currency;
-	public date = date;
 	public loaded = loaded;
 
 	// eslint-disable-next-line @ngrx/use-consistent-global-store-name
@@ -57,18 +55,18 @@ export class OrderComponent implements OnInit, OnDestroy {
 	private _change: boolean = false;
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering
-	public readonly invoice: Signal<ILoadableEntity<IOrder>> = this._store.selectSignal(selectEcommerceOrder);
+	public readonly order: Signal<ILoadableEntity<IOrder>> = this._store.selectSignal(selectEcommerceOrder);
 	// eslint-disable-next-line @typescript-eslint/member-ordering
 	public readonly user: Signal<{ id: number; logged: boolean }> = this._store.selectSignal(selectEcommerceUserLogin);
 	// eslint-disable-next-line @typescript-eslint/member-ordering
 	public readonly info: Signal<IEcommerce['info']> = this._store.selectSignal(selectEcommerceInfo);
 
 	public ngOnInit(): void {
-		if (this.invoice().data.products.status === loading) {
+		if (this.order().data.products.status === loading) {
 			this.redirect('shop');
 			return;
 		}
-		if (this.invoice().status === loaded) this._store.dispatch(LOAD_ECOMMERCE_ORDER({ order: this.invoice().data.id }));
+		if (this.order().status === loaded) this._store.dispatch(LOAD_ECOMMERCE_ORDER({ order: this.order().data.id }));
 		this._change = false;
 	}
 
@@ -97,6 +95,6 @@ export class OrderComponent implements OnInit, OnDestroy {
 	}
 
 	public ngOnDestroy(): void {
-		if (this._change) this._store.dispatch(UPDATE_ECOMMERCE_CART({ products: this.invoice().data.products.items }));
+		if (this._change) this._store.dispatch(UPDATE_ECOMMERCE_CART({ products: this.order().data.products.items }));
 	}
 }

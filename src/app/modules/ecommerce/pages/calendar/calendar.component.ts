@@ -104,7 +104,7 @@ export class CalendarComponent implements OnInit {
 
 	public save(): void {
 		if (this.select && this._day) {
-			const conf: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+			const conf: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric' };
 			this._store.dispatch(
 				UPDATE_ECOMMERCE_ORDER_CALENDAR({
 					batch: this.select.id,

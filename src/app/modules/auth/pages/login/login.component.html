@@ -54,13 +54,13 @@
 				}
 			}
 
-			<button type="button" (click)="back()" [class.disabled]="user().status === loading">Volver</button>
+			<button (click)="back()" [class.disabled]="user().status === loading">Volver</button>
 
 			@defer (when user().data.check === 1) {
 				@if (user().data.check === 1) {
 					<p class="flex cen gp-8"><input type="checkbox" checked />Recuerdame en este dispositivo</p>
 
-					<button type="button" class="flex gp-8 cen">
+					<button class="flex gp-8 cen">
 						Recibir acceso directo
 						<app-button [type]="'ICON'" [icon]="'open_in_new'" color="var(--violet)" />
 					</button>

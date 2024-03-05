@@ -12,7 +12,7 @@
 			/>
 
 			@if (form.get('address')?.value && form.get('address')?.value.trim()) {
-				<button type="button" matSuffix aria-label="clear" (click)="clear()" style="padding-right: 10px">
+				<button matSuffix aria-label="clear" (click)="clear()" style="padding-right: 10px">
 					<app-button [type]="'ICON'" [icon]="'close'" />
 				</button>
 			}

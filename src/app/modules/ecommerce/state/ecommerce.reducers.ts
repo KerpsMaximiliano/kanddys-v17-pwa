@@ -46,6 +46,7 @@ import {
 // * Interfaces.
 import { ILoadableEntity, complete, failed, loaded, loading } from '@core/interfaces/state.interface';
 import { IAddress, IEcommerce, IOrder, IProduct } from '@ecommerce/interfaces/ecommerce.interface';
+import { date } from '../../../core/util/date.pipe';
 
 // * Utils.
 
@@ -390,7 +391,7 @@ export const ecommerceReducer = createReducer(
 						status: complete,
 						data: {
 							id: info.batch ?? null,
-							reservation: info.calendar ?? ''
+							reservation: date(info.calendar, info.from, info.to) ?? null
 						}
 					}
 				}
@@ -438,7 +439,7 @@ export const ecommerceReducer = createReducer(
 						status: complete,
 						data: {
 							id: info.batch ?? null,
-							reservation: info.calendar ?? ''
+							reservation: date(info.calendar, info.from, info.to) ?? null
 						}
 					}
 				}

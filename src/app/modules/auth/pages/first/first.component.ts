@@ -47,7 +47,7 @@ export class FirstComponent implements OnInit {
 	public user: Signal<ILoadableEntity<IUser>> = this._store.selectSignal(selectEcommerceUser);
 
 	public ngOnInit(): void {
-		if (!this.user().data.logged || this.user().data.check === 0 || this.user().data.check === null) {
+		if (!this.user().data.logged || this.user().data.check !== 0 || this.user().data.check === null) {
 			this._core.redirect('');
 		}
 	}
@@ -68,20 +68,23 @@ export class FirstComponent implements OnInit {
 					USER_INFO({
 						name: this.form.get('name')?.value,
 						surname: this.form.get('surname')?.value,
-						phone: this.form.get('phone')?.value
+						phone: this.form.get('phone')?.value,
+						password: this.form.get('password')?.value
 					})
 				);
 				this.back();
 			}
+		} else {
+			console.log('no valido', this.form.valid);
 		}
 	}
 
 	private _setForm(): UntypedFormGroup {
 		return new UntypedFormGroup({
-			name: new UntypedFormControl(null, Validators.compose([Validators.minLength(1), notOnlySpaces])),
-			surname: new UntypedFormControl(null, Validators.compose([Validators.minLength(1), notOnlySpaces])),
+			name: new UntypedFormControl(null, Validators.compose([Validators.minLength(1), notOnlySpaces()])),
+			surname: new UntypedFormControl(null, Validators.compose([Validators.minLength(1), notOnlySpaces()])),
 			phone: new UntypedFormControl(null, Validators.compose([Validators.minLength(6), isNumeric()])),
-			password: new UntypedFormControl(null, Validators.compose([Validators.minLength(6), notOnlySpaces]))
+			password: new UntypedFormControl(null, Validators.compose([Validators.minLength(6), notOnlySpaces()]))
 		});
 	}
 }

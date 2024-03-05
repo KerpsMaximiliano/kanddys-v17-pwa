@@ -55,6 +55,7 @@ body {
 button {
 	background-color: transparent;
 	border: none;
+	touch-action: manipulation;
 }
 
 h1,
@@ -293,4 +294,8 @@ html {
 .option {
 	color: var(--violet);
 	font-size: 17px;
+}
+
+app-button {
+	touch-action: manipulation;
 }

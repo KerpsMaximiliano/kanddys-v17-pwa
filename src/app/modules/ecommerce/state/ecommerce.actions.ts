@@ -31,11 +31,11 @@ export const USER_LOGIN_ERROR = createAction('[Ecommerce] User Error', props<{ e
 // * USER INFO.
 export const USER_INFO = createAction(
 	'[Ecommerce] User Info',
-	props<{ name?: string; surname?: string; phone?: string }>()
+	props<{ name?: string; surname?: string; phone?: string; password?: string }>()
 );
 export const USER_INFO_SUCCESS = createAction(
 	'[Ecommerce] User Info Success',
-	props<{ name: string; surname: string; phone: string }>()
+	props<{ name?: string; surname?: string; phone?: string }>()
 );
 
 // * USER LOGOUT.

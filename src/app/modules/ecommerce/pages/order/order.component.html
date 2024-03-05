@@ -9,12 +9,12 @@
 	}
 </header>
 
-<main class="grid gp-16 pd-12">
+<main class="grid gp-16 pd-12" style="padding-bottom: 44px">
 	<h1>Revisa lo que comprarás.</h1>
 
 	<p style="padding-bottom: 12px">Entrega gratis en algunas zonas.</p>
 
-	@for (product of invoice().data.products.items; track $index) {
+	@for (product of order().data.products.items; track $index) {
 		@if (product.image) {
 			<img class="br-12" [src]="product.image" [alt]="product.title ?? 'Imagen sin texto alternativo.'" />
 		} @else {
@@ -23,7 +23,7 @@
 
 		<div class="flex bet">
 			<h2>{{ product.title }}</h2>
-			<button type="button" (click)="change(product.id, 0)">Eliminar</button>
+			<button (click)="change(product.id, 0)">Eliminar</button>
 		</div>
 
 		<div class="flex bet">
@@ -60,9 +60,9 @@
 
 	<div class="flex bet">
 		<p><b>Total</b></p>
-		@if (invoice().status === 'COMPLETE') {
+		@if (order().status === 'COMPLETE') {
 			<p>
-				<b>{{ currency(invoice().data.total) }}</b>
+				<b>{{ currency(order().data.total) }}</b>
 			</p>
 		} @else {
 			<p>Cargando...</p>
@@ -70,64 +70,47 @@
 	</div>
 
 	<section class="grid gp-12 bd pd-12 br-12">
-		<button
-			type="button"
-			class="grid gp-8 w tx-left"
-			style="grid-template-columns: 1fr max-content"
-			(click)="redirect('message')"
-		>
+		<button class="grid gp-8 w tx-left" style="grid-template-columns: 1fr max-content" (click)="redirect('message')">
 			<div class="fle col gp-8">
 				<p class="w"><b>Dedicatoria de Regalo</b></p>
-				<p class="w">{{ invoice().data.message.data ?? 'Añade un texto de dedicatoria' }}</p>
+				<p class="w">{{ order().data.message.data ?? 'Añade un texto de dedicatoria' }}</p>
 			</div>
-			<app-button [type]="'ICON'" [icon]="invoice().data.message.data ? 'edit' : 'arrow_forward_ios'" />
+			<app-button [type]="'ICON'" [icon]="order().data.message.data ? 'edit' : 'arrow_forward_ios'" />
 		</button>
 
 		<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
 
-		<button
-			type="button"
-			class="grid gp-8 w tx-left"
-			style="grid-template-columns: 1fr max-content"
-			(click)="redirect('calendar')"
-		>
+		<button class="grid gp-8 w tx-left" style="grid-template-columns: 1fr max-content" (click)="redirect('calendar')">
 			<div class="fle col gp-8">
 				<p class="w">
 					<b>Fecha de Entrega</b>
 				</p>
 				<p class="w tx-visible tx-2">
-					{{ date(info().data.calendar, info().data.from, info().data.to) ?? 'Selecciona una fecha de entrega' }}
+					{{ order().data.calendar.data.reservation ?? 'Selecciona una fecha de entrega' }}
 				</p>
 			</div>
-			<app-button [type]="'ICON'" [icon]="invoice().data.calendar.data.id ? 'edit' : 'arrow_forward_ios'" />
+			<app-button [type]="'ICON'" [icon]="order().data.calendar.data.id ? 'edit' : 'arrow_forward_ios'" />
 		</button>
 
 		<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
 
-		<button
-			type="button"
-			class="grid gp-8 w tx-left"
-			style="grid-template-columns: 1fr max-content"
-			(click)="redirect('address')"
-		>
+		<button class="grid gp-8 w tx-left" style="grid-template-columns: 1fr max-content" (click)="redirect('address')">
 			<div class="fle col gp-8">
 				<!-- <p class="w required">Requerido</p> -->
 				<p class="w"><b>Dirección de Entrega </b></p>
 				<p class="w tx-visible tx-2">
-					{{ invoice().data.address.data.direction ?? 'Añade o selecciona la dirección de entrega' }}
+					{{ order().data.address.data.direction ?? 'Añade o selecciona la dirección de entrega' }}
 				</p>
 			</div>
-			<app-button [type]="'ICON'" [icon]="invoice().data.address.data.direction ? 'edit' : 'arrow_forward_ios'" />
+			<app-button [type]="'ICON'" [icon]="order().data.address.data.direction ? 'edit' : 'arrow_forward_ios'" />
 		</button>
 	</section>
 
 	<app-button
 		[type]="'XR'"
-		[label]="
-			invoice().data.address.data.direction ? 'Ir a pagar ' + currency(invoice().data.total) : 'Dirección requerida'
-		"
-		(click)="invoice().data.address.data.direction ? redirect('payments') : redirect('address')"
-		[disabled]="invoice().data.address.data.direction ? false : true"
+		[label]="order().data.address.data.direction ? 'Ir a pagar ' + currency(order().data.total) : 'Dirección requerida'"
+		(click)="order().data.address.data.direction ? redirect('payments') : redirect('address')"
+		[disabled]="order().data.address.data.direction ? false : true"
 	/>
-	<!-- [label]="invoice().status === 'LOADING' ? 'Cargando...' : 'Ir a pagar ' + currency(invoice().data.total)" -->
+	<!-- [label]="order().status === 'LOADING' ? 'Cargando...' : 'Ir a pagar ' + currency(order().data.total)" -->
 </main>

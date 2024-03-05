@@ -17,15 +17,7 @@
 		[ICON] Sin icono.
 	}
 } @else {
-	<button
-		[style.color]="color"
-		[style.background]="background"
-		[class]="type"
-		[class.disabled]="disabled"
-		class="br-8"
-		aria-label="Botón de acción"
-		type="button"
-	>
+	<button [style.color]="color" [style.background]="background" [class]="type" [class.disabled]="disabled" class="br-8">
 		@if (type === 'MINI') {
 			@if (icon) {
 				@if (badge && badge > 0) {

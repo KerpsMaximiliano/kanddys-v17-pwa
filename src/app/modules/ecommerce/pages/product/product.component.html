@@ -3,6 +3,9 @@
 		<app-button [type]="'MINI'" [icon]="'arrow_back_ios'" (click)="back()" />
 
 		<div class="flex gp-8">
+			@if (!user().logged && user().id !== 0) {
+				<app-button [type]="'MINI'" [icon]="'person'" (click)="login()" />
+			}
 			<app-button
 				[type]="'MINI'"
 				[icon]="'shopping_cart'"
@@ -10,14 +13,11 @@
 				[badge]="cart().count"
 				style="padding-right: 4px"
 			/>
-			@if (!user().logged) {
-				<app-button [type]="'MINI'" [icon]="'person'" (click)="login()" />
-			}
 			<app-button [type]="'MINI'" [icon]="'more_vert'" (click)="open('share')" />
 		</div>
 	</header>
 
-	<main class="grid gp-16 pd-12">
+	<main class="grid gp-16 pd-12" style="padding-bottom: 44px">
 		<section class="grid gp-16">
 			<h1 class="tx-3">{{ product().data.title ?? 'Producto' }}</h1>
 
@@ -35,7 +35,6 @@
 				<div class="flex cen gp-12">
 					@for (dot of product().data.images; track $index) {
 						<button
-							type="button"
 							class="dot"
 							aria-label="Dot"
 							[class.active]="$index === index"

@@ -117,34 +117,18 @@ export class ResizeDialogComponent implements OnInit, OnDestroy {
 						switch (this._data.conf.option) {
 							case 0:
 								if (this._data.conf.logged) {
-									return 172;
+									return 205;
 								} else {
 									return 280;
 								}
 							case 1:
-								if (this._data.conf.logged) {
-									return 337;
-								} else {
-									return 354;
-								}
+								return 354;
 							case 2:
-								if (this._data.conf.logged) {
-									return 427;
-								} else {
-									return 437;
-								}
+								return 437;
 							case 3:
-								if (this._data.conf.logged) {
-									return 507;
-								} else {
-									return 521;
-								}
+								return 507;
 							default:
-								if (this._data.conf.logged) {
-									return 587;
-								} else {
-									return 597;
-								}
+								return 587;
 						}
 					} else {
 						return 0;

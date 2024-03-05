@@ -14,6 +14,7 @@ import {
 	MUTATION_ORDER_CART,
 	MUTATION_ORDER_MESSAGE,
 	MUTATION_USER_ADD_ADDRESS,
+	MUTATION_USER_INFO,
 	QUERY_BATCHES,
 	QUERY_CALENDAR,
 	QUERY_CART,
@@ -97,10 +98,15 @@ import {
 	UPDATED_ECOMMERCE_ORDER_MESSAGE,
 	USER_CHECK,
 	USER_CHECKED,
+	USER_INFO,
+	USER_INFO_SUCCESS,
 	USER_LOGIN,
 	USER_LOGIN_ERROR,
 	USER_LOGIN_SUCCESS
 } from './ecommerce.actions';
+
+// * Utils.
+import { undate } from '@core/util/undate.pipe';
 
 @Injectable({ providedIn: 'root' })
 export class EcommerceEffects {
@@ -118,7 +124,7 @@ export class EcommerceEffects {
 					: undefined;
 				if (user) {
 					return this._core
-						.query<IResponse<{ cUserE: number }>['data']>(QUERY_USER_CHECK, { user, email: action.email })
+						.query<IResponse<{ cUserE: number }>['data']>(QUERY_USER_CHECK, { user, email: action.email }, true)
 						.pipe(
 							map((res) => {
 								if (res.cUserE === 0) localStorage.setItem('email', String(action.email));
@@ -151,6 +157,7 @@ export class EcommerceEffects {
 								if (res.lUser.operationStatus === 1) {
 									localStorage.setItem('user', String(action.user));
 									localStorage.setItem('email', action.email);
+									this._core.state.ecommerce.user = action.user;
 									return USER_LOGIN_SUCCESS({ email: action.email });
 								} else {
 									return USER_LOGIN_ERROR({ err: 1 });
@@ -238,6 +245,33 @@ export class EcommerceEffects {
 					}
 				} else {
 					return of({ type: '[ERROR_ECOMMERCE_USER_ADD_ADDRESS]: USER_NOT_FOUND' });
+				}
+			})
+		);
+	});
+
+	// ! USER INFO.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateUserInfo$ = createEffect(() => {
+		return this._actions$.pipe(
+			ofType(USER_INFO),
+			exhaustMap((action) => {
+				const user: number | undefined = this._core.state.ecommerce.user;
+				if (user) {
+					return this._core
+						.mutation(MUTATION_USER_INFO, {
+							user,
+							name: action.name,
+							surname: action.surname,
+							phone: action.phone,
+							password: action.password
+						})
+						.pipe(
+							map(() => USER_INFO_SUCCESS({ name: action.name, surname: action.surname, phone: action.phone })),
+							catchError(() => of({ type: '[ERROR_ECOMMERCE_USER_INFO]: MUTATION_USER_INFO' }))
+						);
+				} else {
+					return of({ type: '[ERROR_ECOMMERCE_USER_INFO]: USER_NOT_FOUND' });
 				}
 			})
 		);
@@ -759,7 +793,7 @@ export class EcommerceEffects {
 					formData.append('paymentId', String(action.payment));
 					formData.append('merchantId', String(merchant));
 					formData.append('batchId', String(action.batch));
-					formData.append('date', action.date);
+					formData.append('date', undate(action.date));
 					formData.append('userId', String(user));
 					formData.append('voucher', action.voucher);
 					formData.append('addressDirection', action.direction);

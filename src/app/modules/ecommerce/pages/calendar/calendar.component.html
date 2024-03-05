@@ -2,11 +2,11 @@
 	<app-button [type]="'MINI'" [icon]="'arrow_back_ios'" (click)="back()" />
 
 	@if (select) {
-		<button type="button" class="option" (click)="save()">Guardar</button>
+		<button class="option" (click)="save()">Guardar</button>
 	}
 </header>
 
-<main>
+<main style="padding-bottom: 44px">
 	<h1 class="tx-center">Fecha de Entrega</h1>
 
 	<p class="tx-center my-12">Seleccione el día</p>
@@ -35,7 +35,6 @@
 					} @else {
 						@for (batch of batches().items; track $index) {
 							<button
-								type="button"
 								class="bd fle col w br-12 pd-12 tx-left gp-8"
 								[class.bd-active]="select"
 								(click)="

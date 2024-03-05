@@ -4,10 +4,10 @@
 </header>
 
 @defer (when invoice().status === complete) {
-	<main class="grid pd-0-12">
+	<main class="grid pd-0-12" style="padding-bottom: 44px">
 		<article class="flex bet">
 			<div class="flex gp-8">
-				<img class="br-50" src="https://placehold.co/100x100" alt="placeholder" />
+				<img class="br-50" src="/assets/images/dlicianthus.jpg" alt="Dlicianthus, tienda floral." />
 				<h1>Dlicianthus</h1>
 			</div>
 
@@ -58,17 +58,17 @@
 			<p>{{ currency(invoice().data.total) }}</p>
 		</section>
 
-		<button type="button" class="option flex gp-8" (click)="open('voucher')">
+		<button class="option flex gp-8" (click)="open('voucher')">
 			<app-button [type]="'ICON'" [icon]="'image'" color="var(--violet)" />
 			{{ invoice().data.status === 'PENDING' ? 'Pago por confimar' : 'Pago confirmado' }}
 		</button>
 
-		<button type="button" class="flex bet">
+		<button class="flex bet">
 			<p><strong>Dedicatoria de Regalo</strong></p>
 			<p class="option">Ver</p>
 		</button>
 
-		<button type="button" class="flex bet" (click)="open('map')">
+		<button class="flex bet" (click)="open('map')">
 			<p><strong>Dirección y contacto de entrega</strong></p>
 			<p class="option">Ver</p>
 		</button>

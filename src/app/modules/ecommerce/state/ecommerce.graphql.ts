@@ -15,7 +15,7 @@ export const QUERY_MERCHANT_ADDRESS: string = `MerchantId($merchant: Int!){merch
 // * PAGE: SHOP.
 export const QUERY_PAGE_SHOP: string = `CombinedShop($slug: String!, $user: Int){combinedShop(slug: $slug, userId: $user){merchantId merchantTitle invoiceId invoiceCount userId products {id title price frontPage} batchId batchFrom batchTo firstShippingDate}}`;
 
-// * PAGE: PRODUCT
+// * PAGE: PRODUCT.
 export const QUERY_PAGE_PRODUCT: string = `CombinedProduct($product: Int!, $slug: String!, $user: Int){combinedProduct(productId: $product, slug: $slug, userId: $user){merchantId merchantTitle productId productTitle productFrontPage productPrice productStock invoiceId invoiceCount userId images{url} details{title description url} check merchantDirection firstShippingDate batchId batchFrom batchTo}}`;
 
 // * PRODUCTS.
@@ -45,7 +45,7 @@ export const QUERY_INVOICE: string = `GOrder($order: Int!){gOrder(orderId: $orde
 // ! ------------------------------ MUTATIONS ------------------------------
 
 // * USER INFO.
-export const MUTATION_USER_INFO: string = `UUser($user: Int, $name: String, $surname: String, phone: Number){uUser(userId: $user, lastName: $surname, name: $name, phone: $phone, password: $password)}`;
+export const MUTATION_USER_INFO: string = `UUser($user: Int!, $name: String, $surname: String, $phone: String, $password: String){uUser(userId: $user, lastName: $surname, name: $name, phone: $phone, password: $password)}`;
 
 // * USER ADD ADDRESS.
 export const MUTATION_USER_ADD_ADDRESS: string = `AAddress($user: Int!, $lng: String!, $lat: String!, $direction: String!){aAddress(userId: $user, lng: $lng, lat: $lat, direction: $direction)}`;

@@ -1,21 +1,21 @@
 <main style="padding: 24px 0">
 	<section class="bd" [class.bd]="mode === 'INITIAL'">
 		@if (mode === 'INITIAL') {
-			<button type="button" class="w flex bet pd-12">
+			<button class="w flex bet pd-12">
 				Compartir enlace
 				<app-button [type]="'ICON'" [icon]="'share'" (click)="share(false)" />
 			</button>
 
 			<hr />
 
-			<button type="button" class="w flex bet pd-12">
+			<button class="w flex bet pd-12">
 				Copiar enlace
 				<app-button [type]="'ICON'" [icon]="'link'" (click)="mode = 'COPY'; copy()" />
 			</button>
 
 			<hr />
 
-			<button type="button" class="w flex bet pd-12">
+			<button class="w flex bet pd-12">
 				Código QR
 				<app-button [type]="'ICON'" [icon]="'qr_code'" (click)="qr()" />
 			</button>
@@ -23,7 +23,7 @@
 
 		@if (mode === 'COPY') {
 			@defer (when mode === 'COPY') {
-				<button type="button" class="w flex bet pd-12">
+				<button class="w flex bet pd-12">
 					Enlace copiado en el portapapeles
 					<app-button [type]="'ICON'" [icon]="'close'" (click)="close()" />
 				</button>
