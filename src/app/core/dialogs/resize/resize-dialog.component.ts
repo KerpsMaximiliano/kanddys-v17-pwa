@@ -140,7 +140,7 @@ export class ResizeDialogComponent implements OnInit, OnDestroy {
 				case 'map':
 					return window.innerHeight - 2;
 				case 'voucher':
-					return 430;
+					return 385;
 				default:
 					return 0;
 			}
