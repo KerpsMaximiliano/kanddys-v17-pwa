@@ -1,0 +1,562 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>laia documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">laia documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  IPrediction</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/core/dialogs/components/maps/maps.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#description" 
+>
+                                            description
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#place_id" 
+>
+                                            place_id
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="description"></a>
+                                        <span class="name "><b>description</b>
+                                            <a href="#description">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>description:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="place_id"></a>
+                                        <span class="name "><b>place_id</b>
+                                            <a href="#place_id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>place_id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AsyncPipe } from &#x27;@angular/common&#x27;;
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	ElementRef,
+	OnDestroy,
+	OnInit,
+	Signal,
+	ViewChild,
+	inject
+} from &#x27;@angular/core&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+import { BehaviorSubject, take } from &#x27;rxjs&#x27;;
+
+// * ENV.
+import { environment } from &#x27;@env/environment&#x27;;
+
+// * Maps.
+import { GoogleMapsModule } from &#x27;@angular/google-maps&#x27;;
+
+// * Services.
+import { CoreService } from &#x27;@core/services/core.service&#x27;;
+
+// * Interfaces.
+import { IState } from &#x27;@core/interfaces/state.interface&#x27;;
+interface IPrediction {
+	description: string;
+	// eslint-disable-next-line @typescript-eslint/naming-convention
+	place_id: string;
+}
+
+interface IMap {
+	center: { lat: number; lng: number };
+	zoom: number;
+	options: google.maps.MapOptions;
+}
+
+// * Actions.
+import { ADD_USER_ADDRESS } from &#x27;@ecommerce/state/ecommerce.actions&#x27;;
+
+// * Selectors.
+import { selectEcommerceUserLogin } from &#x27;@ecommerce/state/ecommerce.selectors&#x27;;
+
+// * Forms.
+import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from &#x27;@angular/forms&#x27;;
+
+// * Validators.
+import { getErrorMessage, notOnlySpaces } from &#x27;@core/validators/character.validators&#x27;;
+
+// * Material.
+import { MatAutocompleteModule, MatAutocompleteTrigger } from &#x27;@angular/material/autocomplete&#x27;;
+import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
+import { MatInputModule } from &#x27;@angular/material/input&#x27;;
+
+// * Shared.
+import { MatDialogRef } from &#x27;@angular/material/dialog&#x27;;
+import { ButtonComponent } from &#x27;@core/components/button/button.component&#x27;;
+
+@Component({
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	selector: &#x27;app-dialog-content-maps&#x27;,
+	standalone: true,
+	imports: [
+		GoogleMapsModule,
+		ReactiveFormsModule,
+		MatAutocompleteModule,
+		MatFormFieldModule,
+		MatInputModule,
+		AsyncPipe,
+		ButtonComponent
+	],
+	templateUrl: &#x27;./maps.component.html&#x27;,
+	styleUrl: &#x27;./maps.component.scss&#x27;
+})
+export class MapsComponent implements OnInit, OnDestroy {
+	@ViewChild(MatAutocompleteTrigger) public trigger?: MatAutocompleteTrigger;
+	@ViewChild(&#x27;input&#x27;) public input?: ElementRef&lt;HTMLInputElement&gt;;
+	@ViewChild(&#x27;markerElem&#x27;) public markerElem?: ElementRef&lt;HTMLInputElement&gt;;
+
+	public form: UntypedFormGroup &#x3D; new UntypedFormGroup({ address: new UntypedFormControl(null, notOnlySpaces()) });
+
+	public readonly getErrorMessage &#x3D; getErrorMessage;
+
+	public config: IMap &#x3D; {
+		center: { lat: 18.735693, lng: -70.162651 },
+		zoom: 17,
+		options: {
+			mapId: environment.apiMap,
+			disableDefaultUI: true,
+			clickableIcons: true
+		}
+	};
+	public autocompleteResults: BehaviorSubject&lt;IPrediction[]&gt; &#x3D; new BehaviorSubject&lt;IPrediction[]&gt;([]);
+	public currentPosition?: GeolocationPosition;
+
+	public marker: google.maps.LatLngLiteral &#x3D; {
+		lat: 0,
+		lng: 0
+	};
+
+	// eslint-disable-next-line @ngrx/use-consistent-global-store-name
+	private readonly _store: Store&lt;IState&gt; &#x3D; inject(Store);
+	private readonly _cdr: ChangeDetectorRef &#x3D; inject(ChangeDetectorRef);
+	private readonly _ref: MatDialogRef&lt;MapsComponent&gt; &#x3D; inject(MatDialogRef);
+	private readonly _core: CoreService &#x3D; inject(CoreService);
+
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly user: Signal&lt;{ id: number; logged: boolean }&gt; &#x3D; this._store.selectSignal(selectEcommerceUserLogin);
+
+	public ngOnInit(): void {
+		navigator.geolocation.getCurrentPosition((position) &#x3D;&gt; {
+			const currentPosition &#x3D; {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+			this.config.center &#x3D; currentPosition;
+			this.currentPosition &#x3D; position;
+			this._marker(currentPosition);
+			this.setAddress(currentPosition);
+			this._cdr.markForCheck();
+		});
+	}
+
+	public add(update: boolean): void {
+		if (!this.form.get(&#x27;address&#x27;)?.value || this.marker.lat &#x3D;&#x3D;&#x3D; 0 || this.marker.lng &#x3D;&#x3D;&#x3D; 0) return;
+		const address: string | undefined &#x3D; this.form.get(&#x27;address&#x27;)?.value;
+		if (address &amp;&amp; this.marker.lat !&#x3D;&#x3D; 0 &amp;&amp; this.marker.lng !&#x3D;&#x3D; 0) {
+			this._ref.close();
+			if (update &amp;&amp; !this.user().logged) {
+				this._core.redirect(&#x27;auth&#x27;);
+				return;
+			}
+			this._store.dispatch(
+				ADD_USER_ADDRESS({ lat: &#x60;${this.marker.lat}&#x60;, lng: &#x60;${this.marker.lng}&#x60;, direction: address, update })
+			);
+		}
+	}
+
+	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+	public selectPlace(prediction: any): void {
+		const geocoder &#x3D; new google.maps.Geocoder();
+		void geocoder.geocode({ placeId: prediction.place_id }, (results, status) &#x3D;&gt; {
+			if (status &#x3D;&#x3D;&#x3D; google.maps.GeocoderStatus.OK &amp;&amp; results) {
+				this.config.center &#x3D; { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
+				this._marker({ lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() });
+			}
+		});
+	}
+
+	public search(query: string): void {
+		const autocompleteService &#x3D; new google.maps.places.AutocompleteService();
+		if (!query.trim()) {
+			this.autocompleteResults.next([]);
+			return;
+		}
+		let current: google.maps.LatLngLiteral | undefined &#x3D; undefined;
+		if (this.currentPosition) {
+			current &#x3D; {
+				lat: this.currentPosition.coords.latitude,
+				lng: this.currentPosition.coords.longitude
+			};
+		}
+		let request: google.maps.places.AutocompletionRequest &#x3D; { input: query };
+		if (current) {
+			request &#x3D; {
+				input: query,
+				locationBias: {
+					north: current.lat + 0.1,
+					south: current.lat - 0.1,
+					east: current.lng + 0.1,
+					west: current.lng - 0.1
+				}
+			};
+		}
+		void autocompleteService.getPlacePredictions(request, (predictions, status) &#x3D;&gt; {
+			if (status &#x3D;&#x3D;&#x3D; google.maps.places.PlacesServiceStatus.OK) {
+				if (predictions) {
+					this.autocompleteResults.next(predictions);
+				}
+			} else {
+				console.error(&#x27;Error fetching autocomplete predictions:&#x27;, status);
+				this.autocompleteResults.next([]);
+			}
+		});
+	}
+
+	public clear(): void {
+		this.form.reset();
+		this.autocompleteResults.next([]);
+		this.marker &#x3D; { lat: 0, lng: 0 };
+	}
+
+	public selectFirst(): void {
+		this.autocompleteResults.pipe(take(1)).subscribe((predictions: IPrediction[]) &#x3D;&gt; {
+			if (predictions.length &gt; 0) {
+				this.selectPlace(predictions[0]);
+				if (this.trigger) this.trigger.closePanel();
+				this.form.get(&#x27;address&#x27;)?.setValue(predictions[0].description);
+			}
+		});
+	}
+
+	public addMarker(event: google.maps.MapMouseEvent): void {
+		if (event.latLng) {
+			this.setAddress(event.latLng);
+			this.marker &#x3D; event.latLng.toJSON();
+		}
+	}
+
+	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+	public setAddress(cords: any): void {
+		const geocoder &#x3D; new google.maps.Geocoder();
+		void geocoder.geocode({ location: cords }, (results, status) &#x3D;&gt; {
+			if (status &#x3D;&#x3D;&#x3D; &#x27;OK&#x27;) {
+				if (results) {
+					const streetName &#x3D;
+						results[0].address_components.find((component) &#x3D;&gt; component.types.includes(&#x27;route&#x27;))?.short_name ?? &#x27;&#x27;;
+					const streetNumber &#x3D;
+						results[0].address_components.find((component) &#x3D;&gt; component.types.includes(&#x27;street_number&#x27;))?.short_name ??
+						&#x27;&#x27;;
+					const city &#x3D;
+						results[0].address_components.find((component) &#x3D;&gt; component.types.includes(&#x27;locality&#x27;))?.short_name ?? &#x27;&#x27;;
+					const province &#x3D;
+						results[0].address_components.find((component) &#x3D;&gt; component.types.includes(&#x27;administrative_area_level_1&#x27;))
+							?.short_name ?? &#x27;&#x27;;
+
+					let address &#x3D; &#x27;&#x27;;
+
+					address +&#x3D; streetName || streetNumber ? streetName + (streetNumber ? &#x27; &#x27; + streetNumber : &#x27;&#x27;) : &#x27;&#x27;;
+					address +&#x3D; city ? (address ? &#x27;, &#x27; + city : city) : &#x27;&#x27;;
+					address +&#x3D; province ? &#x27;, &#x27; + province : &#x27;&#x27;;
+
+					this.form.get(&#x27;address&#x27;)?.setValue(address);
+				}
+			}
+		});
+	}
+
+	public ngOnDestroy(): void {
+		this.autocompleteResults.unsubscribe();
+	}
+
+	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+	private _marker(cords: any): void {
+		this.marker &#x3D; cords;
+		this._cdr.markForCheck();
+	}
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'IPrediction.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

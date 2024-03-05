@@ -1,0 +1,1347 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>laia documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">laia documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ShopComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/ecommerce/pages/shop/shop.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-ecommerce-shop</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/ButtonComponent.html" target="_self" >ButtonComponent</a></code>
+                                <code><a href="../components/LoadingComponent.html" target="_self" >LoadingComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./shop.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./shop.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_core" >_core</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_ecommerce" >_ecommerce</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_order" >_order</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_store" >_store</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#cart" >cart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#complete" >complete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#currency" >currency</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loaded" >loaded</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#merchant" >merchant</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#products" >products</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#user" >user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#loadImage" >loadImage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#login" >login</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#redirect" >redirect</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadImage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>loadImage</b></span>
+                        <a href="#loadImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadImage(value: HTMLDivElement, img: HTMLImageElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                        <code>HTMLDivElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>img</td>
+                                            <td>
+                                                        <code>HTMLImageElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="login"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>login</b></span>
+                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>login()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>open(dialog: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dialog</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="redirect"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>redirect</b></span>
+                        <a href="#redirect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>redirect(route: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id?: number | string)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>route</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                        <code>number | string</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_core"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_core</b></span>
+                        <a href="#_core"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/CoreService.html" target="_self" >CoreService</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(CoreService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_ecommerce"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_ecommerce</b></span>
+                        <a href="#_ecommerce"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/EcommerceService.html" target="_self" >EcommerceService</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(EcommerceService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_order"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_order</b></span>
+                        <a href="#_order"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;literal type&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceOrderID)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_store"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_store</b></span>
+                        <a href="#_store"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IState.html" target="_self" >Store&lt;IState&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Store)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cart"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>cart</b></span>
+                        <a href="#cart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;literal type&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceCartInfo)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="complete"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>complete</b></span>
+                        <a href="#complete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>complete</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currency"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>currency</b></span>
+                        <a href="#currency"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>currency</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loaded"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loaded</b></span>
+                        <a href="#loaded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>loaded</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>loading</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="merchant"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>merchant</b></span>
+                        <a href="#merchant"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;ILoadableEntity&lt;IMerchant&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceMerchant)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="products"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>products</b></span>
+                        <a href="#products"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;ILoadableEntities&lt;ILoadableEntity&lt;IProduct&gt;&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceProducts)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;literal type&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceUserLogin)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/modules/ecommerce/pages/shop/shop.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, OnInit, Signal, inject } from &#x27;@angular/core&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+
+// * Services.
+import { CoreService } from &#x27;@core/services/core.service&#x27;;
+import { EcommerceService } from &#x27;@ecommerce/services/ecommerce.service&#x27;;
+
+// * Interfaces.
+import {
+	ILoadableEntities,
+	ILoadableEntity,
+	ILoading,
+	IState,
+	complete,
+	loaded,
+	loading
+} from &#x27;@core/interfaces/state.interface&#x27;;
+import { IMerchant, IProduct } from &#x27;@ecommerce/interfaces/ecommerce.interface&#x27;;
+
+// * Actions.
+import { LOAD_ECOMMERCE_PAGE_SHOP, LOAD_ECOMMERCE_PRODUCTS } from &#x27;@ecommerce/state/ecommerce.actions&#x27;;
+
+// * Selectors.
+import {
+	selectEcommerceCartInfo,
+	selectEcommerceMerchant,
+	selectEcommerceOrderID,
+	selectEcommerceProducts,
+	selectEcommerceUserLogin
+} from &#x27;@ecommerce/state/ecommerce.selectors&#x27;;
+
+// * Util.
+import { currency } from &#x27;@core/util/currency.pipe&#x27;;
+
+// * Shared.
+import { ButtonComponent } from &#x27;@core/components/button/button.component&#x27;;
+import { LoadingComponent } from &#x27;@core/components/loading/loading.component&#x27;;
+
+@Component({
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	selector: &#x27;app-ecommerce-shop&#x27;,
+	standalone: true,
+	imports: [ButtonComponent, LoadingComponent],
+	templateUrl: &#x27;./shop.component.html&#x27;,
+	styleUrl: &#x27;./shop.component.scss&#x27;
+})
+export class ShopComponent implements OnInit {
+	public readonly currency &#x3D; currency;
+	public readonly complete: ILoading &#x3D; complete;
+	public readonly loaded: ILoading &#x3D; loaded;
+	public readonly loading: ILoading &#x3D; loading;
+
+	// eslint-disable-next-line @ngrx/use-consistent-global-store-name
+	private readonly _store: Store&lt;IState&gt; &#x3D; inject(Store);
+	private readonly _core: CoreService &#x3D; inject(CoreService);
+	private readonly _ecommerce: EcommerceService &#x3D; inject(EcommerceService);
+
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly products: Signal&lt;ILoadableEntities&lt;ILoadableEntity&lt;IProduct&gt;&gt;&gt; &#x3D;
+		this._store.selectSignal(selectEcommerceProducts);
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly merchant: Signal&lt;ILoadableEntity&lt;IMerchant&gt;&gt; &#x3D; this._store.selectSignal(selectEcommerceMerchant);
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly cart: Signal&lt;{ id: number; count: number }&gt; &#x3D; this._store.selectSignal(selectEcommerceCartInfo);
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly user: Signal&lt;{ id: number; logged: boolean }&gt; &#x3D; this._store.selectSignal(selectEcommerceUserLogin);
+
+	private readonly _order: Signal&lt;{ id: number; status: ILoading }&gt; &#x3D; this._store.selectSignal(selectEcommerceOrderID);
+
+	public ngOnInit(): void {
+		if (this._core.state.ecommerce.invoice &amp;&amp; this.products().status &#x3D;&#x3D;&#x3D; this.loading) {
+			this._store.dispatch(LOAD_ECOMMERCE_PRODUCTS({ merchant: this.merchant().data.id, page: 1 }));
+		} else {
+			const slug: string | undefined &#x3D; this._ecommerce.slug();
+			if (slug &amp;&amp; this.products().status &#x3D;&#x3D;&#x3D; this.loading)
+				this._store.dispatch(LOAD_ECOMMERCE_PAGE_SHOP({ slug, page: 1 }));
+		}
+
+		if (this._order().id &#x3D;&#x3D;&#x3D; 0 &amp;&amp; this._order().status &#x3D;&#x3D;&#x3D; complete) {
+			const slug: string | undefined &#x3D; this._ecommerce.slug();
+			if (slug) this._store.dispatch(LOAD_ECOMMERCE_PAGE_SHOP({ slug, page: 1 }));
+		}
+	}
+
+	public open(dialog: string): void {
+		this._core.open(dialog, { option: this.cart().count, logged: this.user().logged });
+	}
+
+	public redirect(route: string, id?: number | string): void {
+		this._ecommerce.redirect(route, id);
+	}
+
+	public login(): void {
+		this._core.redirect(&#x27;auth&#x27;);
+	}
+
+	public loadImage(value: HTMLDivElement, img: HTMLImageElement): void {
+		img.style.display &#x3D; &#x27;block&#x27;;
+		value.style.background &#x3D; &#x27;none&#x27;;
+	}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;header class&#x3D;&quot;flex bet pd-12&quot;&gt;
+	&lt;button class&#x3D;&quot;flex gp-8&quot; style&#x3D;&quot;font-size: 21px&quot;&gt;
+		&lt;div class&#x3D;&quot;cLoading&quot; [class.cLoaded]&#x3D;&quot;merchant().status &#x3D;&#x3D;&#x3D; loaded&quot;&gt;
+			&lt;app-button [type]&#x3D;&quot;&#x27;ICON&#x27;&quot; [icon]&#x3D;&quot;&#x27;done_all&#x27;&quot; [loading]&#x3D;&quot;merchant().status &#x3D;&#x3D;&#x3D; loading&quot; /&gt;
+		&lt;/div&gt;
+
+		{{ merchant().data.slug }}
+	&lt;/button&gt;
+
+	&lt;div class&#x3D;&quot;flex gp-8&quot;&gt;
+		@if (!user().logged &amp;&amp; merchant().status &#x3D;&#x3D;&#x3D; loaded) {
+			&lt;app-button [type]&#x3D;&quot;&#x27;MINI&#x27;&quot; [icon]&#x3D;&quot;&#x27;person&#x27;&quot; (click)&#x3D;&quot;login()&quot; /&gt;
+		}
+
+		&lt;app-button
+			[type]&#x3D;&quot;&#x27;MINI&#x27;&quot;
+			[icon]&#x3D;&quot;&#x27;shopping_cart&#x27;&quot;
+			[badge]&#x3D;&quot;cart().count&quot;
+			(click)&#x3D;&quot;open(&#x27;cart&#x27;)&quot;
+			style&#x3D;&quot;padding-right: 4px&quot;
+		/&gt;
+
+		&lt;app-button [type]&#x3D;&quot;&#x27;MINI&#x27;&quot; [icon]&#x3D;&quot;&#x27;more_vert&#x27;&quot; (click)&#x3D;&quot;open(&#x27;share&#x27;)&quot; /&gt;
+	&lt;/div&gt;
+&lt;/header&gt;
+
+@if (merchant().status &#x3D;&#x3D;&#x3D; loading) {
+	&lt;app-loading [transform]&#x3D;&quot;&#x27;2&#x27;&quot; /&gt;
+} @else {
+	@defer (when merchant().status &#x3D;&#x3D;&#x3D; loaded) {
+		&lt;main class&#x3D;&quot;h&quot;&gt;
+			&lt;section class&#x3D;&quot;gp-8 w&quot; style&#x3D;&quot;display: grid; grid-template-columns: repeat(2, 1fr)&quot;&gt;
+				@for (product of products().items; track $index) {
+					&lt;button class&#x3D;&quot;product flex gp-16&quot; (click)&#x3D;&quot;redirect(&#x27;product&#x27;, product.data.id)&quot;&gt;
+						&lt;div #content_image class&#x3D;&quot;br-12 skeleton-loader&quot;&gt;
+							@if (product.data.images[0]) {
+								&lt;img
+									#img
+									style&#x3D;&quot;display: none&quot;
+									class&#x3D;&quot;br-12&quot;
+									[src]&#x3D;&quot;product.data.images[0]&quot;
+									[alt]&#x3D;&quot;product.data.title ?? &#x27;Imagen sin texto alternativo.&#x27;&quot;
+									(load)&#x3D;&quot;loadImage(content_image, img)&quot;
+								/&gt;
+							} @else {
+								&lt;div class&#x3D;&quot;no-image br-12 grid&quot;&gt;Sin imagen&lt;/div&gt;
+							}
+						&lt;/div&gt;
+						&lt;!-- &lt;p style&#x3D;&quot;color: #b68949&quot;&gt;Free Engraving&lt;/p&gt; --&gt;
+						&lt;p class&#x3D;&quot;product__title tx-center tx-3&quot;&gt;{{ product.data.title }}&lt;/p&gt;
+						&lt;p&gt;{{ currency(product.data.price) }}&lt;/p&gt;
+					&lt;/button&gt;
+				}
+			&lt;/section&gt;
+		&lt;/main&gt;
+	}
+}
+
+&lt;!-- @if (merchant().status &#x3D;&#x3D;&#x3D; loading) {
+		&lt;app-loading [transform]&#x3D;&quot;&#x27;2&#x27;&quot; /&gt;
+	} @else {
+		@defer (when merchant().status &#x3D;&#x3D;&#x3D; loaded) {
+			&lt;main class&#x3D;&quot;h&quot;&gt;
+				&lt;section class&#x3D;&quot;gp-8 w h&quot; style&#x3D;&quot;display: grid; grid-template-columns: repeat(2, 1fr); padding-bottom: 12px&quot;&gt;
+					@for (product of products().items; track $index) {
+						&lt;button class&#x3D;&quot;product flex gp-12&quot; (click)&#x3D;&quot;redirect(&#x27;product&#x27;, product.data.id)&quot;&gt;
+							@if (product.data.images[0]) {
+								&lt;img
+									class&#x3D;&quot;br-12&quot;
+									[src]&#x3D;&quot;product.data.images[0]&quot;
+									[alt]&#x3D;&quot;product.data.title ?? &#x27;Imagen sin texto alternativo.&#x27;&quot;
+								/&gt;
+							} @else {
+								&lt;div class&#x3D;&quot;no-image br-12 grid&quot;&gt;Sin imagen&lt;/div&gt;
+							}
+							&lt;p class&#x3D;&quot;product__title tx-center tx-3&quot;&gt;{{ product.data.title }}&lt;/p&gt;
+							&lt;p&gt;{{ currency(product.data.price) }}&lt;/p&gt;
+						&lt;/button&gt;
+					}
+				&lt;/section&gt;
+			&lt;/main&gt;
+		}
+	} --&gt;
+
+&lt;!-- &lt;section class&#x3D;&quot;organize flex gp-8 pd-8 w&quot;&gt;
+			&lt;p style&#x3D;&quot;color: #939393&quot;&gt;Organizado Por:&lt;/p&gt;
+			&lt;button [matMenuTriggerFor]&#x3D;&quot;menu&quot; class&#x3D;&quot;flex menu&quot;&gt;{{ organize }}&lt;mat-icon&gt;arrow_drop_down&lt;/mat-icon&gt;&lt;/button&gt;
+			&lt;mat-menu #menu&#x3D;&quot;matMenu&quot;&gt;
+				&lt;button mat-menu-item (click)&#x3D;&quot;organize &#x3D; &#x27;Más Relevantes&#x27;&quot;&gt;Más Relevantes&lt;/button&gt;
+				&lt;button mat-menu-item (click)&#x3D;&quot;organize &#x3D; &#x27;Nuevos&#x27;&quot;&gt;Nuevos&lt;/button&gt;
+				&lt;button mat-menu-item (click)&#x3D;&quot;organize &#x3D; &#x27;Desde más barato&#x27;&quot;&gt;Desde más barato&lt;/button&gt;
+				&lt;button mat-menu-item (click)&#x3D;&quot;organize &#x3D; &#x27;Desde más caro&#x27;&quot;&gt;Desde más caro&lt;/button&gt;
+			&lt;/mat-menu&gt;
+		&lt;/section&gt; --&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><header class="flex bet pd-12">	<button class="flex gp-8" style="font-size: 21px">		<div class="cLoading" [class.cLoaded]="merchant().status === loaded">			<app-button [type]="\'ICON\'" [icon]="\'done_all\'" [loading]="merchant().status === loading" />		</div>		{{ merchant().data.slug }}	</button>	<div class="flex gp-8">		@if (!user().logged && merchant().status === loaded) {			<app-button [type]="\'MINI\'" [icon]="\'person\'" (click)="login()" />		}		<app-button			[type]="\'MINI\'"			[icon]="\'shopping_cart\'"			[badge]="cart().count"			(click)="open(\'cart\')"			style="padding-right: 4px"		/>		<app-button [type]="\'MINI\'" [icon]="\'more_vert\'" (click)="open(\'share\')" />	</div></header>@if (merchant().status === loading) {	<app-loading [transform]="\'2\'" />} @else {	@defer (when merchant().status === loaded) {		<main class="h">			<section class="gp-8 w" style="display: grid; grid-template-columns: repeat(2, 1fr)">				@for (product of products().items; track $index) {					<button class="product flex gp-16" (click)="redirect(\'product\', product.data.id)">						<div #content_image class="br-12 skeleton-loader">							@if (product.data.images[0]) {								<img									#img									style="display: none"									class="br-12"									[src]="product.data.images[0]"									[alt]="product.data.title ?? \'Imagen sin texto alternativo.\'"									(load)="loadImage(content_image, img)"								/>							} @else {								<div class="no-image br-12 grid">Sin imagen</div>							}						</div>						<!-- <p style="color: #b68949">Free Engraving</p> -->						<p class="product__title tx-center tx-3">{{ product.data.title }}</p>						<p>{{ currency(product.data.price) }}</p>					</button>				}			</section>		</main>	}}<!-- @if (merchant().status === loading) {		<app-loading [transform]="\'2\'" />	} @else {		@defer (when merchant().status === loaded) {			<main class="h">				<section class="gp-8 w h" style="display: grid; grid-template-columns: repeat(2, 1fr); padding-bottom: 12px">					@for (product of products().items; track $index) {						<button class="product flex gp-12" (click)="redirect(\'product\', product.data.id)">							@if (product.data.images[0]) {								<img									class="br-12"									[src]="product.data.images[0]"									[alt]="product.data.title ?? \'Imagen sin texto alternativo.\'"								/>							} @else {								<div class="no-image br-12 grid">Sin imagen</div>							}							<p class="product__title tx-center tx-3">{{ product.data.title }}</p>							<p>{{ currency(product.data.price) }}</p>						</button>					}				</section>			</main>		}	} --><!-- <section class="organize flex gp-8 pd-8 w">			<p style="color: #939393">Organizado Por:</p>			<button [matMenuTriggerFor]="menu" class="flex menu">{{ organize }}<mat-icon>arrow_drop_down</mat-icon></button>			<mat-menu #menu="matMenu">				<button mat-menu-item (click)="organize = \'Más Relevantes\'">Más Relevantes</button>				<button mat-menu-item (click)="organize = \'Nuevos\'">Nuevos</button>				<button mat-menu-item (click)="organize = \'Desde más barato\'">Desde más barato</button>				<button mat-menu-item (click)="organize = \'Desde más caro\'">Desde más caro</button>			</mat-menu>		</section> --></div>'
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'app-ecommerce-address'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalendarComponent', 'selector': 'app-ecommerce-calendar'},{'name': 'CalendarHeaderComponent', 'selector': 'app-calendar-header'},{'name': 'CartComponent', 'selector': 'app-dialog-content-cart'},{'name': 'EcommerceComponent', 'selector': 'app-ecommerce'},{'name': 'FirstComponent', 'selector': 'app-auth-first'},{'name': 'InfoComponent', 'selector': 'app-auth-info'},{'name': 'InvoiceComponent', 'selector': 'app-ecommerce-invoice'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'LoginComponent', 'selector': 'app-auth-login'},{'name': 'MapComponent', 'selector': 'app-dialog-content-map'},{'name': 'MapsComponent', 'selector': 'app-dialog-content-maps'},{'name': 'MessageComponent', 'selector': 'app-ecommerce-message'},{'name': 'OrderComponent', 'selector': 'app-ecommerce-order'},{'name': 'PaymentComponent', 'selector': 'app-ecommerce-payment'},{'name': 'ProductComponent', 'selector': 'app-ecommerce-product'},{'name': 'ResizeDialogComponent', 'selector': 'app-dialog-resizable'},{'name': 'ShareComponent', 'selector': 'app-dialog-content-share'},{'name': 'ShopComponent', 'selector': 'app-ecommerce-shop'},{'name': 'VoucherComponent', 'selector': 'app-dialog-content-voucher'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ShopComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ShopComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

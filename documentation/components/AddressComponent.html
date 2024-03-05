@@ -1,0 +1,1574 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>laia documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">laia documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AddressComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/ecommerce/pages/address/address.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>AfterViewInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-ecommerce-address</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/ButtonComponent.html" target="_self" >ButtonComponent</a></code>
+                                <code><a href="../components/LoadingComponent.html" target="_self" >LoadingComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./address.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./address.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_core" >_core</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_http" >_http</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_store" >_store</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_subscriptions" >_subscriptions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#address" >address</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#addresses" >addresses</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#complete" >complete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#merchant" >merchant</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#mode" >mode</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#selected" >selected</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#user" >user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#back" >back</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#redirect" >redirect</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#save" >save</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#select" >select</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="back"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>back</b></span>
+                        <a href="#back"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>back()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="190"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:190</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>open(dialog: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="143"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:143</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dialog</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="redirect"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>redirect</b></span>
+                        <a href="#redirect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>redirect(route: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="139"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:139</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>route</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>save()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="select"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>select</b></span>
+                        <a href="#select"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>select(mode: "DELIVERY" | "PICK-UP")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:121</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>mode</td>
+                                            <td>
+                                                        <code>&quot;DELIVERY&quot; | &quot;PICK-UP&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_core"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_core</b></span>
+                        <a href="#_core"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/CoreService.html" target="_self" >CoreService</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(CoreService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_http"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_http</b></span>
+                        <a href="#_http"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HttpClient</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(HttpClient)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_store"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_store</b></span>
+                        <a href="#_store"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IState.html" target="_self" >Store&lt;IState&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Store)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_subscriptions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_subscriptions</b></span>
+                        <a href="#_subscriptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="address"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>address</b></span>
+                        <a href="#address"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceAddress)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addresses"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>addresses</b></span>
+                        <a href="#addresses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;ILoadableEntities&lt;IAddress&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceUserAddresses)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="complete"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>complete</b></span>
+                        <a href="#complete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>complete</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>loading</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="merchant"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>merchant</b></span>
+                        <a href="#merchant"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ILoadableEntities.html" target="_self" >Signal&lt;ILoadableEntities&lt;string&gt;&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceMerchantAddress)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mode"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>mode</b></span>
+                        <a href="#mode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;DELIVERY&quot; | &quot;PICK-UP&quot; | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>undefined</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>selected</b></span>
+                        <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IAddress.html" target="_self" >IAddress | undefined</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>undefined</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;literal type&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceUserLogin)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/ecommerce/pages/address/address.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit, Signal, inject } from &#x27;@angular/core&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+import { Subject, first, takeUntil, tap } from &#x27;rxjs&#x27;;
+
+// * ENV.
+import { environment } from &#x27;@env/environment&#x27;;
+
+// * Services.
+import { CoreService } from &#x27;@core/services/core.service&#x27;;
+
+// * Interfaces.
+import { ILoadableEntities, ILoading, IState, complete, loading } from &#x27;@core/interfaces/state.interface&#x27;;
+import { IAddress, IEcommerce } from &#x27;@ecommerce/interfaces/ecommerce.interface&#x27;;
+
+// * Actions.
+import {
+	ADD_USER_ADDRESS,
+	LOAD_MERCHANT_ADDRESSES,
+	LOAD_USER_ADDRESSES,
+	UPDATE_ECOMMERCE_ORDER_ADDRESS
+} from &#x27;@ecommerce/state/ecommerce.actions&#x27;;
+
+// * Selectors.
+import {
+	selectEcommerceAddress,
+	selectEcommerceMerchantAddress,
+	selectEcommerceUserAddresses,
+	selectEcommerceUserLogin
+} from &#x27;@ecommerce/state/ecommerce.selectors&#x27;;
+
+// * Shared.
+import { ButtonComponent } from &#x27;@core/components/button/button.component&#x27;;
+import { LoadingComponent } from &#x27;@core/components/loading/loading.component&#x27;;
+
+@Component({
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	selector: &#x27;app-ecommerce-address&#x27;,
+	standalone: true,
+	imports: [ButtonComponent, LoadingComponent],
+	templateUrl: &#x27;./address.component.html&#x27;,
+	styleUrl: &#x27;./address.component.scss&#x27;
+})
+export class AddressComponent implements OnInit, AfterViewInit, OnDestroy {
+	public selected: IAddress | undefined &#x3D; undefined;
+
+	public mode: &#x27;DELIVERY&#x27; | &#x27;PICK-UP&#x27; | undefined &#x3D; undefined;
+	public readonly loading: ILoading &#x3D; loading;
+	public readonly complete: ILoading &#x3D; complete;
+
+	private readonly _subscriptions: Subject&lt;void&gt; &#x3D; new Subject&lt;void&gt;();
+
+	// eslint-disable-next-line @ngrx/use-consistent-global-store-name
+	private readonly _store: Store&lt;IState&gt; &#x3D; inject(Store);
+	private readonly _http: HttpClient &#x3D; inject(HttpClient);
+	private readonly _core: CoreService &#x3D; inject(CoreService);
+
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly addresses: Signal&lt;ILoadableEntities&lt;IAddress&gt;&gt; &#x3D;
+		this._store.selectSignal(selectEcommerceUserAddresses);
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly user: Signal&lt;{ id: number; logged: boolean }&gt; &#x3D; this._store.selectSignal(selectEcommerceUserLogin);
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly merchant: Signal&lt;ILoadableEntities&lt;string&gt;&gt; &#x3D;
+		this._store.selectSignal(selectEcommerceMerchantAddress);
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly address: Signal&lt;IEcommerce[&#x27;order&#x27;][&#x27;data&#x27;][&#x27;address&#x27;][&#x27;data&#x27;]&gt; &#x3D;
+		this._store.selectSignal(selectEcommerceAddress);
+
+	public ngOnInit(): void {
+		if (this.user().id &#x3D;&#x3D;&#x3D; 0) {
+			this._core.redirect(&#x27;&#x27;);
+			return;
+		}
+
+		this._store
+			.select(selectEcommerceAddress)
+			.pipe(
+				first(),
+				tap((address) &#x3D;&gt; {
+					this.mode &#x3D; this.address().mode;
+					this.selected &#x3D; {
+						id: address.id,
+						direction: address.direction,
+						lat: address.lat,
+						lng: address.lng
+					};
+					// this.selected &#x3D; this.addresses().items.find((item) &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; address.id);
+
+					if (this.addresses().items.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; address.mode &amp;&amp; address.mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27;) {
+						if (this.user().logged) {
+							this._store.dispatch(LOAD_USER_ADDRESSES({}));
+						} else {
+							this._store.dispatch(
+								ADD_USER_ADDRESS({
+									lng: address.lng ?? &#x27;&#x27;,
+									lat: address.lat ?? &#x27;&#x27;,
+									direction: address.direction ?? &#x27;&#x27;,
+									update: false
+								})
+							);
+						}
+					}
+
+					if (this.mode &#x3D;&#x3D;&#x3D; &#x27;PICK-UP&#x27; &amp;&amp; this.merchant().status &#x3D;&#x3D;&#x3D; this.loading) {
+						this._store.dispatch(LOAD_MERCHANT_ADDRESSES({}));
+					}
+				})
+			)
+			.subscribe();
+	}
+
+	public ngAfterViewInit(): void {
+		// this.mode &#x3D; this.address().mode;
+		this._http
+			.jsonp(&#x60;https://maps.googleapis.com/maps/api/js?key&#x3D;${environment.apiMap}&amp;libraries&#x3D;places&#x60;, &#x27;callback&#x27;)
+			.pipe(takeUntil(this._subscriptions))
+			.subscribe();
+	}
+
+	public select(mode: &#x27;DELIVERY&#x27; | &#x27;PICK-UP&#x27;): void {
+		if (mode &#x3D;&#x3D;&#x3D; this.mode) return;
+		this.mode &#x3D; mode;
+		if (mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27;) {
+			if (this.user().logged &amp;&amp; this.addresses().status &#x3D;&#x3D;&#x3D; this.loading) {
+				this._store.dispatch(LOAD_USER_ADDRESSES({}));
+			}
+		} else {
+			if (this.merchant().status &#x3D;&#x3D;&#x3D; this.loading) {
+				this._store.dispatch(LOAD_MERCHANT_ADDRESSES({}));
+			}
+		}
+	}
+
+	public back(): void {
+		this._core.back();
+	}
+
+	public redirect(route: string): void {
+		this._core.redirect(route);
+	}
+
+	public open(dialog: string): void {
+		this._core.open(dialog);
+	}
+
+	public save(): void {
+		if (!this.mode) return;
+
+		if (this.mode &#x3D;&#x3D;&#x3D; &#x27;PICK-UP&#x27;) {
+			this._store.dispatch(
+				UPDATE_ECOMMERCE_ORDER_ADDRESS({
+					id: -2,
+					direction: this.merchant().items[0],
+					lat: &#x27;0&#x27;,
+					lng: &#x27;0&#x27;,
+					mode: &#x27;PICK-UP&#x27;
+				})
+			);
+		} else {
+			if (this.user().logged) {
+				const address: IAddress | undefined &#x3D; this.selected;
+				if (address) {
+					this._store.dispatch(
+						UPDATE_ECOMMERCE_ORDER_ADDRESS({
+							direction: address.direction ?? &#x27;Sin dirección&#x27;,
+							id: address.id,
+							lat: address.lat ?? &#x27;0&#x27;,
+							lng: address.lng ?? &#x27;0&#x27;,
+							mode: &#x27;DELIVERY&#x27;
+						})
+					);
+				}
+			} else {
+				this._store.dispatch(
+					UPDATE_ECOMMERCE_ORDER_ADDRESS({
+						id: -1,
+						direction: this.addresses().items[0].direction ?? &#x27;&#x27;,
+						lat: this.addresses().items[0].lat ?? &#x27;&#x27;,
+						lng: this.addresses().items[0].lng ?? &#x27;&#x27;,
+						mode: &#x27;DELIVERY&#x27;
+					})
+				);
+			}
+		}
+
+		this._core.back();
+	}
+
+	public ngOnDestroy(): void {
+		this._subscriptions.next();
+		this._subscriptions.complete();
+	}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;box&quot; [class.three]&#x3D;&quot;!user().logged&quot;&gt;
+	&lt;header class&#x3D;&quot;grid gp-16 pd-12&quot;&gt;
+		&lt;nav class&#x3D;&quot;flex bet&quot;&gt;
+			&lt;app-button [type]&#x3D;&quot;&#x27;MINI&#x27;&quot; [icon]&#x3D;&quot;&#x27;arrow_back_ios&#x27;&quot; (click)&#x3D;&quot;back()&quot; /&gt;
+
+			@if (
+				(mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27; &amp;&amp; !user().logged &amp;&amp; addresses().items.length &gt; 0) ||
+				(mode &#x3D;&#x3D;&#x3D; &#x27;PICK-UP&#x27; &amp;&amp; merchant().status &#x3D;&#x3D;&#x3D; complete) ||
+				(mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27; &amp;&amp; selected)
+			) {
+				&lt;button class&#x3D;&quot;option&quot; (click)&#x3D;&quot;save()&quot;&gt;Guardar&lt;/button&gt;
+			}
+		&lt;/nav&gt;
+
+		&lt;h1 class&#x3D;&quot;tx-center&quot;&gt;Dirección de entrega&lt;/h1&gt;
+
+		&lt;p class&#x3D;&quot;tx-center tx-visible&quot;&gt;Selecciona la forma de entrega&lt;/p&gt;
+
+		&lt;section class&#x3D;&quot;grid btns&quot; style&#x3D;&quot;grid-template-columns: repeat(2, 1fr)&quot;&gt;
+			&lt;button class&#x3D;&quot;bd&quot; style&#x3D;&quot;padding: 16px 8px&quot; [class.bd-active]&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27;&quot; (click)&#x3D;&quot;select(&#x27;DELIVERY&#x27;)&quot;&gt;
+				Envio a domiciilio
+			&lt;/button&gt;
+
+			&lt;button class&#x3D;&quot;bd&quot; style&#x3D;&quot;padding: 16px 8px&quot; [class.bd-active]&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;PICK-UP&#x27;&quot; (click)&#x3D;&quot;select(&#x27;PICK-UP&#x27;)&quot;&gt;
+				Retirar en la tienda
+			&lt;/button&gt;
+		&lt;/section&gt;
+	&lt;/header&gt;
+
+	&lt;main class&#x3D;&quot;fle col gp-16 pd-12&quot; [style.padding-top]&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27; ? &#x27;0px&#x27; : &#x27;12px&#x27;&quot;&gt;
+		@defer (when mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27;) {
+			@if (mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27;) {
+				@if (user().logged) {
+					@defer (when user().logged &amp;&amp; addresses().status &#x3D;&#x3D;&#x3D; complete) {
+						&lt;button class&#x3D;&quot;fle option tx-right&quot; (click)&#x3D;&quot;open(&#x27;maps&#x27;)&quot; style&#x3D;&quot;justify-content: flex-end&quot;&gt;
+							Nueva dirección
+						&lt;/button&gt;
+
+						@if (addresses().items.length &#x3D;&#x3D;&#x3D; 0) {
+							&lt;p class&#x3D;&quot;tx-center&quot;&gt;No tienes direcciones guardadas&lt;/p&gt;
+						} @else {
+							@for (address of addresses().items; track $index) {
+								&lt;button
+									class&#x3D;&quot;grid gp-8 bd br-12 pd-12 tx-left&quot;
+									[class.bd-active]&#x3D;&quot;selected?.id &#x3D;&#x3D;&#x3D; address.id&quot;
+									(click)&#x3D;&quot;selected &#x3D; address&quot;
+								&gt;
+									&lt;div class&#x3D;&quot;flex bet&quot;&gt;
+										&lt;b&gt;Dirección de envio&lt;/b&gt;
+										&lt;app-button
+											[type]&#x3D;&quot;&#x27;ICON&#x27;&quot;
+											[icon]&#x3D;&quot;&#x27;local_shipping&#x27;&quot;
+											[color]&#x3D;&quot;selected?.id &#x3D;&#x3D;&#x3D; address.id ? &#x27;var(--violet)&#x27; : &#x27;&#x27;&quot;
+										/&gt;
+									&lt;/div&gt;
+									&lt;p class&#x3D;&quot;tx-2 tx-left&quot;&gt;{{ address.direction }}&lt;/p&gt;
+								&lt;/button&gt;
+							}
+						}
+					} @placeholder {
+						&lt;div class&#x3D;&quot;h w&quot;&gt;
+							&lt;app-loading [transform]&#x3D;&quot;&#x27;1.5&#x27;&quot; /&gt;
+						&lt;/div&gt;
+					}
+				}
+
+				@defer (when !user().logged) {
+					@if (!user().logged &amp;&amp; addresses().items.length &#x3D;&#x3D;&#x3D; 0) {
+						&lt;button class&#x3D;&quot;flex bet bd br-12 pd-12 tx-left&quot; (click)&#x3D;&quot;open(&#x27;maps&#x27;)&quot;&gt;
+							&lt;b style&#x3D;&quot;font-size: 15px&quot;&gt;Elige una dirección&lt;/b&gt;
+							&lt;app-button [type]&#x3D;&quot;&#x27;ICON&#x27;&quot; [icon]&#x3D;&quot;&#x27;location_on&#x27;&quot; /&gt;
+						&lt;/button&gt;
+					}
+
+					@if (!user().logged &amp;&amp; addresses().items.length &#x3D;&#x3D;&#x3D; 1) {
+						&lt;button class&#x3D;&quot;grid gp-8 bd br-12 pd-12 tx-left bd-active&quot; (click)&#x3D;&quot;open(&#x27;maps&#x27;)&quot;&gt;
+							&lt;div class&#x3D;&quot;flex bet&quot;&gt;
+								&lt;b&gt;Dirección de envio&lt;/b&gt;
+								&lt;app-button [type]&#x3D;&quot;&#x27;ICON&#x27;&quot; [icon]&#x3D;&quot;&#x27;local_shipping&#x27;&quot; color&#x3D;&quot;var(--violet)&quot; /&gt;
+							&lt;/div&gt;
+							&lt;p class&#x3D;&quot;tx-2 tx-left&quot;&gt;{{ addresses().items[0].direction }}&lt;/p&gt;
+						&lt;/button&gt;
+					}
+				}
+			}
+		}
+
+		@defer (when mode &#x3D;&#x3D;&#x3D; &#x27;PICK-UP&#x27;) {
+			@if (mode &#x3D;&#x3D;&#x3D; &#x27;PICK-UP&#x27;) {
+				@if (merchant().status &#x3D;&#x3D;&#x3D; complete) {
+					@for (address of merchant().items; track $index) {
+						&lt;button class&#x3D;&quot;grid gp-8 tx-left bd br-12 pd-12 bd-active&quot;&gt;
+							&lt;div class&#x3D;&quot;flex bet&quot;&gt;
+								&lt;b&gt;Dirección de la tienda&lt;/b&gt;
+								&lt;app-button [type]&#x3D;&quot;&#x27;ICON&#x27;&quot; [icon]&#x3D;&quot;&#x27;store&#x27;&quot; color&#x3D;&quot;var(--violet)&quot; /&gt;
+							&lt;/div&gt;
+							&lt;p class&#x3D;&quot;tx-2&quot;&gt;{{ address }}&lt;/p&gt;
+						&lt;/button&gt;
+					}
+				} @else {
+					&lt;div class&#x3D;&quot;h w&quot;&gt;
+						&lt;app-loading [transform]&#x3D;&quot;&#x27;1.5&#x27;&quot; /&gt;
+					&lt;/div&gt;
+				}
+			}
+		}
+	&lt;/main&gt;
+
+	@defer (when mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27; &amp;&amp; !user().logged) {
+		@if (mode &#x3D;&#x3D;&#x3D; &#x27;DELIVERY&#x27; &amp;&amp; !user().logged) {
+			&lt;footer class&#x3D;&quot;grid pd-12&quot;&gt;
+				&lt;button class&#x3D;&quot;flex cen gp-8 pd-12&quot; style&#x3D;&quot;color: var(--violet)&quot; (click)&#x3D;&quot;redirect(&#x27;auth&#x27;)&quot;&gt;
+					&lt;app-button [type]&#x3D;&quot;&#x27;ICON&#x27;&quot; [icon]&#x3D;&quot;&#x27;person&#x27;&quot; color&#x3D;&quot;var(--violet)&quot; /&gt;
+					Mira tus direcciones guardadas
+				&lt;/button&gt;
+			&lt;/footer&gt;
+		}
+	}
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="box" [class.three]="!user().logged">	<header class="grid gp-16 pd-12">		<nav class="flex bet">			<app-button [type]="\'MINI\'" [icon]="\'arrow_back_ios\'" (click)="back()" />			@if (				(mode === \'DELIVERY\' && !user().logged && addresses().items.length > 0) ||				(mode === \'PICK-UP\' && merchant().status === complete) ||				(mode === \'DELIVERY\' && selected)			) {				<button class="option" (click)="save()">Guardar</button>			}		</nav>		<h1 class="tx-center">Dirección de entrega</h1>		<p class="tx-center tx-visible">Selecciona la forma de entrega</p>		<section class="grid btns" style="grid-template-columns: repeat(2, 1fr)">			<button class="bd" style="padding: 16px 8px" [class.bd-active]="mode === \'DELIVERY\'" (click)="select(\'DELIVERY\')">				Envio a domiciilio			</button>			<button class="bd" style="padding: 16px 8px" [class.bd-active]="mode === \'PICK-UP\'" (click)="select(\'PICK-UP\')">				Retirar en la tienda			</button>		</section>	</header>	<main class="fle col gp-16 pd-12" [style.padding-top]="mode === \'DELIVERY\' ? \'0px\' : \'12px\'">		@defer (when mode === \'DELIVERY\') {			@if (mode === \'DELIVERY\') {				@if (user().logged) {					@defer (when user().logged && addresses().status === complete) {						<button class="fle option tx-right" (click)="open(\'maps\')" style="justify-content: flex-end">							Nueva dirección						</button>						@if (addresses().items.length === 0) {							<p class="tx-center">No tienes direcciones guardadas</p>						} @else {							@for (address of addresses().items; track $index) {								<button									class="grid gp-8 bd br-12 pd-12 tx-left"									[class.bd-active]="selected?.id === address.id"									(click)="selected = address"								>									<div class="flex bet">										<b>Dirección de envio</b>										<app-button											[type]="\'ICON\'"											[icon]="\'local_shipping\'"											[color]="selected?.id === address.id ? \'var(--violet)\' : \'\'"										/>									</div>									<p class="tx-2 tx-left">{{ address.direction }}</p>								</button>							}						}					} @placeholder {						<div class="h w">							<app-loading [transform]="\'1.5\'" />						</div>					}				}				@defer (when !user().logged) {					@if (!user().logged && addresses().items.length === 0) {						<button class="flex bet bd br-12 pd-12 tx-left" (click)="open(\'maps\')">							<b style="font-size: 15px">Elige una dirección</b>							<app-button [type]="\'ICON\'" [icon]="\'location_on\'" />						</button>					}					@if (!user().logged && addresses().items.length === 1) {						<button class="grid gp-8 bd br-12 pd-12 tx-left bd-active" (click)="open(\'maps\')">							<div class="flex bet">								<b>Dirección de envio</b>								<app-button [type]="\'ICON\'" [icon]="\'local_shipping\'" color="var(--violet)" />							</div>							<p class="tx-2 tx-left">{{ addresses().items[0].direction }}</p>						</button>					}				}			}		}		@defer (when mode === \'PICK-UP\') {			@if (mode === \'PICK-UP\') {				@if (merchant().status === complete) {					@for (address of merchant().items; track $index) {						<button class="grid gp-8 tx-left bd br-12 pd-12 bd-active">							<div class="flex bet">								<b>Dirección de la tienda</b>								<app-button [type]="\'ICON\'" [icon]="\'store\'" color="var(--violet)" />							</div>							<p class="tx-2">{{ address }}</p>						</button>					}				} @else {					<div class="h w">						<app-loading [transform]="\'1.5\'" />					</div>				}			}		}	</main>	@defer (when mode === \'DELIVERY\' && !user().logged) {		@if (mode === \'DELIVERY\' && !user().logged) {			<footer class="grid pd-12">				<button class="flex cen gp-8 pd-12" style="color: var(--violet)" (click)="redirect(\'auth\')">					<app-button [type]="\'ICON\'" [icon]="\'person\'" color="var(--violet)" />					Mira tus direcciones guardadas				</button>			</footer>		}	}</div></div>'
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'app-ecommerce-address'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalendarComponent', 'selector': 'app-ecommerce-calendar'},{'name': 'CalendarHeaderComponent', 'selector': 'app-calendar-header'},{'name': 'CartComponent', 'selector': 'app-dialog-content-cart'},{'name': 'EcommerceComponent', 'selector': 'app-ecommerce'},{'name': 'FirstComponent', 'selector': 'app-auth-first'},{'name': 'InfoComponent', 'selector': 'app-auth-info'},{'name': 'InvoiceComponent', 'selector': 'app-ecommerce-invoice'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'LoginComponent', 'selector': 'app-auth-login'},{'name': 'MapComponent', 'selector': 'app-dialog-content-map'},{'name': 'MapsComponent', 'selector': 'app-dialog-content-maps'},{'name': 'MessageComponent', 'selector': 'app-ecommerce-message'},{'name': 'OrderComponent', 'selector': 'app-ecommerce-order'},{'name': 'PaymentComponent', 'selector': 'app-ecommerce-payment'},{'name': 'ProductComponent', 'selector': 'app-ecommerce-product'},{'name': 'ResizeDialogComponent', 'selector': 'app-dialog-resizable'},{'name': 'ShareComponent', 'selector': 'app-dialog-content-share'},{'name': 'ShopComponent', 'selector': 'app-ecommerce-shop'},{'name': 'VoucherComponent', 'selector': 'app-dialog-content-voucher'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AddressComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AddressComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

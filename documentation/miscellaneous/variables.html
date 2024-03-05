@@ -1,0 +1,4031 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>laia documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">laia documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#ADD_ECOMMERCE_CART_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>ADD_ECOMMERCE_CART_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ADD_USER_ADDRESS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>ADD_USER_ADDRESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ADDED_ECOMMERCE_CART_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>ADDED_ECOMMERCE_CART_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ADDED_USER_ADDRESS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>ADDED_USER_ADDRESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#appConfig" title="src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#complete" title="src/app/core/interfaces/state.interface.ts" ><b>complete</b>&nbsp;&nbsp;&nbsp;(src/.../state.interface.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ECOMMERCE_STATE" title="src/app/modules/ecommerce/state/ecommerce.reducers.ts" ><b>ECOMMERCE_STATE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.reducers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ecommerceReducer" title="src/app/modules/ecommerce/state/ecommerce.reducers.ts" ><b>ecommerceReducer</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.reducers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#failed" title="src/app/core/interfaces/state.interface.ts" ><b>failed</b>&nbsp;&nbsp;&nbsp;(src/.../state.interface.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GRAPHQL_PROVIDER" title="src/app/app.graphql.ts" ><b>GRAPHQL_PROVIDER</b>&nbsp;&nbsp;&nbsp;(src/.../app.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_BATCHES" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_BATCHES</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_CALENDAR" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_CALENDAR</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_CART" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_CART</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_INVOICE" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_INVOICE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_ORDER" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_ORDER</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_PAGE_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_PAGE_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_PAGE_SHOP" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_PAGE_SHOP</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_PAYMENTS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_PAYMENTS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_ECOMMERCE_PRODUCTS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_ECOMMERCE_PRODUCTS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_MERCHANT_ADDRESSES" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_MERCHANT_ADDRESSES</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOAD_USER_ADDRESSES" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOAD_USER_ADDRESSES</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#loaded" title="src/app/core/interfaces/state.interface.ts" ><b>loaded</b>&nbsp;&nbsp;&nbsp;(src/.../state.interface.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_BATCHES" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_BATCHES</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_CALENDAR" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_CALENDAR</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_CART" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_CART</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_INVOICE" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_INVOICE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_ORDER" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_ORDER</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_PAGE_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_PAGE_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_PAGE_SHOP" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_PAGE_SHOP</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_PAYMENTS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_PAYMENTS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_ECOMMERCE_PRODUCTS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_ECOMMERCE_PRODUCTS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_MERCHANT_ADDRESSES" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_MERCHANT_ADDRESSES</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LOADED_USER_ADDRESSES" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>LOADED_USER_ADDRESSES</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#loading" title="src/app/core/interfaces/state.interface.ts" ><b>loading</b>&nbsp;&nbsp;&nbsp;(src/.../state.interface.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MUTATION_INVOICE_NOTE" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>MUTATION_INVOICE_NOTE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MUTATION_ORDER_ADD_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>MUTATION_ORDER_ADD_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MUTATION_ORDER_ADDRESS" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>MUTATION_ORDER_ADDRESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MUTATION_ORDER_CALENDAR" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>MUTATION_ORDER_CALENDAR</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MUTATION_ORDER_CART" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>MUTATION_ORDER_CART</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MUTATION_ORDER_MESSAGE" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>MUTATION_ORDER_MESSAGE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MUTATION_USER_ADD_ADDRESS" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>MUTATION_USER_ADD_ADDRESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MUTATION_USER_INFO" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>MUTATION_USER_INFO</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_BATCHES" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_BATCHES</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_CALENDAR" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_CALENDAR</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_CART" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_CART</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_INVOICE" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_INVOICE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_MERCHANT_ADDRESS" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_MERCHANT_ADDRESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_ORDER" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_ORDER</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_PAGE_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_PAGE_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_PAGE_SHOP" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_PAGE_SHOP</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_PAYMENTS" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_PAYMENTS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_PRODUCTS" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_PRODUCTS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_USER_ADDRESSES" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_USER_ADDRESSES</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_USER_CHECK" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_USER_CHECK</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QUERY_USER_LOGIN" title="src/app/modules/ecommerce/state/ecommerce.graphql.ts" ><b>QUERY_USER_LOGIN</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.graphql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RESET_ORDER" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>RESET_ORDER</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROOT_EFFECTS" title="src/app/app.effects.ts" ><b>ROOT_EFFECTS</b>&nbsp;&nbsp;&nbsp;(src/.../app.effects.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROOT_REDUCERS" title="src/app/app.reducers.ts" ><b>ROOT_REDUCERS</b>&nbsp;&nbsp;&nbsp;(src/.../app.reducers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceAddress" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceAddress</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceBatches" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceBatches</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceCalendar" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceCalendar</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceCart" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceCart</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceCartInfo" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceCartInfo</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceInfo" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceInfo</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceInvoice" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceInvoice</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceInvoiceID" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceInvoiceID</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceInvoiceMap" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceInvoiceMap</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceInvoiceVoucher" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceInvoiceVoucher</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceMerchant" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceMerchant</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceMerchantAddress" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceMerchantAddress</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceMessage" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceMessage</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceOrder" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceOrder</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceOrderID" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceOrderID</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommercePayments" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommercePayments</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceProduct" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceProduct</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceProducts" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceProducts</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceUser" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceUser</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceUserAddresses" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceUserAddresses</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#selectEcommerceUserLogin" title="src/app/modules/ecommerce/state/ecommerce.selectors.ts" ><b>selectEcommerceUserLogin</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#state" title="src/app/core/state.ts" ><b>state</b>&nbsp;&nbsp;&nbsp;(src/.../state.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_ECOMMERCE_CART" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATE_ECOMMERCE_CART</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_ECOMMERCE_CART_PRODUCT" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATE_ECOMMERCE_CART_PRODUCT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_ECOMMERCE_INVOICE_NOTE" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATE_ECOMMERCE_INVOICE_NOTE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_ECOMMERCE_INVOICE_VOUCHER" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATE_ECOMMERCE_INVOICE_VOUCHER</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_ECOMMERCE_ORDER" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATE_ECOMMERCE_ORDER</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_ECOMMERCE_ORDER_ADDRESS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATE_ECOMMERCE_ORDER_ADDRESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_ECOMMERCE_ORDER_CALENDAR" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATE_ECOMMERCE_ORDER_CALENDAR</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_ECOMMERCE_ORDER_MESSAGE" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATE_ECOMMERCE_ORDER_MESSAGE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATED_ECOMMERCE_CART" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATED_ECOMMERCE_CART</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATED_ECOMMERCE_INVOICE_NOTE" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATED_ECOMMERCE_INVOICE_NOTE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATED_ECOMMERCE_INVOICE_VOUCHER" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATED_ECOMMERCE_INVOICE_VOUCHER</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATED_ECOMMERCE_ORDER" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATED_ECOMMERCE_ORDER</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATED_ECOMMERCE_ORDER_ADDRESS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATED_ECOMMERCE_ORDER_ADDRESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATED_ECOMMERCE_ORDER_CALENDAR" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATED_ECOMMERCE_ORDER_CALENDAR</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATED_ECOMMERCE_ORDER_MESSAGE" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>UPDATED_ECOMMERCE_ORDER_MESSAGE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_CHECK" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_CHECK</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_CHECKED" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_CHECKED</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_INFO" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_INFO</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_INFO_SUCCESS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_INFO_SUCCESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_LOGIN" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_LOGIN</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_LOGIN_ERROR" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_LOGIN_ERROR</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_LOGIN_SUCCESS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_LOGIN_SUCCESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_LOGOUT" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_LOGOUT</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_LOGOUT_SUCCESS" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_LOGOUT_SUCCESS</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_RESTORE" title="src/app/modules/ecommerce/state/ecommerce.actions.ts" ><b>USER_RESTORE</b>&nbsp;&nbsp;&nbsp;(src/.../ecommerce.actions.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/app/modules/ecommerce/state/ecommerce.actions.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ADD_ECOMMERCE_CART_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>ADD_ECOMMERCE_CART_PRODUCT</b></span>
+                        <a href="#ADD_ECOMMERCE_CART_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Add Product&#x27;, props&lt;{ product: IProduct }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ADD_USER_ADDRESS"></a>
+                    <span class="name">
+                        <span ><b>ADD_USER_ADDRESS</b></span>
+                        <a href="#ADD_USER_ADDRESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Add User Address&#x27;,
+	props&lt;{ lng: string; lat: string; direction: string; update: boolean }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ADDED_ECOMMERCE_CART_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>ADDED_ECOMMERCE_CART_PRODUCT</b></span>
+                        <a href="#ADDED_ECOMMERCE_CART_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Added Product&#x27;, props&lt;{ product: IProduct }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ADDED_USER_ADDRESS"></a>
+                    <span class="name">
+                        <span ><b>ADDED_USER_ADDRESS</b></span>
+                        <a href="#ADDED_USER_ADDRESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Added User Address&#x27;,
+	props&lt;{ address: IUser[&#x27;address&#x27;][&#x27;items&#x27;][number]; update: boolean }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_BATCHES"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_BATCHES</b></span>
+                        <a href="#LOAD_ECOMMERCE_BATCHES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Load Batches&#x27;,
+	props&lt;{ calendar: number; day: string; date: string; exception?: number }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_CALENDAR"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_CALENDAR</b></span>
+                        <a href="#LOAD_ECOMMERCE_CALENDAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Load Calendar&#x27;,
+	props&lt;{ year: number; month: number; day?: number }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_CART"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_CART</b></span>
+                        <a href="#LOAD_ECOMMERCE_CART"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Load Cart&#x27;, props&lt;{ order: number; page?: number }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_INVOICE"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_INVOICE</b></span>
+                        <a href="#LOAD_ECOMMERCE_INVOICE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Load Invoice&#x27;, props&lt;{ invoice: number }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_ORDER"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_ORDER</b></span>
+                        <a href="#LOAD_ECOMMERCE_ORDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Load Order&#x27;, props&lt;{ order: number }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_PAGE_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_PAGE_PRODUCT</b></span>
+                        <a href="#LOAD_ECOMMERCE_PAGE_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Load Page Product&#x27;,
+	props&lt;{ product: number; slug: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_PAGE_SHOP"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_PAGE_SHOP</b></span>
+                        <a href="#LOAD_ECOMMERCE_PAGE_SHOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Load Page Shop&#x27;,
+	props&lt;{ slug: string; page: number }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_PAYMENTS"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_PAYMENTS</b></span>
+                        <a href="#LOAD_ECOMMERCE_PAYMENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Load Payments&#x27;, props&lt;{ page?: number }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_PRODUCT</b></span>
+                        <a href="#LOAD_ECOMMERCE_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Load Product&#x27;,
+	props&lt;{ product: number; order?: number }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_ECOMMERCE_PRODUCTS"></a>
+                    <span class="name">
+                        <span ><b>LOAD_ECOMMERCE_PRODUCTS</b></span>
+                        <a href="#LOAD_ECOMMERCE_PRODUCTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Load Products&#x27;,
+	props&lt;{ merchant: number; page: number }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_MERCHANT_ADDRESSES"></a>
+                    <span class="name">
+                        <span ><b>LOAD_MERCHANT_ADDRESSES</b></span>
+                        <a href="#LOAD_MERCHANT_ADDRESSES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Load Merchant Addresses&#x27;, props&lt;{ page?: number }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOAD_USER_ADDRESSES"></a>
+                    <span class="name">
+                        <span ><b>LOAD_USER_ADDRESSES</b></span>
+                        <a href="#LOAD_USER_ADDRESSES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Load User Addresses&#x27;, props&lt;{ page?: number }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_BATCHES"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_BATCHES</b></span>
+                        <a href="#LOADED_ECOMMERCE_BATCHES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Loaded Batches&#x27;, props&lt;{ batches: IBatch[] }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_CALENDAR"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_CALENDAR</b></span>
+                        <a href="#LOADED_ECOMMERCE_CALENDAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Loaded Calendar&#x27;,
+	props&lt;{ calendar: ICalendar; details: boolean }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_CART"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_CART</b></span>
+                        <a href="#LOADED_ECOMMERCE_CART"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Loaded Cart&#x27;, props&lt;{ products: IOrder[&#x27;products&#x27;] }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_INVOICE"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_INVOICE</b></span>
+                        <a href="#LOADED_ECOMMERCE_INVOICE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Loaded Invoice&#x27;, props&lt;{ invoice: IInvoice }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_ORDER"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_ORDER</b></span>
+                        <a href="#LOADED_ECOMMERCE_ORDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Loaded Order&#x27;,
+	props&lt;{
+		calendar?: { id: number; reservation: string };
+		message: string | null;
+		address: {
+			id: number;
+			direction: string | null;
+			lat: string | null;
+			lng: string | null;
+			mode: &#x27;DELIVERY&#x27; | &#x27;PICK-UP&#x27;;
+		};
+		total: number;
+	}&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_PAGE_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_PAGE_PRODUCT</b></span>
+                        <a href="#LOADED_ECOMMERCE_PAGE_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Loaded Page Product&#x27;,
+	props&lt;{
+		user: { id: number; logged: boolean };
+		merchant: { id: number; title: string | null; slug: string };
+		order: { id: number; count: number };
+		product: ILoadableEntity&lt;IProduct&gt;;
+		info: IInfo;
+	}&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_PAGE_SHOP"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_PAGE_SHOP</b></span>
+                        <a href="#LOADED_ECOMMERCE_PAGE_SHOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Loaded Page Shop&#x27;,
+	props&lt;{
+		user: { id: number; logged: boolean };
+		merchant: { id: number; title: string | null; slug: string };
+		order: { id: number; count: number };
+		products: ILoadableEntity&lt;{ id: number; title: string | null; price: number; images: string[] }&gt;[];
+		info: IInfo;
+	}&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_PAYMENTS"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_PAYMENTS</b></span>
+                        <a href="#LOADED_ECOMMERCE_PAYMENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Loaded Payments&#x27;, props&lt;{ payments: IPayment[] }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_PRODUCT</b></span>
+                        <a href="#LOADED_ECOMMERCE_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Loaded Product&#x27;,
+	props&lt;{
+		product: {
+			id: number;
+			stock: number;
+			images: string[];
+			details: { title: string | null; description: string | null; image: string | null }[];
+			check: number;
+		};
+	}&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_ECOMMERCE_PRODUCTS"></a>
+                    <span class="name">
+                        <span ><b>LOADED_ECOMMERCE_PRODUCTS</b></span>
+                        <a href="#LOADED_ECOMMERCE_PRODUCTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Loaded Products&#x27;,
+	props&lt;{ products: ILoadableEntity&lt;{ id: number; title: string | null; price: number; images: string[] }&gt;[] }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_MERCHANT_ADDRESSES"></a>
+                    <span class="name">
+                        <span ><b>LOADED_MERCHANT_ADDRESSES</b></span>
+                        <a href="#LOADED_MERCHANT_ADDRESSES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Loaded Merchant Addresses&#x27;,
+	props&lt;{
+		addresses: string[];
+	}&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOADED_USER_ADDRESSES"></a>
+                    <span class="name">
+                        <span ><b>LOADED_USER_ADDRESSES</b></span>
+                        <a href="#LOADED_USER_ADDRESSES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Loaded User Addresses&#x27;,
+	props&lt;{
+		addresses: IUser[&#x27;address&#x27;][&#x27;items&#x27;];
+	}&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RESET_ORDER"></a>
+                    <span class="name">
+                        <span ><b>RESET_ORDER</b></span>
+                        <a href="#RESET_ORDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Reset Order&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_ECOMMERCE_CART"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_ECOMMERCE_CART</b></span>
+                        <a href="#UPDATE_ECOMMERCE_CART"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Update Cart&#x27;,
+	props&lt;{ products: IOrder[&#x27;products&#x27;][&#x27;items&#x27;] }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_ECOMMERCE_CART_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_ECOMMERCE_CART_PRODUCT</b></span>
+                        <a href="#UPDATE_ECOMMERCE_CART_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Update Product&#x27;,
+	props&lt;{ product: number; quantity: number }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_ECOMMERCE_INVOICE_NOTE"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_ECOMMERCE_INVOICE_NOTE</b></span>
+                        <a href="#UPDATE_ECOMMERCE_INVOICE_NOTE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Update Invoice Note&#x27;,
+	props&lt;{ invoice: number; note: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_ECOMMERCE_INVOICE_VOUCHER"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_ECOMMERCE_INVOICE_VOUCHER</b></span>
+                        <a href="#UPDATE_ECOMMERCE_INVOICE_VOUCHER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Update Invoice Voucher&#x27;,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	props&lt;{ invoice: number; voucher: any }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_ECOMMERCE_ORDER"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_ECOMMERCE_ORDER</b></span>
+                        <a href="#UPDATE_ECOMMERCE_ORDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Update Order&#x27;,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	props&lt;{ voucher: any; payment: number; date: string; batch: number; direction: string; lat: string; lng: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_ECOMMERCE_ORDER_ADDRESS"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_ECOMMERCE_ORDER_ADDRESS</b></span>
+                        <a href="#UPDATE_ECOMMERCE_ORDER_ADDRESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Update Order Address&#x27;,
+	props&lt;{ id: number; direction: string; lat: string; lng: string; mode: &#x27;DELIVERY&#x27; | &#x27;PICK-UP&#x27; }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_ECOMMERCE_ORDER_CALENDAR"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_ECOMMERCE_ORDER_CALENDAR</b></span>
+                        <a href="#UPDATE_ECOMMERCE_ORDER_CALENDAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Update Order Calendar&#x27;,
+	props&lt;{ batch: number; date: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_ECOMMERCE_ORDER_MESSAGE"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_ECOMMERCE_ORDER_MESSAGE</b></span>
+                        <a href="#UPDATE_ECOMMERCE_ORDER_MESSAGE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Update Order Message&#x27;,
+	props&lt;{ order: number; message: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATED_ECOMMERCE_CART"></a>
+                    <span class="name">
+                        <span ><b>UPDATED_ECOMMERCE_CART</b></span>
+                        <a href="#UPDATED_ECOMMERCE_CART"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Updated Cart&#x27;,
+	props&lt;{ products: IOrder[&#x27;products&#x27;][&#x27;items&#x27;] }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATED_ECOMMERCE_INVOICE_NOTE"></a>
+                    <span class="name">
+                        <span ><b>UPDATED_ECOMMERCE_INVOICE_NOTE</b></span>
+                        <a href="#UPDATED_ECOMMERCE_INVOICE_NOTE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Updated Invoice Note&#x27;,
+	props&lt;{ note: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATED_ECOMMERCE_INVOICE_VOUCHER"></a>
+                    <span class="name">
+                        <span ><b>UPDATED_ECOMMERCE_INVOICE_VOUCHER</b></span>
+                        <a href="#UPDATED_ECOMMERCE_INVOICE_VOUCHER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Updated Invoice Voucher&#x27;,
+	props&lt;{ voucher: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATED_ECOMMERCE_ORDER"></a>
+                    <span class="name">
+                        <span ><b>UPDATED_ECOMMERCE_ORDER</b></span>
+                        <a href="#UPDATED_ECOMMERCE_ORDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Updated Order&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATED_ECOMMERCE_ORDER_ADDRESS"></a>
+                    <span class="name">
+                        <span ><b>UPDATED_ECOMMERCE_ORDER_ADDRESS</b></span>
+                        <a href="#UPDATED_ECOMMERCE_ORDER_ADDRESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Updated Order Address&#x27;,
+	props&lt;{ id: number; direction: string; lat: string; lng: string; mode: &#x27;DELIVERY&#x27; | &#x27;PICK-UP&#x27; }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATED_ECOMMERCE_ORDER_CALENDAR"></a>
+                    <span class="name">
+                        <span ><b>UPDATED_ECOMMERCE_ORDER_CALENDAR</b></span>
+                        <a href="#UPDATED_ECOMMERCE_ORDER_CALENDAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Updated Order Calendar&#x27;,
+	props&lt;{ id: number; reservation: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATED_ECOMMERCE_ORDER_MESSAGE"></a>
+                    <span class="name">
+                        <span ><b>UPDATED_ECOMMERCE_ORDER_MESSAGE</b></span>
+                        <a href="#UPDATED_ECOMMERCE_ORDER_MESSAGE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] Updated Order Message&#x27;,
+	props&lt;{ message: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_CHECK"></a>
+                    <span class="name">
+                        <span ><b>USER_CHECK</b></span>
+                        <a href="#USER_CHECK"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] User Check&#x27;, props&lt;{ email: string }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_CHECKED"></a>
+                    <span class="name">
+                        <span ><b>USER_CHECKED</b></span>
+                        <a href="#USER_CHECKED"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] User Checked&#x27;, props&lt;{ check: number; logged: boolean }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_INFO"></a>
+                    <span class="name">
+                        <span ><b>USER_INFO</b></span>
+                        <a href="#USER_INFO"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] User Info&#x27;,
+	props&lt;{ name?: string; surname?: string; phone?: string; password?: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_INFO_SUCCESS"></a>
+                    <span class="name">
+                        <span ><b>USER_INFO_SUCCESS</b></span>
+                        <a href="#USER_INFO_SUCCESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] User Info Success&#x27;,
+	props&lt;{ name?: string; surname?: string; phone?: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_LOGIN"></a>
+                    <span class="name">
+                        <span ><b>USER_LOGIN</b></span>
+                        <a href="#USER_LOGIN"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+	&#x27;[Ecommerce] User Login&#x27;,
+	props&lt;{ user: number; email: string; password: string }&gt;()
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_LOGIN_ERROR"></a>
+                    <span class="name">
+                        <span ><b>USER_LOGIN_ERROR</b></span>
+                        <a href="#USER_LOGIN_ERROR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] User Error&#x27;, props&lt;{ err: number }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_LOGIN_SUCCESS"></a>
+                    <span class="name">
+                        <span ><b>USER_LOGIN_SUCCESS</b></span>
+                        <a href="#USER_LOGIN_SUCCESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] User Success&#x27;, props&lt;{ email: string }&gt;())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_LOGOUT"></a>
+                    <span class="name">
+                        <span ><b>USER_LOGOUT</b></span>
+                        <a href="#USER_LOGOUT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] User Logout&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_LOGOUT_SUCCESS"></a>
+                    <span class="name">
+                        <span ><b>USER_LOGOUT_SUCCESS</b></span>
+                        <a href="#USER_LOGOUT_SUCCESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] User Logout Success&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_RESTORE"></a>
+                    <span class="name">
+                        <span ><b>USER_RESTORE</b></span>
+                        <a href="#USER_RESTORE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Ecommerce] Restore User&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appConfig"></a>
+                    <span class="name">
+                        <span ><b>appConfig</b></span>
+                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ApplicationConfig</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+	providers: [
+		provideAnimations(),
+		provideHttpClient(withJsonpSupport()),
+		GRAPHQL_PROVIDER,
+		provideRouter(ROUTES),
+		provideStore(ROOT_REDUCERS),
+		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+		provideServiceWorker(&#x27;ngsw-worker.js&#x27;, {
+			enabled: !isDevMode(),
+			registrationStrategy: &#x27;registerWhenStable:30000&#x27;
+		}),
+		provideEffects(ROOT_EFFECTS)
+	]
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/interfaces/state.interface.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="complete"></a>
+                    <span class="name">
+                        <span ><b>complete</b></span>
+                        <a href="#complete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;COMPLETE&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="failed"></a>
+                    <span class="name">
+                        <span ><b>failed</b></span>
+                        <a href="#failed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ERROR&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loaded"></a>
+                    <span class="name">
+                        <span ><b>loaded</b></span>
+                        <a href="#loaded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;LOADED&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ILoading" target="_self" >ILoading</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;LOADING&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/modules/ecommerce/state/ecommerce.reducers.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ECOMMERCE_STATE"></a>
+                    <span class="name">
+                        <span ><b>ECOMMERCE_STATE</b></span>
+                        <a href="#ECOMMERCE_STATE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IEcommerce.html" target="_self" >IEcommerce</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+	user: {
+		status: loading,
+		data: {
+			id: 0,
+			check: null,
+			logged: false,
+			email: null,
+			image: null,
+			name: null,
+			surname: null,
+			phone: null,
+			address: {
+				status: loading,
+				items: []
+			}
+		}
+	},
+	merchant: {
+		status: loading,
+		data: {
+			id: 0,
+			slug: &#x27;&#x27;,
+			image: null,
+			title: null,
+			payments: {
+				status: loading,
+				items: []
+			},
+			calendar: {
+				status: loading,
+				data: { id: 0, delay: 0, typeDelay: &#x27;MN&#x27;, days: [], disabled: [], exceptions: [] }
+			},
+			address: {
+				status: loading,
+				items: []
+			}
+		}
+	},
+	products: {
+		status: loading,
+		items: []
+	},
+	order: {
+		status: loading,
+		data: {
+			id: 0,
+			count: 0,
+			merchant: 0,
+			user: 0,
+			products: {
+				status: loading,
+				items: []
+			},
+			calendar: {
+				status: loading,
+				data: {
+					id: null,
+					reservation: null
+				}
+			},
+			message: { status: loading, data: null },
+			address: {
+				status: loading,
+				data: {
+					id: 0,
+					direction: null,
+					lat: null,
+					lng: null
+				}
+			},
+			total: 0
+		}
+	},
+	batches: {
+		status: loading,
+		items: []
+	},
+	info: {
+		status: loading,
+		data: {}
+	},
+	invoice: {
+		status: loading,
+		data: {
+			status: &#x27;PENDING&#x27;,
+			id: 0,
+			user: 0,
+			merchant: 0,
+			code: &#x27;&#x27;,
+			products: [],
+			total: 0,
+			message: null,
+			reservation: &#x27;&#x27;,
+			note: null,
+			addressDirection: &#x27;&#x27;,
+			addressLat: &#x27;&#x27;,
+			addressLng: &#x27;&#x27;,
+			voucher: &#x27;&#x27;
+		}
+	}
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ecommerceReducer"></a>
+                    <span class="name">
+                        <span ><b>ecommerceReducer</b></span>
+                        <a href="#ecommerceReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createReducer(
+	// * INITIAL STATE.
+	ECOMMERCE_STATE,
+	// USER CHECK.
+	on(USER_CHECK, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: {
+				...state.user,
+				status: loading
+			}
+		};
+	}),
+	on(USER_CHECKED, (state, { check, logged }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: {
+				status: loaded,
+				data: {
+					...state.user.data,
+					check,
+					logged
+				}
+			}
+		};
+	}),
+	// * USER RESTORE.
+	on(USER_RESTORE, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: {
+				...state.user,
+				data: {
+					...state.user.data,
+					check: null
+				}
+			}
+		};
+	}),
+	// * USER LOGIN.
+	on(USER_LOGIN, (state): IEcommerce &#x3D;&gt; {
+		return { ...state, user: { ...state.user, status: loading } };
+	}),
+	// * USER SUCCESS.
+	on(USER_LOGIN_SUCCESS, (state, { email }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: {
+				status: loaded,
+				data: {
+					...state.user.data,
+					logged: true,
+					email,
+					id: state.user.data.check ?? state.user.data.id
+				}
+			}
+		};
+	}),
+	// * USER ERROR.
+	on(USER_LOGIN_ERROR, (state, { err }): IEcommerce &#x3D;&gt; {
+		if (err &#x3D;&#x3D;&#x3D; 1) {
+			return {
+				...state,
+				user: {
+					...state.user,
+					status: failed
+				}
+			};
+		} else {
+			return {
+				...state,
+				user: {
+					...state.user,
+					status: loaded
+				}
+			};
+		}
+	}),
+	// * USER LOGOUT.
+	on(USER_LOGOUT, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: {
+				...state.user,
+				data: {
+					...state.user.data,
+					logged: false,
+					check: null
+				}
+			}
+		};
+	}),
+	// * USER ADDRESSES.
+	on(LOAD_USER_ADDRESSES, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: {
+				...state.user,
+				data: {
+					...state.user.data,
+					address: {
+						...state.user.data.address,
+						status: loading
+					}
+				}
+			}
+		};
+	}),
+	on(LOADED_USER_ADDRESSES, (state, { addresses }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: {
+				...state.user,
+				data: {
+					...state.user.data,
+					address: {
+						status: complete,
+						items: addresses
+					}
+				}
+			}
+		};
+	}),
+	// * USER ADD ADDRESS.
+	// on(ADD_USER_ADDRESS, (state): IEcommerce &#x3D;&gt; {
+	// 	return {
+	// 		...state,
+	// 		user: {
+	// 			...state.user,
+	// 			status: loading
+	// 		}
+	// 	};
+	// }),
+	on(ADDED_USER_ADDRESS, (state, { address, update }): IEcommerce &#x3D;&gt; {
+		let addresses: IAddress[] &#x3D; [...state.user.data.address.items];
+		if (addresses.length &#x3D;&#x3D;&#x3D; 0) {
+			addresses &#x3D; [address];
+		} else {
+			if (update) {
+				addresses &#x3D; [...addresses, address];
+			} else {
+				addresses[0] &#x3D; address;
+			}
+		}
+		return {
+			...state,
+			user: {
+				status: complete,
+				data: {
+					...state.user.data,
+					address: {
+						status: complete,
+						items: addresses
+						// items: update ? [...state.user.data.address.items, address] : [address]
+					}
+				}
+			}
+			// order: {
+			// 	...state.order,
+			// 	data: {
+			// 		...state.order.data,
+			// 		address: {
+			// 			status: complete,
+			// 			data: {
+			// 				id: address.id,
+			// 				direction: address.direction,
+			// 				lat: address.lat,
+			// 				lng: address.lng,
+			// 				mode: &#x27;DELIVERY&#x27;
+			// 			}
+			// 		}
+			// 	}
+			// }
+		};
+	}),
+	// * MERCHANT ADDRESS.
+	on(LOAD_MERCHANT_ADDRESSES, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			merchant: {
+				...state.merchant,
+				data: {
+					...state.merchant.data,
+					address: {
+						...state.merchant.data.address,
+						status: loading
+					}
+				}
+			}
+		};
+	}),
+	on(LOADED_MERCHANT_ADDRESSES, (state, { addresses }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			merchant: {
+				...state.merchant,
+				data: {
+					...state.merchant.data,
+					address: {
+						status: complete,
+						items: addresses
+					}
+				}
+			}
+		};
+	}),
+	// * PAGE SHOP.
+	on(LOADED_ECOMMERCE_PAGE_SHOP, (state, { user, merchant, order: invoice, products, info }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: { status: loaded, data: { ...state.user.data, id: user.id, logged: user.logged } },
+			merchant: {
+				status: loaded,
+				data: { ...state.merchant.data, id: merchant.id, title: merchant.title, slug: merchant.slug }
+			},
+			products: {
+				status: loaded,
+				items: [
+					...products.map((product) &#x3D;&gt; ({
+						status: product.status,
+						data: { ...product.data, details: [], stock: 0, check: 0 }
+					}))
+				]
+			},
+			order: {
+				status: loaded,
+				data: {
+					...state.order.data,
+					id: invoice.id,
+					count: invoice.count,
+					user: user.id,
+					merchant: merchant.id,
+					calendar: {
+						status: complete,
+						data: {
+							id: info.batch ?? null,
+							reservation: date(info.calendar, info.from, info.to) ?? null
+						}
+					}
+				}
+			},
+			info: { status: complete, data: info }
+		};
+	}),
+	// PRODUCTS.
+	on(LOADED_ECOMMERCE_PRODUCTS, (state, { products }): IEcommerce &#x3D;&gt; {
+		const items: ILoadableEntity&lt;{ id: number; title: string | null; price: number; images: string[] }&gt;[] &#x3D;
+			products.filter((product) &#x3D;&gt; !state.products.items.some((item) &#x3D;&gt; item.data.id &#x3D;&#x3D;&#x3D; product.data.id));
+		return {
+			...state,
+			products: {
+				status: loaded,
+				items: [
+					...state.products.items,
+					...items.map((product) &#x3D;&gt; ({
+						status: product.status,
+						data: { ...product.data, details: [], stock: 0, check: 0 }
+					}))
+				]
+			}
+		};
+	}),
+	// * PAGE PRODUCT.
+	on(LOADED_ECOMMERCE_PAGE_PRODUCT, (state, { user, merchant, order, product, info }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			user: { status: loaded, data: { ...state.user.data, id: user.id, logged: user.logged } },
+			merchant: {
+				status: loaded,
+				data: { ...state.merchant.data, id: merchant.id, title: merchant.title, slug: merchant.slug }
+			},
+			products: { status: loading, items: [product] },
+			order: {
+				status: loaded,
+				data: {
+					...state.order.data,
+					id: order.id,
+					user: user.id,
+					merchant: merchant.id,
+					count: order.count,
+					calendar: {
+						status: complete,
+						data: {
+							id: info.batch ?? null,
+							reservation: date(info.calendar, info.from, info.to) ?? null
+						}
+					}
+				}
+			},
+			info: { status: complete, data: info }
+		};
+	}),
+	// * PRODUCT.
+	on(LOADED_ECOMMERCE_PRODUCT, (state, { product }): IEcommerce &#x3D;&gt; {
+		const products: ILoadableEntity&lt;IProduct&gt;[] &#x3D; [...state.products.items];
+		const index: number &#x3D; products.findIndex((item) &#x3D;&gt; item.data.id &#x3D;&#x3D;&#x3D; product.id);
+		if (index !&#x3D;&#x3D; -1) {
+			const productData &#x3D; {
+				...products[index].data,
+				stock: product.stock,
+				images: [...products[index].data.images, ...product.images],
+				details: product.details,
+				check: product.check
+			};
+			products[index] &#x3D; { status: complete, data: productData };
+		}
+		return {
+			...state,
+			products: {
+				status: state.products.status,
+				items: products
+			}
+		};
+	}),
+	// * CART.
+	on(LOADED_ECOMMERCE_CART, (state, { products }): IEcommerce &#x3D;&gt; {
+		const items: IOrder[&#x27;products&#x27;][&#x27;items&#x27;] &#x3D; products.items.filter(
+			(product) &#x3D;&gt; !state.order.data.products.items.some((item) &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; product.id)
+		);
+		return {
+			...state,
+			order: {
+				status: loaded,
+				data: {
+					...state.order.data,
+					products: {
+						status: complete,
+						items: [...state.order.data.products.items, ...items]
+					}
+				}
+			}
+		};
+	}),
+	// * ADD PRODUCT.
+	on(ADD_ECOMMERCE_CART_PRODUCT, (state, { product }): IEcommerce &#x3D;&gt; {
+		const products: ILoadableEntity&lt;IProduct&gt;[] &#x3D; [...state.products.items];
+		const index: number &#x3D; products.findIndex((item) &#x3D;&gt; item.data.id &#x3D;&#x3D;&#x3D; product.id);
+		if (index &#x3D;&#x3D;&#x3D; -1) {
+			return state;
+		} else {
+			products[index] &#x3D; { status: loading, data: { ...products[index].data, check: -1 } };
+			return {
+				...state,
+				products: {
+					...state.products,
+					items: products
+				}
+			};
+		}
+	}),
+	on(ADDED_ECOMMERCE_CART_PRODUCT, (state, { product }): IEcommerce &#x3D;&gt; {
+		const products: ILoadableEntity&lt;IProduct&gt;[] &#x3D; [...state.products.items];
+		const index: number &#x3D; products.findIndex((item) &#x3D;&gt; item.data.id &#x3D;&#x3D;&#x3D; product.id);
+		if (index &#x3D;&#x3D;&#x3D; -1) {
+			return state;
+		} else {
+			products[index] &#x3D; { status: complete, data: { ...products[index].data, check: 1 } };
+			return {
+				...state,
+				products: {
+					...state.products,
+					items: products
+				},
+				order: {
+					...state.order,
+					data: {
+						...state.order.data,
+						total: state.order.data.total + product.price,
+						count: state.order.data.count + 1,
+						products: {
+							status: state.order.data.products.status,
+							items: [
+								...state.order.data.products.items,
+								{
+									id: product.id,
+									title: product.title,
+									image: product.images[0],
+									price: product.price,
+									stock: product.stock,
+									quantity: 1
+								}
+							]
+						}
+					}
+				}
+			};
+		}
+	}),
+	// * ORDER.
+	on(LOADED_ECOMMERCE_ORDER, (state, { calendar, message, address, total }): IEcommerce &#x3D;&gt; {
+		const sCalendar: IOrder[&#x27;calendar&#x27;] &#x3D; {
+			status: complete,
+			data: {
+				id: calendar?.id ?? state.order.data.calendar.data.id,
+				reservation: calendar?.reservation ?? state.order.data.calendar.data.reservation
+			}
+		};
+		return {
+			...state,
+			order: {
+				status: complete,
+				data: {
+					...state.order.data,
+					calendar: sCalendar,
+					message: { status: complete, data: message },
+					address: { status: complete, data: address },
+					total
+				}
+			}
+		};
+	}),
+	// * UPDATE PRODUCT.
+	on(UPDATE_ECOMMERCE_CART_PRODUCT, (state, { product, quantity }): IEcommerce &#x3D;&gt; {
+		const iIndex: number &#x3D; state.order.data.products.items.findIndex((item) &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; product);
+		if (iIndex &#x3D;&#x3D;&#x3D; -1) return state; // ! Breakpoint. No existe, retorna el estado.
+		const iProducts: IOrder[&#x27;products&#x27;][&#x27;items&#x27;] &#x3D; [...state.order.data.products.items];
+		let total: number &#x3D; state.order.data.total;
+		let sProducts: ILoadableEntity&lt;IProduct&gt;[] &#x3D; [...state.products.items];
+		let count: number &#x3D; state.order.data.count;
+		if (quantity &#x3D;&#x3D;&#x3D; 0) {
+			sProducts &#x3D; [...state.products.items];
+			const sIndex: number &#x3D; sProducts.findIndex((item) &#x3D;&gt; item.data.id &#x3D;&#x3D;&#x3D; product);
+			if (sIndex !&#x3D;&#x3D; -1) {
+				const iProduct: ILoadableEntity&lt;IProduct&gt; &#x3D; {
+					...sProducts[sIndex],
+					data: { ...sProducts[sIndex].data, check: 0 }
+				};
+				sProducts[sIndex] &#x3D; iProduct;
+				count -&#x3D; 1;
+			}
+			total -&#x3D; iProducts[iIndex].price * iProducts[iIndex].quantity;
+			iProducts.splice(iIndex, 1);
+		} else {
+			total -&#x3D; iProducts[iIndex].price * iProducts[iIndex].quantity;
+			total +&#x3D; iProducts[iIndex].price * quantity;
+			const product: IOrder[&#x27;products&#x27;][&#x27;items&#x27;][number] &#x3D; { ...iProducts[iIndex], quantity };
+			iProducts[iIndex] &#x3D; product;
+		}
+		return {
+			...state,
+			order: {
+				...state.order,
+				data: {
+					...state.order.data,
+					count,
+					total,
+					products: {
+						status: state.order.data.products.status,
+						items: iProducts
+					}
+				}
+			},
+			products: {
+				status: state.products.status,
+				items: sProducts
+			}
+		};
+	}),
+	// * UPDATE CART.
+	on(UPDATED_ECOMMERCE_CART, (state, { products }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			order: {
+				...state.order,
+				data: {
+					...state.order.data,
+					products: {
+						...state.order.data.products,
+						items: products
+					},
+					count: products.length,
+					total: products.reduce((acc, product) &#x3D;&gt; acc + product.price * product.quantity, 0)
+				}
+			}
+		};
+	}),
+	// * CALENDAR.
+	on(LOAD_ECOMMERCE_CALENDAR, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			merchant: {
+				...state.merchant,
+				data: {
+					...state.merchant.data,
+					calendar: {
+						...state.merchant.data.calendar,
+						status: loaded
+					}
+				}
+			}
+		};
+	}),
+	on(LOADED_ECOMMERCE_CALENDAR, (state, { calendar, details }): IEcommerce &#x3D;&gt; {
+		if (details) {
+			return {
+				...state,
+				merchant: {
+					...state.merchant,
+					data: {
+						...state.merchant.data,
+						calendar: {
+							status: complete,
+							data: {
+								...state.merchant.data.calendar.data,
+								disabled: calendar.disabled,
+								exceptions: calendar.exceptions
+							}
+						}
+					}
+				}
+			};
+		} else {
+			return {
+				...state,
+				merchant: {
+					...state.merchant,
+					data: {
+						...state.merchant.data,
+						calendar: {
+							status: complete,
+							data: calendar
+						}
+					}
+				}
+			};
+		}
+	}),
+	// * BATCHES.
+	on(LOAD_ECOMMERCE_BATCHES, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			batches: {
+				status: loaded,
+				items: []
+			}
+		};
+	}),
+	on(LOADED_ECOMMERCE_BATCHES, (state, { batches }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			batches: {
+				status: complete,
+				items: batches
+			}
+		};
+	}),
+	// * UPDATE CALENDAR.
+	on(UPDATED_ECOMMERCE_ORDER_CALENDAR, (state, { id, reservation }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			order: {
+				...state.order,
+				data: {
+					...state.order.data,
+					calendar: {
+						status: complete,
+						data: {
+							id,
+							reservation
+						}
+					}
+				}
+			}
+		};
+	}),
+	// * PAYMENTS.
+	on(LOAD_ECOMMERCE_PAYMENTS, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			merchant: {
+				...state.merchant,
+				data: {
+					...state.merchant.data,
+					payments: {
+						status: loaded,
+						items: []
+					}
+				}
+			}
+		};
+	}),
+	on(LOADED_ECOMMERCE_PAYMENTS, (state, { payments }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			merchant: {
+				...state.merchant,
+				data: {
+					...state.merchant.data,
+					payments: {
+						status: complete,
+						items: payments
+					}
+				}
+			}
+		};
+	}),
+	// * MESSAGE.
+	on(UPDATED_ECOMMERCE_ORDER_MESSAGE, (state, { message }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			order: { ...state.order, data: { ...state.order.data, message: { status: complete, data: message } } }
+		};
+	}),
+	// * UPDATE ORDER ADDRESS.
+	on(UPDATE_ECOMMERCE_ORDER_ADDRESS, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			order: { ...state.order, status: loading }
+		};
+	}),
+	on(UPDATED_ECOMMERCE_ORDER_ADDRESS, (state, { id, direction, lat, lng, mode }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			order: {
+				status: complete,
+				data: {
+					...state.order.data,
+					address: {
+						status: complete,
+						data: {
+							id,
+							direction,
+							lat,
+							lng,
+							mode
+						}
+					}
+				}
+			}
+		};
+	}),
+	// * RESET ORDER.
+	on(UPDATED_ECOMMERCE_ORDER, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			order: {
+				status: complete,
+				data: {
+					...state.order.data,
+					address: {
+						status: loading,
+						data: {
+							direction: null,
+							lat: null,
+							lng: null,
+							id: 0
+						}
+					},
+					calendar: {
+						status: loading,
+						data: {
+							id: null,
+							reservation: null
+						}
+					},
+					count: 0,
+					message: {
+						status: loading,
+						data: null
+					},
+					products: {
+						status: loading,
+						items: []
+					},
+					total: 0,
+					id: 0
+				}
+			}
+		};
+	}),
+	// * INVOICE.
+	on(LOAD_ECOMMERCE_INVOICE, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			invoice: {
+				status: loading,
+				data: state.invoice.data
+			}
+		};
+	}),
+	on(LOADED_ECOMMERCE_INVOICE, (state, { invoice }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			invoice: {
+				status: complete,
+				data: invoice
+			}
+		};
+	}),
+	// * INVOICE NOTE.
+	on(UPDATE_ECOMMERCE_INVOICE_NOTE, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			invoice: {
+				status: loading,
+				data: state.invoice.data
+			}
+		};
+	}),
+	on(UPDATED_ECOMMERCE_INVOICE_NOTE, (state, { note }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			invoice: {
+				status: complete,
+				data: {
+					...state.invoice.data,
+					note
+				}
+			}
+		};
+	}),
+	// * INVOICE VOUCHER.
+	on(UPDATE_ECOMMERCE_INVOICE_VOUCHER, (state): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			invoice: {
+				status: loading,
+				data: state.invoice.data
+			}
+		};
+	}),
+	on(UPDATED_ECOMMERCE_INVOICE_VOUCHER, (state, { voucher }): IEcommerce &#x3D;&gt; {
+		return {
+			...state,
+			invoice: {
+				status: complete,
+				data: {
+					...state.invoice.data,
+					voucher
+				}
+			}
+		};
+	})
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/environment.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="environment"></a>
+                    <span class="name">
+                        <span ><b>environment</b></span>
+                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+	slug: &#x60;dlicianthus&#x60;,
+	api: &#x60;https://laia-dev.up.railway.app&#x60;,
+	mapId: &#x60;2834c1be92998db5&#x60;,
+	apiMap: &#x60;AIzaSyCqV0YIFADudJeeRE4KjZYosxW4usy5Wfg&#x60;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.graphql.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GRAPHQL_PROVIDER"></a>
+                    <span class="name">
+                        <span ><b>GRAPHQL_PROVIDER</b></span>
+                        <a href="#GRAPHQL_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+	Apollo,
+	{ provide: APOLLO_OPTIONS, useFactory: apolloOptionsFactory }
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/modules/ecommerce/state/ecommerce.graphql.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MUTATION_INVOICE_NOTE"></a>
+                    <span class="name">
+                        <span ><b>MUTATION_INVOICE_NOTE</b></span>
+                        <a href="#MUTATION_INVOICE_NOTE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;UOrderS($order: Int!, $note: String!){uOrderN(orderId: $order, note: $note)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MUTATION_ORDER_ADD_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>MUTATION_ORDER_ADD_PRODUCT</b></span>
+                        <a href="#MUTATION_ORDER_ADD_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;AProductI($invoice: Int!, $product: Int!){aProductI(invoiceId: $invoice, productId: $product)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MUTATION_ORDER_ADDRESS"></a>
+                    <span class="name">
+                        <span ><b>MUTATION_ORDER_ADDRESS</b></span>
+                        <a href="#MUTATION_ORDER_ADDRESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;UInvoiceA($invoice: Int!, $direction: String!, $lat: String!, $lng: String!, $type: String!, $id: Int!){uInvoiceA(invoiceId: $invoice direction: $direction lat: $lat lng: $lng type: $type addressNumber: $id)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MUTATION_ORDER_CALENDAR"></a>
+                    <span class="name">
+                        <span ><b>MUTATION_ORDER_CALENDAR</b></span>
+                        <a href="#MUTATION_ORDER_CALENDAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;UInvoiceR($invoice: Int!, $batch: Int!, $date: String!){uInvoiceR(invoiceId: $invoice, batchId: $batch, date: $date)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MUTATION_ORDER_CART"></a>
+                    <span class="name">
+                        <span ><b>MUTATION_ORDER_CART</b></span>
+                        <a href="#MUTATION_ORDER_CART"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;UProductI($invoice: Int!, $list: [InvoiceProductInputDTO!]!){uProductI(invoiceId: $invoice, listInvoiceProducts: $list)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MUTATION_ORDER_MESSAGE"></a>
+                    <span class="name">
+                        <span ><b>MUTATION_ORDER_MESSAGE</b></span>
+                        <a href="#MUTATION_ORDER_MESSAGE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;UInvoiceM($invoice: Int!, $message: String!){uInvoiceM(invoiceId: $invoice, message: $message)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MUTATION_USER_ADD_ADDRESS"></a>
+                    <span class="name">
+                        <span ><b>MUTATION_USER_ADD_ADDRESS</b></span>
+                        <a href="#MUTATION_USER_ADD_ADDRESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;AAddress($user: Int!, $lng: String!, $lat: String!, $direction: String!){aAddress(userId: $user, lng: $lng, lat: $lat, direction: $direction)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MUTATION_USER_INFO"></a>
+                    <span class="name">
+                        <span ><b>MUTATION_USER_INFO</b></span>
+                        <a href="#MUTATION_USER_INFO"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;UUser($user: Int!, $name: String, $surname: String, $phone: String, $password: String){uUser(userId: $user, lastName: $surname, name: $name, phone: $phone, password: $password)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_BATCHES"></a>
+                    <span class="name">
+                        <span ><b>QUERY_BATCHES</b></span>
+                        <a href="#QUERY_BATCHES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;GBatches($calendar: Int!, $day: String!, $date: String!, $exception: Int){gBatches(calendarId: $calendar, day: $day, date: $date, exceptionalDate: $exception){id title from to}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_CALENDAR"></a>
+                    <span class="name">
+                        <span ><b>QUERY_CALENDAR</b></span>
+                        <a href="#QUERY_CALENDAR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;GCalendar($year: Int!, $month: Int!, $day: Int!, $merchant: Int!, $details: Boolean!){gCalendar(year: $year, month: $month, day: $day, merchantId: $merchant){calendarId @include(if: $details) delay @include(if: $details) typeDelay @include(if: $details) workingDays @include(if: $details) disabledDates exceptionsDates}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_CART"></a>
+                    <span class="name">
+                        <span ><b>QUERY_CART</b></span>
+                        <a href="#QUERY_CART"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;GIProducts($invoice: Int!, $page: Int!){gIProducts(invoiceId: $invoice, page: $page){quantity product {id title price stock frontPage}}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_INVOICE"></a>
+                    <span class="name">
+                        <span ><b>QUERY_INVOICE</b></span>
+                        <a href="#QUERY_INVOICE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;GOrder($order: Int!){gOrder(orderId: $order){merchantId userId code reservation total message status voucher note addressLat addressLng addressDirection products{quantity product{title price frontPage}}}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_MERCHANT_ADDRESS"></a>
+                    <span class="name">
+                        <span ><b>QUERY_MERCHANT_ADDRESS</b></span>
+                        <a href="#QUERY_MERCHANT_ADDRESS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;MerchantId($merchant: Int!){merchantId(merchantId: $merchant){address}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_ORDER"></a>
+                    <span class="name">
+                        <span ><b>QUERY_ORDER</b></span>
+                        <a href="#QUERY_ORDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;GInvoice($invoice: Int!){gInvoice(invoiceId: $invoice){reservation total message batchId addressDirection addressLat addressLng addressNumber type merchantLat merchantLng merchantDirection}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_PAGE_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>QUERY_PAGE_PRODUCT</b></span>
+                        <a href="#QUERY_PAGE_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;CombinedProduct($product: Int!, $slug: String!, $user: Int){combinedProduct(productId: $product, slug: $slug, userId: $user){merchantId merchantTitle productId productTitle productFrontPage productPrice productStock invoiceId invoiceCount userId images{url} details{title description url} check merchantDirection firstShippingDate batchId batchFrom batchTo}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_PAGE_SHOP"></a>
+                    <span class="name">
+                        <span ><b>QUERY_PAGE_SHOP</b></span>
+                        <a href="#QUERY_PAGE_SHOP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;CombinedShop($slug: String!, $user: Int){combinedShop(slug: $slug, userId: $user){merchantId merchantTitle invoiceId invoiceCount userId products {id title price frontPage} batchId batchFrom batchTo firstShippingDate}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_PAYMENTS"></a>
+                    <span class="name">
+                        <span ><b>QUERY_PAYMENTS</b></span>
+                        <a href="#QUERY_PAYMENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;Payments($page: Int!, $merchant: Int!){payments(page: $page, merchantId: $merchant, status: 1){id typePayment title cvu}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_PRODUCT"></a>
+                    <span class="name">
+                        <span ><b>QUERY_PRODUCT</b></span>
+                        <a href="#QUERY_PRODUCT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;RProduct($product: Int!, $merchant: Int!, $invoice: Int!){rProduct(productId: $product, merchantId: $merchant, invoiceId: $invoice){stock check merchantDirection firstShippingDate images{url} details{title description url} batchId batchFrom batchTo}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_PRODUCTS"></a>
+                    <span class="name">
+                        <span ><b>QUERY_PRODUCTS</b></span>
+                        <a href="#QUERY_PRODUCTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;Products($page: Int!, $merchant: Int!){products(page: $page, merchantId: $merchant, status: 1){id title price frontPage}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_USER_ADDRESSES"></a>
+                    <span class="name">
+                        <span ><b>QUERY_USER_ADDRESSES</b></span>
+                        <a href="#QUERY_USER_ADDRESSES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;GAddressUId($user: Int!, $page: Int!){gAddressUId(userId: $user, page: $page){id lng lat direction}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_USER_CHECK"></a>
+                    <span class="name">
+                        <span ><b>QUERY_USER_CHECK</b></span>
+                        <a href="#QUERY_USER_CHECK"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;CUserE($user: Int!, $email: String!){cUserE(userId: $user, email: $email)}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QUERY_USER_LOGIN"></a>
+                    <span class="name">
+                        <span ><b>QUERY_USER_LOGIN</b></span>
+                        <a href="#QUERY_USER_LOGIN"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;LUser($user: Int!, $email: String!, $password: String!){lUser(userId: $user, email: $email, password: $password){name phone image first operationStatus}}&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.effects.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROOT_EFFECTS"></a>
+                    <span class="name">
+                        <span ><b>ROOT_EFFECTS</b></span>
+                        <a href="#ROOT_EFFECTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+	EcommerceEffects
+	// // * USER
+	// UserEffects,
+	// // * ECOMMERCE.
+	// EcommerceEffects
+	// // ShopEffects,
+	// // ProductEffects,
+	// // CartEffects,
+	// // FormEffects,
+	// // VirtualEffects,
+	// // TraditionalEffects,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.reducers.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROOT_REDUCERS"></a>
+                    <span class="name">
+                        <span ><b>ROOT_REDUCERS</b></span>
+                        <a href="#ROOT_REDUCERS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IState.html" target="_self" >ActionReducerMap&lt;IState&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+	// * ECOMMERCE.
+	ecommerce: ecommerceReducer
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/modules/ecommerce/state/ecommerce.selectors.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceAddress"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceAddress</b></span>
+                        <a href="#selectEcommerceAddress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): IEcommerce[&#x27;order&#x27;][&#x27;data&#x27;][&#x27;address&#x27;][&#x27;data&#x27;] &#x3D;&gt; {
+		return {
+			id: state.ecommerce.order.data.address.data.id,
+			mode: state.ecommerce.order.data.address.data.mode,
+			lat: state.ecommerce.order.data.address.data.lat,
+			lng: state.ecommerce.order.data.address.data.lng,
+			direction: state.ecommerce.order.data.address.data.direction
+		};
+	}
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceBatches"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceBatches</b></span>
+                        <a href="#selectEcommerceBatches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntities&lt;IBatch&gt; &#x3D;&gt; state.ecommerce.batches
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceCalendar"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceCalendar</b></span>
+                        <a href="#selectEcommerceCalendar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntity&lt;ICalendar&gt; &#x3D;&gt; state.ecommerce.merchant.data.calendar
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceCart"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceCart</b></span>
+                        <a href="#selectEcommerceCart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(state, (state: IState): ICart &#x3D;&gt; {
+	return {
+		id: state.ecommerce.order.data.id,
+		slug: state.ecommerce.merchant.data.slug,
+		status: state.ecommerce.order.status,
+		products: state.ecommerce.order.data.products,
+		count: state.ecommerce.order.data.count
+	};
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceCartInfo"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceCartInfo</b></span>
+                        <a href="#selectEcommerceCartInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(state, (state: IState): { id: number; count: number } &#x3D;&gt; {
+	return {
+		id: state.ecommerce.order.data.id,
+		count: state.ecommerce.order.data.count
+	};
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceInfo"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceInfo</b></span>
+                        <a href="#selectEcommerceInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(state, (state: IState): IEcommerce[&#x27;info&#x27;] &#x3D;&gt; state.ecommerce.info)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceInvoice"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceInvoice</b></span>
+                        <a href="#selectEcommerceInvoice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntity&lt;IInvoice&gt; &#x3D;&gt; state.ecommerce.invoice
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceInvoiceID"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceInvoiceID</b></span>
+                        <a href="#selectEcommerceInvoiceID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(state, (state: IState): { id: number; status: ILoading } &#x3D;&gt; {
+	return {
+		id: state.ecommerce.invoice.data.id,
+		status: state.ecommerce.invoice.status
+	};
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceInvoiceMap"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceInvoiceMap</b></span>
+                        <a href="#selectEcommerceInvoiceMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): { status: ILoading; direction: string; lat: number; lng: number } &#x3D;&gt; {
+		return {
+			status: state.ecommerce.invoice.status,
+			direction: state.ecommerce.invoice.data.addressDirection,
+			lat: Number(state.ecommerce.invoice.data.addressLat),
+			lng: Number(state.ecommerce.invoice.data.addressLng)
+		};
+	}
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceInvoiceVoucher"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceInvoiceVoucher</b></span>
+                        <a href="#selectEcommerceInvoiceVoucher"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): string &#x3D;&gt; state.ecommerce.invoice.data.voucher
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceMerchant"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceMerchant</b></span>
+                        <a href="#selectEcommerceMerchant"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntity&lt;IMerchant&gt; &#x3D;&gt; state.ecommerce.merchant
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceMerchantAddress"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceMerchantAddress</b></span>
+                        <a href="#selectEcommerceMerchantAddress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntities&lt;string&gt; &#x3D;&gt; state.ecommerce.merchant.data.address
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceMessage"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceMessage</b></span>
+                        <a href="#selectEcommerceMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(state, (state: IState): IMessage &#x3D;&gt; {
+	return {
+		order: { status: state.ecommerce.order.status, id: state.ecommerce.order.data.id },
+		message: state.ecommerce.order.data.message
+	};
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceOrder"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceOrder</b></span>
+                        <a href="#selectEcommerceOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntity&lt;IOrder&gt; &#x3D;&gt; state.ecommerce.order
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceOrderID"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceOrderID</b></span>
+                        <a href="#selectEcommerceOrderID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(state, (state: IState): { id: number; status: ILoading } &#x3D;&gt; {
+	return {
+		id: state.ecommerce.order.data.id,
+		status: state.ecommerce.order.status
+	};
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommercePayments"></a>
+                    <span class="name">
+                        <span ><b>selectEcommercePayments</b></span>
+                        <a href="#selectEcommercePayments"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntities&lt;IPayment&gt; &#x3D;&gt; state.ecommerce.merchant.data.payments
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceProduct"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceProduct</b></span>
+                        <a href="#selectEcommerceProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(id: number | undefined): MemoizedSelector&lt;IState, ILoadableEntity&lt;IProduct&gt;&gt; &#x3D;&gt;
+	createSelector(state, (state: IState): ILoadableEntity&lt;IProduct&gt; &#x3D;&gt; {
+		const err: ILoadableEntity&lt;IProduct&gt; &#x3D; {
+			status: loading,
+			data: {
+				id: 0,
+				title: null,
+				price: 0,
+				images: [],
+				stock: 0,
+				details: [],
+				check: 0
+			}
+		};
+		if (!id) {
+			return err;
+		} else {
+			const product: ILoadableEntity&lt;IProduct&gt; | undefined &#x3D;
+				state.ecommerce.products.items.find((product: ILoadableEntity&lt;IProduct&gt;) &#x3D;&gt; product.data.id &#x3D;&#x3D;&#x3D; id) ||
+				undefined;
+			return product ?? err;
+		}
+	})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceProducts"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceProducts</b></span>
+                        <a href="#selectEcommerceProducts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntities&lt;ILoadableEntity&lt;IProduct&gt;&gt; &#x3D;&gt; state.ecommerce.products
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceUser"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceUser</b></span>
+                        <a href="#selectEcommerceUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): ILoadableEntity&lt;IUser&gt; &#x3D;&gt; state.ecommerce.user
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceUserAddresses"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceUserAddresses</b></span>
+                        <a href="#selectEcommerceUserAddresses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(
+	state,
+	(state: IState): IUser[&#x27;address&#x27;] &#x3D;&gt; state.ecommerce.user.data.address
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEcommerceUserLogin"></a>
+                    <span class="name">
+                        <span ><b>selectEcommerceUserLogin</b></span>
+                        <a href="#selectEcommerceUserLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(state, (state: IState): { id: number; logged: boolean } &#x3D;&gt; {
+	return {
+		id: state.ecommerce.user.data.id,
+		logged: state.ecommerce.user.data.logged
+	};
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/state.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="state"></a>
+                    <span class="name">
+                        <span ><b>state</b></span>
+                        <a href="#state"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(state: IState): IState &#x3D;&gt; state</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

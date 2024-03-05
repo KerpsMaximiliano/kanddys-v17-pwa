@@ -1,0 +1,2650 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>laia documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">laia documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >EcommerceEffects</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/modules/ecommerce/state/ecommerce.effects.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_actions$" >_actions$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_core" >_core</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#addEcommerceCartProduct$" >addEcommerceCartProduct$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#addUserAddress$" >addUserAddress$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#ecommerceUOrderAddress$" >ecommerceUOrderAddress$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommerceBatches$" >loadEcommerceBatches$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommerceCalendar$" >loadEcommerceCalendar$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommerceCart$" >loadEcommerceCart$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommerceInvoice$" >loadEcommerceInvoice$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommerceOrder$" >loadEcommerceOrder$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommercePageProduct$" >loadEcommercePageProduct$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommercePageShop$" >loadEcommercePageShop$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommercePayments$" >loadEcommercePayments$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommerceProduct$" >loadEcommerceProduct$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadEcommerceProducts$" >loadEcommerceProducts$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadMerchantAddresses$" >loadMerchantAddresses$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loadUserAddresses$" >loadUserAddresses$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#updateEcommerceInvoiceCalendar$" >updateEcommerceInvoiceCalendar$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#updateEcommerceInvoiceNote$" >updateEcommerceInvoiceNote$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#updateEcommerceInvoiceVoucher$" >updateEcommerceInvoiceVoucher$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#updateEcommerceOrder$" >updateEcommerceOrder$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#updateEcommerceOrderCart$" >updateEcommerceOrderCart$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#updateEcommerceOrderMessage$" >updateEcommerceOrderMessage$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#updateUserInfo$" >updateUserInfo$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#userCheck$" >userCheck$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#userLogin$" >userLogin$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_actions$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_actions$</b></span>
+                        <a href="#_actions$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Actions</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Actions)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_core"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_core</b></span>
+                        <a href="#_core"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/CoreService.html" target="_self" >CoreService</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(CoreService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addEcommerceCartProduct$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>addEcommerceCartProduct$</b></span>
+                        <a href="#addEcommerceCartProduct$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(ADD_ECOMMERCE_CART_PRODUCT),
+			exhaustMap((action) &#x3D;&gt;
+				this._core
+					.mutation(MUTATION_ORDER_ADD_PRODUCT, {
+						invoice: this._core.state.ecommerce.invoice,
+						product: action.product.id
+					})
+					.pipe(
+						map(() &#x3D;&gt; ADDED_ECOMMERCE_CART_PRODUCT({ product: action.product })),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_CART]: MUTATION_ADD_PRODUCT&#x27; }))
+					)
+			)
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="512" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:512</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addUserAddress$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>addUserAddress$</b></span>
+                        <a href="#addUserAddress$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(ADD_USER_ADDRESS),
+			exhaustMap((action) &#x3D;&gt; {
+				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
+				if (user) {
+					if (action.update) {
+						return this._core
+							.mutation&lt;IUserAddAddressResponse[&#x27;data&#x27;]&gt;(MUTATION_USER_ADD_ADDRESS, {
+								user,
+								lng: &#x60;${action.lng}&#x60;,
+								lat: &#x60;${action.lat}&#x60;,
+								direction: action.direction
+							})
+							.pipe(
+								map((res) &#x3D;&gt;
+									ADDED_USER_ADDRESS({
+										address: {
+											id: res.aAddress,
+											direction: action.direction,
+											lat: action.lat,
+											lng: action.lng
+										},
+										update: action.update
+									})
+								),
+								catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_ADD_ADDRESS]: MUTATION_USER_ADD_ADDRESS&#x27; }))
+							);
+					} else {
+						return of(
+							ADDED_USER_ADDRESS({
+								address: { id: -1, direction: action.direction, lat: action.lat, lng: action.lng },
+								update: action.update
+							})
+						);
+					}
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_ADD_ADDRESS]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:210</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ecommerceUOrderAddress$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>ecommerceUOrderAddress$</b></span>
+                        <a href="#ecommerceUOrderAddress$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_ORDER_ADDRESS),
+			exhaustMap((action) &#x3D;&gt; {
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				if (invoice) {
+					return this._core
+						.mutation(MUTATION_ORDER_ADDRESS, {
+							invoice,
+							direction: action.direction,
+							lng: action.lng,
+							lat: action.lat,
+							type: action.mode,
+							id: action.id
+						})
+						.pipe(
+							map(() &#x3D;&gt;
+								UPDATED_ECOMMERCE_ORDER_ADDRESS({
+									id: action.id,
+									direction: action.direction,
+									lat: action.lat,
+									lng: action.lng,
+									mode: action.mode
+								})
+							),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_ORDER_ADDRESS]: MUTATION_ORDER_ADDRESS&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_ORDER_ADDRESS]: INVOICE_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="717" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:717</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommerceBatches$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommerceBatches$</b></span>
+                        <a href="#loadEcommerceBatches$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_BATCHES),
+			exhaustMap((action) &#x3D;&gt;
+				this._core
+					.query&lt;IBatchesResponse[&#x27;data&#x27;]&gt;(QUERY_BATCHES, {
+						calendar: action.calendar,
+						day: action.day,
+						date: action.date,
+						exception: action.exception
+					})
+					.pipe(
+						map((res) &#x3D;&gt;
+							LOADED_ECOMMERCE_BATCHES({
+								batches: res.gBatches.map((batch) &#x3D;&gt; {
+									return {
+										id: batch.id,
+										title: batch.title,
+										from: batch.from.substring(0, 5),
+										to: batch.to.substring(0, 5)
+									};
+								})
+							})
+						),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_BATCHES]: QUERY_BATCHES&#x27; }))
+					)
+			)
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="666" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:666</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommerceCalendar$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommerceCalendar$</b></span>
+                        <a href="#loadEcommerceCalendar$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_CALENDAR),
+			exhaustMap((action) &#x3D;&gt; {
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				if (merchant) {
+					const details: boolean &#x3D; action.day ? true : false;
+					return this._core
+						.query&lt;
+							ICalendarResponse[&#x27;data&#x27;]
+						&gt;(QUERY_CALENDAR, { year: action.year, month: action.month, day: action.day ?? 1, merchant, details })
+						.pipe(
+							map((res) &#x3D;&gt;
+								LOADED_ECOMMERCE_CALENDAR({
+									calendar: {
+										id: res.gCalendar.calendarId,
+										delay: res.gCalendar.delay,
+										typeDelay: res.gCalendar.typeDelay,
+										days: res.gCalendar.workingDays as (&#x27;FRI&#x27; | &#x27;MON&#x27; | &#x27;SAT&#x27; | &#x27;SUN&#x27; | &#x27;THU&#x27; | &#x27;TUE&#x27; | &#x27;WED&#x27;)[],
+										exceptions: res.gCalendar.exceptionsDates,
+										disabled: res.gCalendar.disabledDates
+									},
+									details: !details
+								})
+							),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_CALENDAR]: QUERY_CALENDAR&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_CALENDAR]: MERCHANT_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="630" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:630</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommerceCart$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommerceCart$</b></span>
+                        <a href="#loadEcommerceCart$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_CART),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.query&lt;ICartResponse[&#x27;data&#x27;]&gt;(QUERY_CART, { invoice: action.order, page: action.page || 1 }).pipe(
+					map((res) &#x3D;&gt;
+						LOADED_ECOMMERCE_CART({
+							products: {
+								status: complete,
+								items: res.gIProducts.map((product) &#x3D;&gt; {
+									return {
+										id: product.product.id,
+										title: product.product.title,
+										image: product.product.frontPage,
+										price: product.product.price,
+										stock: product.product.stock,
+										quantity: product.quantity
+									};
+								})
+							}
+						})
+					),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_CART]: QUERY_CART&#x27; }))
+				)
+			)
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="531" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:531</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommerceInvoice$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommerceInvoice$</b></span>
+                        <a href="#loadEcommerceInvoice$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_INVOICE),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.query&lt;IInvoiceResponse[&#x27;data&#x27;]&gt;(QUERY_INVOICE, { order: action.invoice }).pipe(
+					map((res) &#x3D;&gt;
+						LOADED_ECOMMERCE_INVOICE({
+							invoice: {
+								id: action.invoice,
+								message: res.gOrder.message,
+								merchant: res.gOrder.merchantId,
+								total: res.gOrder.total,
+								user: res.gOrder.userId,
+								reservation: res.gOrder.reservation ?? &#x27;&#x27;,
+								products: res.gOrder.products.map((product) &#x3D;&gt; {
+									return {
+										title: product.product.title,
+										price: product.product.price,
+										image: product.product.frontPage,
+										quantity: product.quantity
+									};
+								}),
+								addressDirection: res.gOrder.addressDirection,
+								addressLat: res.gOrder.addressLat,
+								addressLng: res.gOrder.addressLng,
+								code: res.gOrder.code,
+								note: res.gOrder.note,
+								status: res.gOrder.status,
+								voucher: res.gOrder.voucher
+							}
+						})
+					),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE]: QUERY_INVOICE&#x27; }))
+				)
+			)
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="818" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:818</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommerceOrder$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommerceOrder$</b></span>
+                        <a href="#loadEcommerceOrder$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_ORDER),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.query&lt;IOrderResponse[&#x27;data&#x27;]&gt;(QUERY_ORDER, { invoice: action.order }).pipe(
+					map((res) &#x3D;&gt; {
+						return LOADED_ECOMMERCE_ORDER({
+							calendar:
+								res.gInvoice.batchId &amp;&amp; res.gInvoice.reservation
+									? {
+											id: res.gInvoice.batchId,
+											reservation: res.gInvoice.reservation
+										}
+									: undefined,
+							total: res.gInvoice.total,
+							message: res.gInvoice.message,
+							address: {
+								id: res.gInvoice.addressNumber ?? -3,
+								direction: res.gInvoice.addressDirection ?? res.gInvoice.merchantDirection,
+								lat: res.gInvoice.addressLat ?? res.gInvoice.merchantLat,
+								lng: res.gInvoice.addressLng ?? res.gInvoice.merchantLng,
+								mode: res.gInvoice.type ?? &#x27;PICK-UP&#x27;
+							}
+						});
+					}),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_ORDER]: QUERY_ORDER&#x27; }))
+				)
+			)
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="561" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:561</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommercePageProduct$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommercePageProduct$</b></span>
+                        <a href="#loadEcommercePageProduct$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PAGE_PRODUCT),
+			exhaustMap((action) &#x3D;&gt; {
+				let user: number | undefined &#x3D; undefined;
+				if (this._core.state.ecommerce.user) {
+					user &#x3D; this._core.state.ecommerce.user;
+				} else {
+					user &#x3D; localStorage.getItem(&#x27;user&#x27;) ? Number(localStorage.getItem(&#x27;user&#x27;)) : undefined;
+				}
+				return this._core
+					.query&lt;IPageProductResponse[&#x27;data&#x27;]&gt;(QUERY_PAGE_PRODUCT, {
+						product: action.product,
+						slug: action.slug,
+						user
+					})
+					.pipe(
+						map((res) &#x3D;&gt; {
+							this._core.state.ecommerce &#x3D; {
+								user: res.combinedProduct.userId,
+								merchant: res.combinedProduct.merchantId,
+								invoice: res.combinedProduct.invoiceId
+							};
+							localStorage.setItem(&#x27;user&#x27;, String(res.combinedProduct.userId));
+							const images: string[] &#x3D; res.combinedProduct.productFrontPage
+								? [res.combinedProduct.productFrontPage]
+								: [];
+							res.combinedProduct.images.forEach((image) &#x3D;&gt; images.push(image.url));
+							return LOADED_ECOMMERCE_PAGE_PRODUCT({
+								user: {
+									id: res.combinedProduct.userId,
+									logged: localStorage.getItem(&#x27;email&#x27;) ? true : false
+								},
+								merchant: {
+									id: res.combinedProduct.merchantId,
+									slug: action.slug,
+									title: res.combinedProduct.merchantTitle
+								},
+								order: {
+									id: res.combinedProduct.invoiceId,
+									count: res.combinedProduct.invoiceCount
+								},
+								product: {
+									status: complete,
+									data: {
+										id: action.product,
+										title: res.combinedProduct.productTitle,
+										images,
+										price: res.combinedProduct.productPrice,
+										stock: res.combinedProduct.productStock,
+										details: res.combinedProduct.details.map((detail) &#x3D;&gt; {
+											return {
+												title: detail.title,
+												description: detail.description,
+												image: detail.url
+											};
+										}),
+										check: res.combinedProduct.check
+									}
+								},
+								info: {
+									calendar: res.combinedProduct.firstShippingDate ?? undefined,
+									direction: res.combinedProduct.merchantDirection ?? undefined,
+									batch: res.combinedProduct.batchId ?? undefined,
+									from: res.combinedProduct.batchFrom ?? undefined,
+									to: res.combinedProduct.batchTo ?? undefined
+								}
+							});
+						})
+					);
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="398" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:398</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommercePageShop$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommercePageShop$</b></span>
+                        <a href="#loadEcommercePageShop$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PAGE_SHOP),
+			exhaustMap((action) &#x3D;&gt; {
+				let user: number | undefined &#x3D; undefined;
+				if (this._core.state.ecommerce.user) {
+					user &#x3D; this._core.state.ecommerce.user;
+				} else {
+					user &#x3D; localStorage.getItem(&#x27;user&#x27;) ? Number(localStorage.getItem(&#x27;user&#x27;)) : undefined;
+				}
+				return this._core.query&lt;IPageShopResponse[&#x27;data&#x27;]&gt;(QUERY_PAGE_SHOP, { slug: action.slug, user }, true).pipe(
+					map((res) &#x3D;&gt; {
+						this._core.state.ecommerce &#x3D; {
+							user: res.combinedShop.userId,
+							merchant: res.combinedShop.merchantId,
+							invoice: res.combinedShop.invoiceId
+						};
+						localStorage.setItem(&#x27;user&#x27;, String(res.combinedShop.userId));
+						const logged: boolean &#x3D; localStorage.getItem(&#x27;email&#x27;) ? true : false;
+						return LOADED_ECOMMERCE_PAGE_SHOP({
+							user: {
+								id: res.combinedShop.userId,
+								logged
+							},
+							merchant: {
+								id: res.combinedShop.merchantId,
+								slug: action.slug,
+								title: res.combinedShop.merchantTitle
+							},
+							order: {
+								id: res.combinedShop.invoiceId,
+								count: res.combinedShop.invoiceCount
+							},
+							products: res.combinedShop.products.map((products) &#x3D;&gt; {
+								return {
+									status: loaded,
+									data: {
+										id: products.id,
+										title: products.title,
+										price: products.price,
+										images: products.frontPage ? [products.frontPage] : []
+									}
+								};
+							}),
+							info: {
+								calendar: res.combinedShop.firstShippingDate ?? undefined,
+								direction: res.combinedShop.merchantDirection ?? undefined,
+								batch: res.combinedShop.batchId ?? undefined,
+								from: res.combinedShop.batchFrom ?? undefined,
+								to: res.combinedShop.batchTo ?? undefined
+							}
+						});
+					}),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_PAGE_SHOP]: QUERY_PAGE_SHOP&#x27; }))
+				);
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="307" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:307</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommercePayments$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommercePayments$</b></span>
+                        <a href="#loadEcommercePayments$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PAYMENTS),
+			exhaustMap((action) &#x3D;&gt; {
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				if (merchant) {
+					return this._core.query&lt;IPaymentsResponse[&#x27;data&#x27;]&gt;(QUERY_PAYMENTS, { page: action.page || 1, merchant }).pipe(
+						map((res) &#x3D;&gt;
+							LOADED_ECOMMERCE_PAYMENTS({
+								payments: res.payments.map((payment) &#x3D;&gt; {
+									return {
+										id: payment.id,
+										title: payment.title,
+										type: payment.typePayment,
+										cvu: payment.cvu
+									};
+								})
+							})
+						),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_PAYMENTS]: QUERY_PAYMENTS&#x27; }))
+					);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_PAYMENTS]: MERCHANT_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="753" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:753</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommerceProduct$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommerceProduct$</b></span>
+                        <a href="#loadEcommerceProduct$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PRODUCT),
+			exhaustMap((action) &#x3D;&gt; {
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				if (merchant &amp;&amp; invoice) {
+					return this._core
+						.query&lt;IProductResponse[&#x27;data&#x27;]&gt;(QUERY_PRODUCT, { product: action.product, invoice, merchant })
+						.pipe(
+							map((res) &#x3D;&gt; {
+								return LOADED_ECOMMERCE_PRODUCT({
+									product: {
+										id: action.product,
+										stock: res.rProduct.stock,
+										images: res.rProduct.images.map((image) &#x3D;&gt; image.url),
+										details: res.rProduct.details.map((detail) &#x3D;&gt; {
+											return {
+												title: detail.title,
+												description: detail.description,
+												image: detail.url
+											};
+										}),
+										check: res.rProduct.check
+									}
+								});
+							}),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_PRODUCT]: QUERY_PRODUCT&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_PRODUCT]: MERCHANT_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="474" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:474</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadEcommerceProducts$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadEcommerceProducts$</b></span>
+                        <a href="#loadEcommerceProducts$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PRODUCTS),
+			exhaustMap((action) &#x3D;&gt;
+				this._core
+					.query&lt;IProductsResponse[&#x27;data&#x27;]&gt;(QUERY_PRODUCTS, { page: action.page, merchant: action.merchant })
+					.pipe(
+						map((res) &#x3D;&gt;
+							LOADED_ECOMMERCE_PRODUCTS({
+								products: res.products.map((product) &#x3D;&gt; {
+									return {
+										status: loaded,
+										data: {
+											id: product.id,
+											title: product.title,
+											price: product.price,
+											images: product.frontPage ? [product.frontPage] : []
+										}
+									};
+								})
+							})
+						),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_PRODUCTS]: QUERY_PRODUCTS&#x27; }))
+					)
+			)
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="368" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:368</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadMerchantAddresses$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadMerchantAddresses$</b></span>
+                        <a href="#loadMerchantAddresses$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_MERCHANT_ADDRESSES),
+			exhaustMap((action) &#x3D;&gt; {
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				if (merchant) {
+					return this._core
+						.query&lt;IMerchantAddressesResponse[&#x27;data&#x27;]&gt;(QUERY_MERCHANT_ADDRESS, { merchant, page: action.page ?? 1 })
+						.pipe(
+							map((res) &#x3D;&gt;
+								LOADED_MERCHANT_ADDRESSES({
+									addresses: res.merchantId.address ? [res.merchantId.address] : []
+								})
+							),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_MERCHANT_ADDRESSES]: QUERY_MERCHANT_ADDRESS&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_MERCHANT_ADDRESSES]: MERCHANT_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="282" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:282</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadUserAddresses$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loadUserAddresses$</b></span>
+                        <a href="#loadUserAddresses$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_USER_ADDRESSES),
+			exhaustMap((action) &#x3D;&gt; {
+				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
+				if (user) {
+					return this._core
+						.query&lt;IUserAddressesResponse[&#x27;data&#x27;]&gt;(QUERY_USER_ADDRESSES, { user: user, page: action.page ?? 1 })
+						.pipe(
+							map(
+								(res) &#x3D;&gt;
+									LOADED_USER_ADDRESSES({
+										addresses: res.gAddressUId.map((address) &#x3D;&gt; {
+											return {
+												id: address.id,
+												lng: address.lng,
+												lat: address.lat,
+												direction: address.direction ?? &#x27;Sin dirección&#x27;
+											};
+										})
+									}),
+								catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_ADDRESSES]: QUERY_USER_ADDRESSES&#x27; }))
+							)
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_ADDRESSES]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:177</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateEcommerceInvoiceCalendar$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>updateEcommerceInvoiceCalendar$</b></span>
+                        <a href="#updateEcommerceInvoiceCalendar$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_ORDER_CALENDAR),
+			exhaustMap((action) &#x3D;&gt; {
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				if (invoice) {
+					return this._core.mutation(MUTATION_ORDER_CALENDAR, { invoice, batch: action.batch, date: action.date }).pipe(
+						map(() &#x3D;&gt; UPDATED_ECOMMERCE_ORDER_CALENDAR({ id: action.batch, reservation: action.date })),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_CALENDAR]: MUTATION_INVOICE_CALENDAR&#x27; }))
+					);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_CALENDAR]: INVOICE_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="698" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:698</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateEcommerceInvoiceNote$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>updateEcommerceInvoiceNote$</b></span>
+                        <a href="#updateEcommerceInvoiceNote$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_INVOICE_NOTE),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.mutation(MUTATION_INVOICE_NOTE, { order: action.invoice, note: action.note }).pipe(
+					map(() &#x3D;&gt; UPDATED_ECOMMERCE_INVOICE_NOTE({ note: action.note })),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_NOTE]: MUTATION_INVOICE_NOTE&#x27; }))
+				)
+			)
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="858" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:858</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateEcommerceInvoiceVoucher$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>updateEcommerceInvoiceVoucher$</b></span>
+                        <a href="#updateEcommerceInvoiceVoucher$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_INVOICE_VOUCHER),
+			exhaustMap((action) &#x3D;&gt; {
+				const form: FormData &#x3D; new FormData();
+				form.append(&#x27;orderId&#x27;, String(action.invoice));
+				form.append(&#x27;voucher&#x27;, action.voucher);
+				return this._core.put&lt;IInvoiceUpdateResponse&gt;(&#x60;/orders/update-voucher&#x60;, form).pipe(
+					map((res) &#x3D;&gt; UPDATED_ECOMMERCE_INVOICE_VOUCHER({ voucher: res.url ?? &#x27;&#x27; })),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_VOUCHER]: PUT_INVOICE_VOUCHER&#x27; }))
+				);
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="872" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:872</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateEcommerceOrder$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>updateEcommerceOrder$</b></span>
+                        <a href="#updateEcommerceOrder$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_ORDER),
+			exhaustMap((action) &#x3D;&gt; {
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				if (invoice &amp;&amp; user &amp;&amp; merchant) {
+					const formData: FormData &#x3D; new FormData();
+					formData.append(&#x27;invoiceId&#x27;, String(invoice));
+					formData.append(&#x27;paymentId&#x27;, String(action.payment));
+					formData.append(&#x27;merchantId&#x27;, String(merchant));
+					formData.append(&#x27;batchId&#x27;, String(action.batch));
+					formData.append(&#x27;date&#x27;, undate(action.date));
+					formData.append(&#x27;userId&#x27;, String(user));
+					formData.append(&#x27;voucher&#x27;, action.voucher);
+					formData.append(&#x27;addressDirection&#x27;, action.direction);
+					formData.append(&#x27;addressLat&#x27;, action.lat);
+					formData.append(&#x27;addressLng&#x27;, action.lng);
+					return this._core.post&lt;IInvoiceUpdateResponse&gt;(&#x27;/invoices/upload&#x27;, formData).pipe(
+						map((res) &#x3D;&gt; {
+							this._core.redirect(&#x60;dlicianthus/invoice/${res.orderId}&#x60;);
+							return UPDATED_ECOMMERCE_ORDER();
+						}),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_ORDER]: POST_ORDER&#x27; }))
+					);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_ORDER]: INVOICE - USER - MERCHANT: NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="783" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:783</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateEcommerceOrderCart$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>updateEcommerceOrderCart$</b></span>
+                        <a href="#updateEcommerceOrderCart$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_CART),
+			exhaustMap((action) &#x3D;&gt; {
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				if (invoice) {
+					const list: { productId: number; quantity: number }[] &#x3D; action.products.map((product) &#x3D;&gt; {
+						return { invoiceId: invoice, productId: product.id, quantity: product.quantity };
+					});
+					return this._core.mutation(MUTATION_ORDER_CART, { invoice, list }).pipe(
+						map(() &#x3D;&gt; UPDATED_ECOMMERCE_CART({ products: action.products })),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_CART]: MUTATION_UPDATE_CART&#x27; }))
+					);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_CART]: INVOICE_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="594" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:594</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateEcommerceOrderMessage$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>updateEcommerceOrderMessage$</b></span>
+                        <a href="#updateEcommerceOrderMessage$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_ORDER_MESSAGE),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.mutation(MUTATION_ORDER_MESSAGE, { invoice: action.order, message: action.message }).pipe(
+					map(() &#x3D;&gt; UPDATED_ECOMMERCE_ORDER_MESSAGE({ message: action.message })),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_MESSAGE]: MUTATION_MESSAGE&#x27; }))
+				)
+			)
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="616" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:616</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUserInfo$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>updateUserInfo$</b></span>
+                        <a href="#updateUserInfo$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(USER_INFO),
+			exhaustMap((action) &#x3D;&gt; {
+				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
+				if (user) {
+					return this._core
+						.mutation(MUTATION_USER_INFO, {
+							user,
+							name: action.name,
+							surname: action.surname,
+							phone: action.phone,
+							password: action.password
+						})
+						.pipe(
+							map(() &#x3D;&gt; USER_INFO_SUCCESS({ name: action.name, surname: action.surname, phone: action.phone })),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_INFO]: MUTATION_USER_INFO&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_INFO]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="255" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:255</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userCheck$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>userCheck$</b></span>
+                        <a href="#userCheck$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(USER_CHECK),
+			exhaustMap((action) &#x3D;&gt; {
+				const user: number | undefined &#x3D; localStorage.getItem(&#x27;user&#x27;)
+					? Number(localStorage.getItem(&#x27;user&#x27;))
+					: undefined;
+				if (user) {
+					return this._core
+						.query&lt;IResponse&lt;{ cUserE: number }&gt;[&#x27;data&#x27;]&gt;(QUERY_USER_CHECK, { user, email: action.email }, true)
+						.pipe(
+							map((res) &#x3D;&gt; {
+								if (res.cUserE &#x3D;&#x3D;&#x3D; 0) localStorage.setItem(&#x27;email&#x27;, String(action.email));
+								return USER_CHECKED({ check: res.cUserE, logged: res.cUserE &#x3D;&#x3D;&#x3D; 0 });
+							}),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_CHECK]: QUERY_USER_CHECK&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_CHECK]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userLogin$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>userLogin$</b></span>
+                        <a href="#userLogin$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(USER_LOGIN),
+			exhaustMap((action) &#x3D;&gt; {
+				let user: number | undefined &#x3D; localStorage.getItem(&#x27;user&#x27;) ? Number(localStorage.getItem(&#x27;user&#x27;)) : undefined;
+				if (user) {
+					if (action.user !&#x3D;&#x3D; 1) user &#x3D; action.user;
+					return this._core
+						.query&lt;
+							IUserLoginResponse[&#x27;data&#x27;]
+						&gt;(QUERY_USER_LOGIN, { user, email: action.email, password: action.password }, false)
+						.pipe(
+							map((res) &#x3D;&gt; {
+								if (res.lUser.operationStatus &#x3D;&#x3D;&#x3D; 1) {
+									localStorage.setItem(&#x27;user&#x27;, String(action.user));
+									localStorage.setItem(&#x27;email&#x27;, action.email);
+									this._core.state.ecommerce.user &#x3D; action.user;
+									return USER_LOGIN_SUCCESS({ email: action.email });
+								} else {
+									return USER_LOGIN_ERROR({ err: 1 });
+								}
+							}),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_LOGIN]: QUERY_USER_LOGIN&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_LOGIN]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { inject, Injectable } from &#x27;@angular/core&#x27;;
+import { Actions, createEffect, ofType } from &#x27;@ngrx/effects&#x27;;
+import { catchError, exhaustMap, map, of } from &#x27;rxjs&#x27;;
+
+// * Services.
+import { CoreService } from &#x27;@core/services/core.service&#x27;;
+
+// * GraphQL.
+import {
+	MUTATION_INVOICE_NOTE,
+	MUTATION_ORDER_ADD_PRODUCT,
+	MUTATION_ORDER_ADDRESS,
+	MUTATION_ORDER_CALENDAR,
+	MUTATION_ORDER_CART,
+	MUTATION_ORDER_MESSAGE,
+	MUTATION_USER_ADD_ADDRESS,
+	MUTATION_USER_INFO,
+	QUERY_BATCHES,
+	QUERY_CALENDAR,
+	QUERY_CART,
+	QUERY_INVOICE,
+	QUERY_MERCHANT_ADDRESS,
+	QUERY_ORDER,
+	QUERY_PAGE_PRODUCT,
+	QUERY_PAGE_SHOP,
+	QUERY_PAYMENTS,
+	QUERY_PRODUCT,
+	QUERY_PRODUCTS,
+	QUERY_USER_ADDRESSES,
+	QUERY_USER_CHECK,
+	QUERY_USER_LOGIN
+} from &#x27;./ecommerce.graphql&#x27;;
+
+// * Interfaces.
+import { complete, loaded } from &#x27;@core/interfaces/state.interface&#x27;;
+import {
+	IBatchesResponse,
+	ICalendarResponse,
+	ICartResponse,
+	IInvoiceResponse,
+	IInvoiceUpdateResponse,
+	IMerchantAddressesResponse,
+	IOrderResponse,
+	IPageProductResponse,
+	IPageShopResponse,
+	IPaymentsResponse,
+	IProductResponse,
+	IProductsResponse,
+	IResponse,
+	IUserAddAddressResponse,
+	IUserAddressesResponse,
+	IUserLoginResponse
+} from &#x27;./response.interface&#x27;;
+
+// * Actions.
+import {
+	ADD_ECOMMERCE_CART_PRODUCT,
+	ADD_USER_ADDRESS,
+	ADDED_ECOMMERCE_CART_PRODUCT,
+	ADDED_USER_ADDRESS,
+	LOAD_ECOMMERCE_BATCHES,
+	LOAD_ECOMMERCE_CALENDAR,
+	LOAD_ECOMMERCE_CART,
+	LOAD_ECOMMERCE_INVOICE,
+	LOAD_ECOMMERCE_ORDER,
+	LOAD_ECOMMERCE_PAGE_PRODUCT,
+	LOAD_ECOMMERCE_PAGE_SHOP,
+	LOAD_ECOMMERCE_PAYMENTS,
+	LOAD_ECOMMERCE_PRODUCT,
+	LOAD_ECOMMERCE_PRODUCTS,
+	LOAD_MERCHANT_ADDRESSES,
+	LOAD_USER_ADDRESSES,
+	LOADED_ECOMMERCE_BATCHES,
+	LOADED_ECOMMERCE_CALENDAR,
+	LOADED_ECOMMERCE_CART,
+	LOADED_ECOMMERCE_INVOICE,
+	LOADED_ECOMMERCE_ORDER,
+	LOADED_ECOMMERCE_PAGE_PRODUCT,
+	LOADED_ECOMMERCE_PAGE_SHOP,
+	LOADED_ECOMMERCE_PAYMENTS,
+	LOADED_ECOMMERCE_PRODUCT,
+	LOADED_ECOMMERCE_PRODUCTS,
+	LOADED_MERCHANT_ADDRESSES,
+	LOADED_USER_ADDRESSES,
+	UPDATE_ECOMMERCE_CART,
+	UPDATE_ECOMMERCE_INVOICE_NOTE,
+	UPDATE_ECOMMERCE_INVOICE_VOUCHER,
+	UPDATE_ECOMMERCE_ORDER,
+	UPDATE_ECOMMERCE_ORDER_ADDRESS,
+	UPDATE_ECOMMERCE_ORDER_CALENDAR,
+	UPDATE_ECOMMERCE_ORDER_MESSAGE,
+	UPDATED_ECOMMERCE_CART,
+	UPDATED_ECOMMERCE_INVOICE_NOTE,
+	UPDATED_ECOMMERCE_INVOICE_VOUCHER,
+	UPDATED_ECOMMERCE_ORDER,
+	UPDATED_ECOMMERCE_ORDER_ADDRESS,
+	UPDATED_ECOMMERCE_ORDER_CALENDAR,
+	UPDATED_ECOMMERCE_ORDER_MESSAGE,
+	USER_CHECK,
+	USER_CHECKED,
+	USER_INFO,
+	USER_INFO_SUCCESS,
+	USER_LOGIN,
+	USER_LOGIN_ERROR,
+	USER_LOGIN_SUCCESS
+} from &#x27;./ecommerce.actions&#x27;;
+
+// * Utils.
+import { undate } from &#x27;@core/util/undate.pipe&#x27;;
+
+@Injectable({ providedIn: &#x27;root&#x27; })
+export class EcommerceEffects {
+	private readonly _actions$: Actions &#x3D; inject(Actions);
+	private readonly _core: CoreService &#x3D; inject(CoreService);
+
+	// ! USER CHECK.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly userCheck$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(USER_CHECK),
+			exhaustMap((action) &#x3D;&gt; {
+				const user: number | undefined &#x3D; localStorage.getItem(&#x27;user&#x27;)
+					? Number(localStorage.getItem(&#x27;user&#x27;))
+					: undefined;
+				if (user) {
+					return this._core
+						.query&lt;IResponse&lt;{ cUserE: number }&gt;[&#x27;data&#x27;]&gt;(QUERY_USER_CHECK, { user, email: action.email }, true)
+						.pipe(
+							map((res) &#x3D;&gt; {
+								if (res.cUserE &#x3D;&#x3D;&#x3D; 0) localStorage.setItem(&#x27;email&#x27;, String(action.email));
+								return USER_CHECKED({ check: res.cUserE, logged: res.cUserE &#x3D;&#x3D;&#x3D; 0 });
+							}),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_CHECK]: QUERY_USER_CHECK&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_CHECK]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! USER LOGIN.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly userLogin$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(USER_LOGIN),
+			exhaustMap((action) &#x3D;&gt; {
+				let user: number | undefined &#x3D; localStorage.getItem(&#x27;user&#x27;) ? Number(localStorage.getItem(&#x27;user&#x27;)) : undefined;
+				if (user) {
+					if (action.user !&#x3D;&#x3D; 1) user &#x3D; action.user;
+					return this._core
+						.query&lt;
+							IUserLoginResponse[&#x27;data&#x27;]
+						&gt;(QUERY_USER_LOGIN, { user, email: action.email, password: action.password }, false)
+						.pipe(
+							map((res) &#x3D;&gt; {
+								if (res.lUser.operationStatus &#x3D;&#x3D;&#x3D; 1) {
+									localStorage.setItem(&#x27;user&#x27;, String(action.user));
+									localStorage.setItem(&#x27;email&#x27;, action.email);
+									this._core.state.ecommerce.user &#x3D; action.user;
+									return USER_LOGIN_SUCCESS({ email: action.email });
+								} else {
+									return USER_LOGIN_ERROR({ err: 1 });
+								}
+							}),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_LOGIN]: QUERY_USER_LOGIN&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_LOGIN]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! USER ADDRESSES.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadUserAddresses$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_USER_ADDRESSES),
+			exhaustMap((action) &#x3D;&gt; {
+				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
+				if (user) {
+					return this._core
+						.query&lt;IUserAddressesResponse[&#x27;data&#x27;]&gt;(QUERY_USER_ADDRESSES, { user: user, page: action.page ?? 1 })
+						.pipe(
+							map(
+								(res) &#x3D;&gt;
+									LOADED_USER_ADDRESSES({
+										addresses: res.gAddressUId.map((address) &#x3D;&gt; {
+											return {
+												id: address.id,
+												lng: address.lng,
+												lat: address.lat,
+												direction: address.direction ?? &#x27;Sin dirección&#x27;
+											};
+										})
+									}),
+								catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_ADDRESSES]: QUERY_USER_ADDRESSES&#x27; }))
+							)
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_ADDRESSES]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! USER ADD ADDRESS.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly addUserAddress$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(ADD_USER_ADDRESS),
+			exhaustMap((action) &#x3D;&gt; {
+				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
+				if (user) {
+					if (action.update) {
+						return this._core
+							.mutation&lt;IUserAddAddressResponse[&#x27;data&#x27;]&gt;(MUTATION_USER_ADD_ADDRESS, {
+								user,
+								lng: &#x60;${action.lng}&#x60;,
+								lat: &#x60;${action.lat}&#x60;,
+								direction: action.direction
+							})
+							.pipe(
+								map((res) &#x3D;&gt;
+									ADDED_USER_ADDRESS({
+										address: {
+											id: res.aAddress,
+											direction: action.direction,
+											lat: action.lat,
+											lng: action.lng
+										},
+										update: action.update
+									})
+								),
+								catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_ADD_ADDRESS]: MUTATION_USER_ADD_ADDRESS&#x27; }))
+							);
+					} else {
+						return of(
+							ADDED_USER_ADDRESS({
+								address: { id: -1, direction: action.direction, lat: action.lat, lng: action.lng },
+								update: action.update
+							})
+						);
+					}
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_ADD_ADDRESS]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! USER INFO.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateUserInfo$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(USER_INFO),
+			exhaustMap((action) &#x3D;&gt; {
+				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
+				if (user) {
+					return this._core
+						.mutation(MUTATION_USER_INFO, {
+							user,
+							name: action.name,
+							surname: action.surname,
+							phone: action.phone,
+							password: action.password
+						})
+						.pipe(
+							map(() &#x3D;&gt; USER_INFO_SUCCESS({ name: action.name, surname: action.surname, phone: action.phone })),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_USER_INFO]: MUTATION_USER_INFO&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_USER_INFO]: USER_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! MERCHANT ADDRESSES.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadMerchantAddresses$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_MERCHANT_ADDRESSES),
+			exhaustMap((action) &#x3D;&gt; {
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				if (merchant) {
+					return this._core
+						.query&lt;IMerchantAddressesResponse[&#x27;data&#x27;]&gt;(QUERY_MERCHANT_ADDRESS, { merchant, page: action.page ?? 1 })
+						.pipe(
+							map((res) &#x3D;&gt;
+								LOADED_MERCHANT_ADDRESSES({
+									addresses: res.merchantId.address ? [res.merchantId.address] : []
+								})
+							),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_MERCHANT_ADDRESSES]: QUERY_MERCHANT_ADDRESS&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_MERCHANT_ADDRESSES]: MERCHANT_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! PAGE SHOP.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommercePageShop$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PAGE_SHOP),
+			exhaustMap((action) &#x3D;&gt; {
+				let user: number | undefined &#x3D; undefined;
+				if (this._core.state.ecommerce.user) {
+					user &#x3D; this._core.state.ecommerce.user;
+				} else {
+					user &#x3D; localStorage.getItem(&#x27;user&#x27;) ? Number(localStorage.getItem(&#x27;user&#x27;)) : undefined;
+				}
+				return this._core.query&lt;IPageShopResponse[&#x27;data&#x27;]&gt;(QUERY_PAGE_SHOP, { slug: action.slug, user }, true).pipe(
+					map((res) &#x3D;&gt; {
+						this._core.state.ecommerce &#x3D; {
+							user: res.combinedShop.userId,
+							merchant: res.combinedShop.merchantId,
+							invoice: res.combinedShop.invoiceId
+						};
+						localStorage.setItem(&#x27;user&#x27;, String(res.combinedShop.userId));
+						const logged: boolean &#x3D; localStorage.getItem(&#x27;email&#x27;) ? true : false;
+						return LOADED_ECOMMERCE_PAGE_SHOP({
+							user: {
+								id: res.combinedShop.userId,
+								logged
+							},
+							merchant: {
+								id: res.combinedShop.merchantId,
+								slug: action.slug,
+								title: res.combinedShop.merchantTitle
+							},
+							order: {
+								id: res.combinedShop.invoiceId,
+								count: res.combinedShop.invoiceCount
+							},
+							products: res.combinedShop.products.map((products) &#x3D;&gt; {
+								return {
+									status: loaded,
+									data: {
+										id: products.id,
+										title: products.title,
+										price: products.price,
+										images: products.frontPage ? [products.frontPage] : []
+									}
+								};
+							}),
+							info: {
+								calendar: res.combinedShop.firstShippingDate ?? undefined,
+								direction: res.combinedShop.merchantDirection ?? undefined,
+								batch: res.combinedShop.batchId ?? undefined,
+								from: res.combinedShop.batchFrom ?? undefined,
+								to: res.combinedShop.batchTo ?? undefined
+							}
+						});
+					}),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_PAGE_SHOP]: QUERY_PAGE_SHOP&#x27; }))
+				);
+			})
+		);
+	});
+
+	// ! PRODUCTS.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceProducts$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PRODUCTS),
+			exhaustMap((action) &#x3D;&gt;
+				this._core
+					.query&lt;IProductsResponse[&#x27;data&#x27;]&gt;(QUERY_PRODUCTS, { page: action.page, merchant: action.merchant })
+					.pipe(
+						map((res) &#x3D;&gt;
+							LOADED_ECOMMERCE_PRODUCTS({
+								products: res.products.map((product) &#x3D;&gt; {
+									return {
+										status: loaded,
+										data: {
+											id: product.id,
+											title: product.title,
+											price: product.price,
+											images: product.frontPage ? [product.frontPage] : []
+										}
+									};
+								})
+							})
+						),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_PRODUCTS]: QUERY_PRODUCTS&#x27; }))
+					)
+			)
+		);
+	});
+
+	// ! PAGE PRODUCT.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommercePageProduct$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PAGE_PRODUCT),
+			exhaustMap((action) &#x3D;&gt; {
+				let user: number | undefined &#x3D; undefined;
+				if (this._core.state.ecommerce.user) {
+					user &#x3D; this._core.state.ecommerce.user;
+				} else {
+					user &#x3D; localStorage.getItem(&#x27;user&#x27;) ? Number(localStorage.getItem(&#x27;user&#x27;)) : undefined;
+				}
+				return this._core
+					.query&lt;IPageProductResponse[&#x27;data&#x27;]&gt;(QUERY_PAGE_PRODUCT, {
+						product: action.product,
+						slug: action.slug,
+						user
+					})
+					.pipe(
+						map((res) &#x3D;&gt; {
+							this._core.state.ecommerce &#x3D; {
+								user: res.combinedProduct.userId,
+								merchant: res.combinedProduct.merchantId,
+								invoice: res.combinedProduct.invoiceId
+							};
+							localStorage.setItem(&#x27;user&#x27;, String(res.combinedProduct.userId));
+							const images: string[] &#x3D; res.combinedProduct.productFrontPage
+								? [res.combinedProduct.productFrontPage]
+								: [];
+							res.combinedProduct.images.forEach((image) &#x3D;&gt; images.push(image.url));
+							return LOADED_ECOMMERCE_PAGE_PRODUCT({
+								user: {
+									id: res.combinedProduct.userId,
+									logged: localStorage.getItem(&#x27;email&#x27;) ? true : false
+								},
+								merchant: {
+									id: res.combinedProduct.merchantId,
+									slug: action.slug,
+									title: res.combinedProduct.merchantTitle
+								},
+								order: {
+									id: res.combinedProduct.invoiceId,
+									count: res.combinedProduct.invoiceCount
+								},
+								product: {
+									status: complete,
+									data: {
+										id: action.product,
+										title: res.combinedProduct.productTitle,
+										images,
+										price: res.combinedProduct.productPrice,
+										stock: res.combinedProduct.productStock,
+										details: res.combinedProduct.details.map((detail) &#x3D;&gt; {
+											return {
+												title: detail.title,
+												description: detail.description,
+												image: detail.url
+											};
+										}),
+										check: res.combinedProduct.check
+									}
+								},
+								info: {
+									calendar: res.combinedProduct.firstShippingDate ?? undefined,
+									direction: res.combinedProduct.merchantDirection ?? undefined,
+									batch: res.combinedProduct.batchId ?? undefined,
+									from: res.combinedProduct.batchFrom ?? undefined,
+									to: res.combinedProduct.batchTo ?? undefined
+								}
+							});
+						})
+					);
+			})
+		);
+	});
+
+	// ! PRODUCT.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceProduct$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PRODUCT),
+			exhaustMap((action) &#x3D;&gt; {
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				if (merchant &amp;&amp; invoice) {
+					return this._core
+						.query&lt;IProductResponse[&#x27;data&#x27;]&gt;(QUERY_PRODUCT, { product: action.product, invoice, merchant })
+						.pipe(
+							map((res) &#x3D;&gt; {
+								return LOADED_ECOMMERCE_PRODUCT({
+									product: {
+										id: action.product,
+										stock: res.rProduct.stock,
+										images: res.rProduct.images.map((image) &#x3D;&gt; image.url),
+										details: res.rProduct.details.map((detail) &#x3D;&gt; {
+											return {
+												title: detail.title,
+												description: detail.description,
+												image: detail.url
+											};
+										}),
+										check: res.rProduct.check
+									}
+								});
+							}),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_PRODUCT]: QUERY_PRODUCT&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_PRODUCT]: MERCHANT_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! ADD CART PRODUCT.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly addEcommerceCartProduct$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(ADD_ECOMMERCE_CART_PRODUCT),
+			exhaustMap((action) &#x3D;&gt;
+				this._core
+					.mutation(MUTATION_ORDER_ADD_PRODUCT, {
+						invoice: this._core.state.ecommerce.invoice,
+						product: action.product.id
+					})
+					.pipe(
+						map(() &#x3D;&gt; ADDED_ECOMMERCE_CART_PRODUCT({ product: action.product })),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_CART]: MUTATION_ADD_PRODUCT&#x27; }))
+					)
+			)
+		);
+	});
+
+	// ! CART.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceCart$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_CART),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.query&lt;ICartResponse[&#x27;data&#x27;]&gt;(QUERY_CART, { invoice: action.order, page: action.page || 1 }).pipe(
+					map((res) &#x3D;&gt;
+						LOADED_ECOMMERCE_CART({
+							products: {
+								status: complete,
+								items: res.gIProducts.map((product) &#x3D;&gt; {
+									return {
+										id: product.product.id,
+										title: product.product.title,
+										image: product.product.frontPage,
+										price: product.product.price,
+										stock: product.product.stock,
+										quantity: product.quantity
+									};
+								})
+							}
+						})
+					),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_CART]: QUERY_CART&#x27; }))
+				)
+			)
+		);
+	});
+
+	// ! ORDER.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceOrder$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_ORDER),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.query&lt;IOrderResponse[&#x27;data&#x27;]&gt;(QUERY_ORDER, { invoice: action.order }).pipe(
+					map((res) &#x3D;&gt; {
+						return LOADED_ECOMMERCE_ORDER({
+							calendar:
+								res.gInvoice.batchId &amp;&amp; res.gInvoice.reservation
+									? {
+											id: res.gInvoice.batchId,
+											reservation: res.gInvoice.reservation
+										}
+									: undefined,
+							total: res.gInvoice.total,
+							message: res.gInvoice.message,
+							address: {
+								id: res.gInvoice.addressNumber ?? -3,
+								direction: res.gInvoice.addressDirection ?? res.gInvoice.merchantDirection,
+								lat: res.gInvoice.addressLat ?? res.gInvoice.merchantLat,
+								lng: res.gInvoice.addressLng ?? res.gInvoice.merchantLng,
+								mode: res.gInvoice.type ?? &#x27;PICK-UP&#x27;
+							}
+						});
+					}),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_ORDER]: QUERY_ORDER&#x27; }))
+				)
+			)
+		);
+	});
+
+	// ! UPDATE CART.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateEcommerceOrderCart$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_CART),
+			exhaustMap((action) &#x3D;&gt; {
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				if (invoice) {
+					const list: { productId: number; quantity: number }[] &#x3D; action.products.map((product) &#x3D;&gt; {
+						return { invoiceId: invoice, productId: product.id, quantity: product.quantity };
+					});
+					return this._core.mutation(MUTATION_ORDER_CART, { invoice, list }).pipe(
+						map(() &#x3D;&gt; UPDATED_ECOMMERCE_CART({ products: action.products })),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_CART]: MUTATION_UPDATE_CART&#x27; }))
+					);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_CART]: INVOICE_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! MESSAGE
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateEcommerceOrderMessage$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_ORDER_MESSAGE),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.mutation(MUTATION_ORDER_MESSAGE, { invoice: action.order, message: action.message }).pipe(
+					map(() &#x3D;&gt; UPDATED_ECOMMERCE_ORDER_MESSAGE({ message: action.message })),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_MESSAGE]: MUTATION_MESSAGE&#x27; }))
+				)
+			)
+		);
+	});
+
+	// ! CALENDAR.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceCalendar$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_CALENDAR),
+			exhaustMap((action) &#x3D;&gt; {
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				if (merchant) {
+					const details: boolean &#x3D; action.day ? true : false;
+					return this._core
+						.query&lt;
+							ICalendarResponse[&#x27;data&#x27;]
+						&gt;(QUERY_CALENDAR, { year: action.year, month: action.month, day: action.day ?? 1, merchant, details })
+						.pipe(
+							map((res) &#x3D;&gt;
+								LOADED_ECOMMERCE_CALENDAR({
+									calendar: {
+										id: res.gCalendar.calendarId,
+										delay: res.gCalendar.delay,
+										typeDelay: res.gCalendar.typeDelay,
+										days: res.gCalendar.workingDays as (&#x27;FRI&#x27; | &#x27;MON&#x27; | &#x27;SAT&#x27; | &#x27;SUN&#x27; | &#x27;THU&#x27; | &#x27;TUE&#x27; | &#x27;WED&#x27;)[],
+										exceptions: res.gCalendar.exceptionsDates,
+										disabled: res.gCalendar.disabledDates
+									},
+									details: !details
+								})
+							),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_CALENDAR]: QUERY_CALENDAR&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_CALENDAR]: MERCHANT_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! BATCHES.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceBatches$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_BATCHES),
+			exhaustMap((action) &#x3D;&gt;
+				this._core
+					.query&lt;IBatchesResponse[&#x27;data&#x27;]&gt;(QUERY_BATCHES, {
+						calendar: action.calendar,
+						day: action.day,
+						date: action.date,
+						exception: action.exception
+					})
+					.pipe(
+						map((res) &#x3D;&gt;
+							LOADED_ECOMMERCE_BATCHES({
+								batches: res.gBatches.map((batch) &#x3D;&gt; {
+									return {
+										id: batch.id,
+										title: batch.title,
+										from: batch.from.substring(0, 5),
+										to: batch.to.substring(0, 5)
+									};
+								})
+							})
+						),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_BATCHES]: QUERY_BATCHES&#x27; }))
+					)
+			)
+		);
+	});
+
+	// ! UPDATE CALENDAR.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateEcommerceInvoiceCalendar$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_ORDER_CALENDAR),
+			exhaustMap((action) &#x3D;&gt; {
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				if (invoice) {
+					return this._core.mutation(MUTATION_ORDER_CALENDAR, { invoice, batch: action.batch, date: action.date }).pipe(
+						map(() &#x3D;&gt; UPDATED_ECOMMERCE_ORDER_CALENDAR({ id: action.batch, reservation: action.date })),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_CALENDAR]: MUTATION_INVOICE_CALENDAR&#x27; }))
+					);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_CALENDAR]: INVOICE_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! UPDATE ORDER ADDRESS.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly ecommerceUOrderAddress$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_ORDER_ADDRESS),
+			exhaustMap((action) &#x3D;&gt; {
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				if (invoice) {
+					return this._core
+						.mutation(MUTATION_ORDER_ADDRESS, {
+							invoice,
+							direction: action.direction,
+							lng: action.lng,
+							lat: action.lat,
+							type: action.mode,
+							id: action.id
+						})
+						.pipe(
+							map(() &#x3D;&gt;
+								UPDATED_ECOMMERCE_ORDER_ADDRESS({
+									id: action.id,
+									direction: action.direction,
+									lat: action.lat,
+									lng: action.lng,
+									mode: action.mode
+								})
+							),
+							catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_ORDER_ADDRESS]: MUTATION_ORDER_ADDRESS&#x27; }))
+						);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_ORDER_ADDRESS]: INVOICE_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! PAYMENTS.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommercePayments$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_PAYMENTS),
+			exhaustMap((action) &#x3D;&gt; {
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				if (merchant) {
+					return this._core.query&lt;IPaymentsResponse[&#x27;data&#x27;]&gt;(QUERY_PAYMENTS, { page: action.page || 1, merchant }).pipe(
+						map((res) &#x3D;&gt;
+							LOADED_ECOMMERCE_PAYMENTS({
+								payments: res.payments.map((payment) &#x3D;&gt; {
+									return {
+										id: payment.id,
+										title: payment.title,
+										type: payment.typePayment,
+										cvu: payment.cvu
+									};
+								})
+							})
+						),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_PAYMENTS]: QUERY_PAYMENTS&#x27; }))
+					);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_PAYMENTS]: MERCHANT_NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! UPDATE ORDER.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateEcommerceOrder$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_ORDER),
+			exhaustMap((action) &#x3D;&gt; {
+				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
+				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
+				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				if (invoice &amp;&amp; user &amp;&amp; merchant) {
+					const formData: FormData &#x3D; new FormData();
+					formData.append(&#x27;invoiceId&#x27;, String(invoice));
+					formData.append(&#x27;paymentId&#x27;, String(action.payment));
+					formData.append(&#x27;merchantId&#x27;, String(merchant));
+					formData.append(&#x27;batchId&#x27;, String(action.batch));
+					formData.append(&#x27;date&#x27;, undate(action.date));
+					formData.append(&#x27;userId&#x27;, String(user));
+					formData.append(&#x27;voucher&#x27;, action.voucher);
+					formData.append(&#x27;addressDirection&#x27;, action.direction);
+					formData.append(&#x27;addressLat&#x27;, action.lat);
+					formData.append(&#x27;addressLng&#x27;, action.lng);
+					return this._core.post&lt;IInvoiceUpdateResponse&gt;(&#x27;/invoices/upload&#x27;, formData).pipe(
+						map((res) &#x3D;&gt; {
+							this._core.redirect(&#x60;dlicianthus/invoice/${res.orderId}&#x60;);
+							return UPDATED_ECOMMERCE_ORDER();
+						}),
+						catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_ORDER]: POST_ORDER&#x27; }))
+					);
+				} else {
+					return of({ type: &#x27;[ERROR_ECOMMERCE_ORDER]: INVOICE - USER - MERCHANT: NOT_FOUND&#x27; });
+				}
+			})
+		);
+	});
+
+	// ! INVOICE.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceInvoice$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_INVOICE),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.query&lt;IInvoiceResponse[&#x27;data&#x27;]&gt;(QUERY_INVOICE, { order: action.invoice }).pipe(
+					map((res) &#x3D;&gt;
+						LOADED_ECOMMERCE_INVOICE({
+							invoice: {
+								id: action.invoice,
+								message: res.gOrder.message,
+								merchant: res.gOrder.merchantId,
+								total: res.gOrder.total,
+								user: res.gOrder.userId,
+								reservation: res.gOrder.reservation ?? &#x27;&#x27;,
+								products: res.gOrder.products.map((product) &#x3D;&gt; {
+									return {
+										title: product.product.title,
+										price: product.product.price,
+										image: product.product.frontPage,
+										quantity: product.quantity
+									};
+								}),
+								addressDirection: res.gOrder.addressDirection,
+								addressLat: res.gOrder.addressLat,
+								addressLng: res.gOrder.addressLng,
+								code: res.gOrder.code,
+								note: res.gOrder.note,
+								status: res.gOrder.status,
+								voucher: res.gOrder.voucher
+							}
+						})
+					),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE]: QUERY_INVOICE&#x27; }))
+				)
+			)
+		);
+	});
+
+	// ! UPDATE INVOICE NOTE.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateEcommerceInvoiceNote$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_INVOICE_NOTE),
+			exhaustMap((action) &#x3D;&gt;
+				this._core.mutation(MUTATION_INVOICE_NOTE, { order: action.invoice, note: action.note }).pipe(
+					map(() &#x3D;&gt; UPDATED_ECOMMERCE_INVOICE_NOTE({ note: action.note })),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_NOTE]: MUTATION_INVOICE_NOTE&#x27; }))
+				)
+			)
+		);
+	});
+
+	// ! UPDATE INVOICE VOUCHER.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateEcommerceInvoiceVoucher$ &#x3D; createEffect(() &#x3D;&gt; {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_INVOICE_VOUCHER),
+			exhaustMap((action) &#x3D;&gt; {
+				const form: FormData &#x3D; new FormData();
+				form.append(&#x27;orderId&#x27;, String(action.invoice));
+				form.append(&#x27;voucher&#x27;, action.voucher);
+				return this._core.put&lt;IInvoiceUpdateResponse&gt;(&#x60;/orders/update-voucher&#x60;, form).pipe(
+					map((res) &#x3D;&gt; UPDATED_ECOMMERCE_INVOICE_VOUCHER({ voucher: res.url ?? &#x27;&#x27; })),
+					catchError(() &#x3D;&gt; of({ type: &#x27;[ERROR_ECOMMERCE_INVOICE_VOUCHER]: PUT_INVOICE_VOUCHER&#x27; }))
+				);
+			})
+		);
+	});
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'EcommerceEffects.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

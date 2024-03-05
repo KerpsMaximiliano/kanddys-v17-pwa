@@ -1,0 +1,253 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>laia documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="./" class="navbar-brand">laia documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1>Project settings</h1>
+<h3>Versions</h3>
+<hr />
+- node versión: 20.10.0
+- npm versión: 10.2.3
+- angular cli versión: 17.0.5
+
+<hr />
+<h3>VSCode extensions</h3>
+<hr />
+
+<ul>
+<li><p>Angular Essentials (Version 16) <code>John Papa</code></p>
+</li>
+<li><p>Angular Language Service <code>Angular</code></p>
+</li>
+<li><p>Angular Schematics <code>Cyrille Tuze</code></p>
+</li>
+<li><p>Angular Snippets (Version 16) <code>John Papa</code></p>
+</li>
+<li><p>ESLint <code>Microsoft</code></p>
+</li>
+<li><p>Prettier - Code formatter <code>Prettier</code></p>
+</li>
+</ul>
+<hr />
+<h3>VSCode settings</h3>
+<hr />
+
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">{
+    &quot;security.workspace.trust.untrustedFiles&quot;: &quot;open&quot;,
+    &quot;window.newWindowDimensions&quot;: &quot;fullscreen&quot;,
+    &quot;workbench.sideBar.location&quot;: &quot;right&quot;,
+    &quot;liveServer.settings.donotShowInfoMsg&quot;: true,
+    &quot;files.associations&quot;: {
+        &quot;*.dbf&quot;: &quot;plaintext&quot;,
+        &quot;*.html&quot;: &quot;html&quot;,
+        &quot;*.ts&quot;: &quot;typescript&quot;,
+        &quot;*.scss&quot;: &quot;sass&quot;
+    },
+    &quot;terminal.integrated.env.windows&quot;: {},
+    &quot;editor.unicodeHighlight.invisibleCharacters&quot;: false,
+    &quot;editor.unicodeHighlight.ambiguousCharacters&quot;: false,
+    &quot;editor.minimap.enabled&quot;: false,
+    &quot;editor.tabSize&quot;: 2,
+    &quot;editor.inlineSuggest.enabled&quot;: true,
+    &quot;editor.suggest.snippetsPreventQuickSuggestions&quot;: true,
+    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;,
+    &quot;editor.formatOnSave&quot;: true,
+    &quot;editor.codeActionsOnSave&quot;: { &quot;source.organizeImports&quot;: true },
+    &quot;workbench.editorAssociations&quot;: { &quot;*.dbf&quot;: &quot;default&quot;, &quot;*.svg&quot;: &quot;default&quot; },
+    &quot;workbench.iconTheme&quot;: &quot;material-icon-theme&quot;,
+    &quot;workbench.startupEditor&quot;: &quot;none&quot;,
+    &quot;[jsonc]&quot;: { &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot; },
+    &quot;[json]&quot;: { &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot; },
+    &quot;[html]&quot;: { &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot; },
+    &quot;[css]&quot;: { &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot; },
+    &quot;[scss]&quot;: { &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot; },
+    &quot;[sass]&quot;: { &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot; },
+    &quot;[javascript]&quot;: { &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot; },
+    &quot;javascript.updateImportsOnFileMove.enabled&quot;: &quot;always&quot;,
+    &quot;[typescript]&quot;: { &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot; },
+    &quot;typescript.preferences.importModuleSpecifier&quot;: &quot;relative&quot;,
+    &quot;typescript.updateImportsOnFileMove.enabled&quot;: &quot;always&quot;,
+    &quot;prettier.requireConfig&quot;: true,
+    &quot;prettier.printWidth&quot;: 120,
+}</code></pre></div><hr />
+
+<h3>ESLint command</h3>
+<hr />
+
+<p><code>ng lint</code></p>
+<h1>Rewardcharly</h1>
+<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 17.0.5.</p>
+<h2>Development server</h2>
+<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The application will automatically reload if you change any of the source files.</p>
+<h2>Code scaffolding</h2>
+<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
+<h2>Build</h2>
+<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory.</p>
+<h2>Further help</h2>
+<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://angular.io/cli">Angular CLI Overview and Command Reference</a> page.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,877 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>laia documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">laia documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FirstComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/auth/pages/first/first.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-auth-first</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>MatFormFieldModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>MatInputModule</code>
+                                <code><a href="../components/ButtonComponent.html" target="_self" >ButtonComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./first.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./first.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_core" >_core</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_store" >_store</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#getErrorMessage" >getErrorMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#user" >user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_setForm" >_setForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#back" >back</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#save" >save</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_setForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_setForm</b></span>
+                        <a href="#_setForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_setForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>UntypedFormGroup</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="back"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>back</b></span>
+                        <a href="#back"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>back()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>save()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_core"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_core</b></span>
+                        <a href="#_core"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/CoreService.html" target="_self" >CoreService</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(CoreService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_store"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_store</b></span>
+                        <a href="#_store"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IState.html" target="_self" >Store&lt;IState&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Store)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._setForm()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getErrorMessage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>getErrorMessage</b></span>
+                        <a href="#getErrorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>getErrorMessage</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;ILoadableEntity&lt;IUser&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._store.selectSignal(selectEcommerceUser)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/modules/auth/pages/first/first.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, OnInit, Signal, inject } from &#x27;@angular/core&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+
+// * Services.
+import { CoreService } from &#x27;@core/services/core.service&#x27;;
+
+// * Interfaces.
+import { ILoadableEntity, IState } from &#x27;@core/interfaces/state.interface&#x27;;
+import { IUser } from &#x27;@ecommerce/interfaces/ecommerce.interface&#x27;;
+
+// * Forms.
+import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from &#x27;@angular/forms&#x27;;
+
+// * Validators.
+import { getErrorMessage, isNumeric, notOnlySpaces } from &#x27;@core/validators/character.validators&#x27;;
+
+// * Actions.
+import { USER_INFO } from &#x27;@ecommerce/state/ecommerce.actions&#x27;;
+
+// * Selectors.
+import { selectEcommerceUser } from &#x27;@ecommerce/state/ecommerce.selectors&#x27;;
+
+// * Material.
+import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
+import { MatInputModule } from &#x27;@angular/material/input&#x27;;
+
+// * Shared.
+import { ButtonComponent } from &#x27;@core/components/button/button.component&#x27;;
+
+@Component({
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	selector: &#x27;app-auth-first&#x27;,
+	standalone: true,
+	imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, ButtonComponent],
+	templateUrl: &#x27;./first.component.html&#x27;,
+	styleUrl: &#x27;./first.component.scss&#x27;
+})
+export class FirstComponent implements OnInit {
+	public readonly getErrorMessage &#x3D; getErrorMessage;
+	public readonly form &#x3D; this._setForm();
+
+	// eslint-disable-next-line @ngrx/use-consistent-global-store-name
+	private readonly _store: Store&lt;IState&gt; &#x3D; inject(Store);
+	private readonly _core: CoreService &#x3D; inject(CoreService);
+
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public user: Signal&lt;ILoadableEntity&lt;IUser&gt;&gt; &#x3D; this._store.selectSignal(selectEcommerceUser);
+
+	public ngOnInit(): void {
+		if (!this.user().data.logged || this.user().data.check !&#x3D;&#x3D; 0 || this.user().data.check &#x3D;&#x3D;&#x3D; null) {
+			this._core.redirect(&#x27;&#x27;);
+		}
+	}
+
+	public back(): void {
+		this._core.redirect(&#x27;&#x27;);
+	}
+
+	public save(): void {
+		if (this.form.valid) {
+			if (
+				this.form.get(&#x27;name&#x27;)?.value ||
+				this.form.get(&#x27;surname&#x27;)?.value ||
+				this.form.get(&#x27;phone&#x27;)?.value ||
+				this.form.get(&#x27;password&#x27;)?.value
+			) {
+				this._store.dispatch(
+					USER_INFO({
+						name: this.form.get(&#x27;name&#x27;)?.value,
+						surname: this.form.get(&#x27;surname&#x27;)?.value,
+						phone: this.form.get(&#x27;phone&#x27;)?.value,
+						password: this.form.get(&#x27;password&#x27;)?.value
+					})
+				);
+				this.back();
+			}
+		} else {
+			console.log(&#x27;no valido&#x27;, this.form.valid);
+		}
+	}
+
+	private _setForm(): UntypedFormGroup {
+		return new UntypedFormGroup({
+			name: new UntypedFormControl(null, Validators.compose([Validators.minLength(1), notOnlySpaces()])),
+			surname: new UntypedFormControl(null, Validators.compose([Validators.minLength(1), notOnlySpaces()])),
+			phone: new UntypedFormControl(null, Validators.compose([Validators.minLength(6), isNumeric()])),
+			password: new UntypedFormControl(null, Validators.compose([Validators.minLength(6), notOnlySpaces()]))
+		});
+	}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;header class&#x3D;&quot;pd-24 fle col gp-16&quot;&gt;
+	&lt;h1 class&#x3D;&quot;tx-center&quot;&gt;¡Bienvenido!&lt;/h1&gt;
+	&lt;p class&#x3D;&quot;tx-visible tx-center&quot;&gt;¿Te gustaría añadir más datos?&lt;/p&gt;
+	&lt;button class&#x3D;&quot;option flex gp-8 cen&quot;&gt;
+		Lo haré después
+		&lt;app-button [type]&#x3D;&quot;&#x27;ICON&#x27;&quot; [icon]&#x3D;&quot;&#x27;arrow_forward_ios&#x27;&quot; color&#x3D;&quot;var(--violet)&quot; (click)&#x3D;&quot;back()&quot; /&gt;
+	&lt;/button&gt;
+&lt;/header&gt;
+
+&lt;main style&#x3D;&quot;padding: 0 24px&quot;&gt;
+	&lt;form [formGroup]&#x3D;&quot;form&quot; class&#x3D;&quot;flex col cen gp-16&quot;&gt;
+		&lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+			&lt;mat-label&gt;Nombre&lt;/mat-label&gt;
+			&lt;input matInput formControlName&#x3D;&quot;name&quot; type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Ingresa tu nombre&quot; /&gt;
+			@if (form.get(&#x27;name&#x27;)?.invalid &amp;&amp; form.get(&#x27;name&#x27;)?.touched) {
+				&lt;mat-error&gt;{{ getErrorMessage(form.get(&#x27;name&#x27;)!) }}&lt;/mat-error&gt;
+			}
+		&lt;/mat-form-field&gt;
+
+		&lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+			&lt;mat-label&gt;Apellido&lt;/mat-label&gt;
+			&lt;input matInput formControlName&#x3D;&quot;surname&quot; type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Ingresa tu apellido&quot; /&gt;
+			@if (form.get(&#x27;surname&#x27;)?.invalid &amp;&amp; form.get(&#x27;surname&#x27;)?.touched) {
+				&lt;mat-error&gt;{{ getErrorMessage(form.get(&#x27;surname&#x27;)!) }}&lt;/mat-error&gt;
+			}
+		&lt;/mat-form-field&gt;
+
+		&lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+			&lt;mat-label&gt;Telefono&lt;/mat-label&gt;
+			&lt;input matInput formControlName&#x3D;&quot;phone&quot; type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Ingresa tu número de teléfono&quot; /&gt;
+			@if (form.get(&#x27;phone&#x27;)?.invalid &amp;&amp; form.get(&#x27;phone&#x27;)?.touched) {
+				&lt;mat-error&gt;{{ getErrorMessage(form.get(&#x27;phone&#x27;)!) }}&lt;/mat-error&gt;
+			}
+		&lt;/mat-form-field&gt;
+
+		&lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+			&lt;mat-label&gt;Adiciona una contraseña&lt;/mat-label&gt;
+			&lt;input matInput formControlName&#x3D;&quot;password&quot; type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Ingresa tu contraseña&quot; /&gt;
+			@if (form.get(&#x27;password&#x27;)?.invalid &amp;&amp; form.get(&#x27;password&#x27;)?.touched) {
+				&lt;mat-error&gt;{{ getErrorMessage(form.get(&#x27;password&#x27;)!) }}&lt;/mat-error&gt;
+			}
+		&lt;/mat-form-field&gt;
+
+		&lt;app-button
+			style&#x3D;&quot;width: 90%&quot;
+			[type]&#x3D;&quot;&#x27;XR&#x27;&quot;
+			label&#x3D;&quot;Guardar y Continuar&quot;
+			(click)&#x3D;&quot;save()&quot;
+			[disabled]&#x3D;&quot;
+				!form.get(&#x27;name&#x27;)?.value ||
+				!form.get(&#x27;surname&#x27;)?.value ||
+				!form.get(&#x27;phone&#x27;)?.value ||
+				!form.get(&#x27;password&#x27;)?.value
+			&quot;
+		/&gt;
+	&lt;/form&gt;
+&lt;/main&gt;
+
+&lt;footer class&#x3D;&quot;pd-24&quot;&gt;
+	&lt;p class&#x3D;&quot;tx-center tx-2&quot;&gt;
+		Te enviares el acceso &lt;br /&gt;
+		directo a tu correo electrónico.
+	&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><header class="pd-24 fle col gp-16">	<h1 class="tx-center">¡Bienvenido!</h1>	<p class="tx-visible tx-center">¿Te gustaría añadir más datos?</p>	<button class="option flex gp-8 cen">		Lo haré después		<app-button [type]="\'ICON\'" [icon]="\'arrow_forward_ios\'" color="var(--violet)" (click)="back()" />	</button></header><main style="padding: 0 24px">	<form [formGroup]="form" class="flex col cen gp-16">		<mat-form-field appearance="outline">			<mat-label>Nombre</mat-label>			<input matInput formControlName="name" type="text" placeholder="Ingresa tu nombre" />			@if (form.get(\'name\')?.invalid && form.get(\'name\')?.touched) {				<mat-error>{{ getErrorMessage(form.get(\'name\')!) }}</mat-error>			}		</mat-form-field>		<mat-form-field appearance="outline">			<mat-label>Apellido</mat-label>			<input matInput formControlName="surname" type="text" placeholder="Ingresa tu apellido" />			@if (form.get(\'surname\')?.invalid && form.get(\'surname\')?.touched) {				<mat-error>{{ getErrorMessage(form.get(\'surname\')!) }}</mat-error>			}		</mat-form-field>		<mat-form-field appearance="outline">			<mat-label>Telefono</mat-label>			<input matInput formControlName="phone" type="text" placeholder="Ingresa tu número de teléfono" />			@if (form.get(\'phone\')?.invalid && form.get(\'phone\')?.touched) {				<mat-error>{{ getErrorMessage(form.get(\'phone\')!) }}</mat-error>			}		</mat-form-field>		<mat-form-field appearance="outline">			<mat-label>Adiciona una contraseña</mat-label>			<input matInput formControlName="password" type="text" placeholder="Ingresa tu contraseña" />			@if (form.get(\'password\')?.invalid && form.get(\'password\')?.touched) {				<mat-error>{{ getErrorMessage(form.get(\'password\')!) }}</mat-error>			}		</mat-form-field>		<app-button			style="width: 90%"			[type]="\'XR\'"			label="Guardar y Continuar"			(click)="save()"			[disabled]="				!form.get(\'name\')?.value ||				!form.get(\'surname\')?.value ||				!form.get(\'phone\')?.value ||				!form.get(\'password\')?.value			"		/>	</form></main><footer class="pd-24">	<p class="tx-center tx-2">		Te enviares el acceso <br />		directo a tu correo electrónico.	</p></footer></div>'
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'app-ecommerce-address'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalendarComponent', 'selector': 'app-ecommerce-calendar'},{'name': 'CalendarHeaderComponent', 'selector': 'app-calendar-header'},{'name': 'CartComponent', 'selector': 'app-dialog-content-cart'},{'name': 'EcommerceComponent', 'selector': 'app-ecommerce'},{'name': 'FirstComponent', 'selector': 'app-auth-first'},{'name': 'InfoComponent', 'selector': 'app-auth-info'},{'name': 'InvoiceComponent', 'selector': 'app-ecommerce-invoice'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'LoginComponent', 'selector': 'app-auth-login'},{'name': 'MapComponent', 'selector': 'app-dialog-content-map'},{'name': 'MapsComponent', 'selector': 'app-dialog-content-maps'},{'name': 'MessageComponent', 'selector': 'app-ecommerce-message'},{'name': 'OrderComponent', 'selector': 'app-ecommerce-order'},{'name': 'PaymentComponent', 'selector': 'app-ecommerce-payment'},{'name': 'ProductComponent', 'selector': 'app-ecommerce-product'},{'name': 'ResizeDialogComponent', 'selector': 'app-dialog-resizable'},{'name': 'ShareComponent', 'selector': 'app-dialog-content-share'},{'name': 'ShopComponent', 'selector': 'app-ecommerce-shop'},{'name': 'VoucherComponent', 'selector': 'app-dialog-content-voucher'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FirstComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FirstComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
