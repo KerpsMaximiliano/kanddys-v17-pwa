@@ -6,7 +6,7 @@
 		</header>
 		<main class="w" style="padding: 24px 0 36px 0">
 			<google-map height="100%" width="100%" [center]="config.center" [zoom]="config.zoom" [options]="config.options">
-				<map-marker [position]="{ lat: address().lat, lng: address().lat }" />
+				<map-marker [position]="{ lat: address().lat, lng: address().lng }" />
 			</google-map>
 		</main>
 	</div>
