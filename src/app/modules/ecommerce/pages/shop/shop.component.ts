@@ -11,6 +11,7 @@ import {
 	ILoadableEntity,
 	ILoading,
 	IState,
+	complete,
 	loaded,
 	loading
 } from '@core/interfaces/state.interface';
@@ -23,6 +24,7 @@ import { LOAD_ECOMMERCE_PAGE_SHOP, LOAD_ECOMMERCE_PRODUCTS } from '@ecommerce/st
 import {
 	selectEcommerceCartInfo,
 	selectEcommerceMerchant,
+	selectEcommerceOrderID,
 	selectEcommerceProducts,
 	selectEcommerceUserLogin
 } from '@ecommerce/state/ecommerce.selectors';
@@ -44,8 +46,9 @@ import { LoadingComponent } from '@core/components/loading/loading.component';
 })
 export class ShopComponent implements OnInit {
 	public readonly currency = currency;
-	public readonly loading: ILoading = loading;
+	public readonly complete: ILoading = complete;
 	public readonly loaded: ILoading = loaded;
+	public readonly loading: ILoading = loading;
 
 	// eslint-disable-next-line @ngrx/use-consistent-global-store-name
 	private readonly _store: Store<IState> = inject(Store);
@@ -62,6 +65,8 @@ export class ShopComponent implements OnInit {
 	// eslint-disable-next-line @typescript-eslint/member-ordering
 	public readonly user: Signal<{ id: number; logged: boolean }> = this._store.selectSignal(selectEcommerceUserLogin);
 
+	private readonly _order: Signal<{ id: number; status: ILoading }> = this._store.selectSignal(selectEcommerceOrderID);
+
 	public ngOnInit(): void {
 		if (this._core.state.ecommerce.invoice && this.products().status === this.loading) {
 			this._store.dispatch(LOAD_ECOMMERCE_PRODUCTS({ merchant: this.merchant().data.id, page: 1 }));
@@ -69,6 +74,11 @@ export class ShopComponent implements OnInit {
 			const slug: string | undefined = this._ecommerce.slug();
 			if (slug && this.products().status === this.loading)
 				this._store.dispatch(LOAD_ECOMMERCE_PAGE_SHOP({ slug, page: 1 }));
+		}
+
+		if (this._order().id === 0 && this._order().status === complete) {
+			const slug: string | undefined = this._ecommerce.slug();
+			if (slug) this._store.dispatch(LOAD_ECOMMERCE_PAGE_SHOP({ slug, page: 1 }));
 		}
 	}
 

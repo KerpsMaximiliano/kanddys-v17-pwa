@@ -22,7 +22,11 @@ import { ILoadableEntities, IState, complete, loading } from '@core/interfaces/s
 import { LOAD_ECOMMERCE_PAYMENTS, UPDATE_ECOMMERCE_ORDER } from '@ecommerce/state/ecommerce.actions';
 
 // * Selectors.
-import { selectEcommerceOrder, selectEcommercePayments } from '@ecommerce/state/ecommerce.selectors';
+import {
+	selectEcommerceOrder,
+	selectEcommercePayments,
+	selectEcommerceUserLogin
+} from '@ecommerce/state/ecommerce.selectors';
 
 // * Shared.
 import { ButtonComponent } from '@core/components/button/button.component';
@@ -39,7 +43,7 @@ import { LoadingComponent } from '@core/components/loading/loading.component';
 export class PaymentComponent implements OnInit, OnDestroy {
 	@ViewChild('fileInput') public input?: ElementRef<HTMLInputElement>;
 
-	public complete = complete;
+	public readonly complete = complete;
 	public payment: IPayment | undefined = undefined;
 	public image: string | undefined = undefined;
 	public request: boolean = false;
@@ -53,7 +57,9 @@ export class PaymentComponent implements OnInit, OnDestroy {
 	private _subscription?: Subscription;
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering
-	public payments: Signal<ILoadableEntities<IPayment>> = this._store.selectSignal(selectEcommercePayments);
+	public readonly payments: Signal<ILoadableEntities<IPayment>> = this._store.selectSignal(selectEcommercePayments);
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	private readonly _user: Signal<{ id: number; logged: boolean }> = this._store.selectSignal(selectEcommerceUserLogin);
 
 	public ngOnInit(): void {
 		if (!this._core.state.ecommerce.user) {
@@ -102,6 +108,10 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
 	public save(): void {
 		if (this.request) return;
+		if (!this._user().logged) {
+			this._core.redirect('auth');
+			return;
+		}
 		this.request = true;
 		this._subscription = this._store
 			.select(selectEcommerceOrder)
@@ -110,9 +120,13 @@ export class PaymentComponent implements OnInit, OnDestroy {
 				const payment: number | undefined = this.payment?.id;
 				const batch: number | null = order.data.calendar.data.id;
 				const date: string | null = order.data.calendar.data.reservation;
-
-				if (batch && date && payment) {
-					this._store.dispatch(UPDATE_ECOMMERCE_ORDER({ batch, date, payment, voucher: this._blob }));
+				const direction: string | null = order.data.address.data.direction;
+				const lat: string | null = order.data.address.data.lat;
+				const lng: string | null = order.data.address.data.lng;
+				if (batch && date && payment && direction && lat && lng) {
+					this._store.dispatch(
+						UPDATE_ECOMMERCE_ORDER({ batch, date, payment, voucher: this._blob, direction, lat, lng })
+					);
 				} else {
 					this.request = false;
 					if (this._subscription) this._subscription.unsubscribe();

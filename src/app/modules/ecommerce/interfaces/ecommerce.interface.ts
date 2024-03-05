@@ -9,6 +9,7 @@ export interface IEcommerce {
 	user: ILoadableEntity<IUser>;
 	batches: ILoadableEntities<IBatch>;
 	info: ILoadableEntity<IInfo>;
+	invoice: ILoadableEntity<IInvoice>;
 }
 
 export interface IUser {
@@ -116,10 +117,10 @@ export interface IInvoice {
 		title: string | null;
 		price: number;
 		quantity: number;
-	};
+	}[];
 	total: number;
 	reservation: string;
-	message: string;
+	message: string | null;
 	voucher: string;
 	note: string | null;
 	addressLat: string;

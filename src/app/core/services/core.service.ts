@@ -80,6 +80,10 @@ export class CoreService {
 		return this._http.post<T>(`${this._api}${point}`, body, { headers: { accept: '*/*' } });
 	}
 
+	public put<T>(point: string, body: unknown): Observable<T> {
+		return this._http.put<T>(`${this._api}${point}`, body, { headers: { accept: '*/*' } });
+	}
+
 	public redirect(url: string, id?: number | string): void {
 		if (id) {
 			void this._router.navigate([`${url}/${id}`], { relativeTo: this._route });

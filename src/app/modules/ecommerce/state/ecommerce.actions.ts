@@ -2,7 +2,16 @@ import { createAction, props } from '@ngrx/store';
 
 // * Interfaces.
 import { ILoadableEntity } from '@core/interfaces/state.interface';
-import { IBatch, ICalendar, IInfo, IOrder, IPayment, IProduct, IUser } from '@ecommerce/interfaces/ecommerce.interface';
+import {
+	IBatch,
+	ICalendar,
+	IInfo,
+	IInvoice,
+	IOrder,
+	IPayment,
+	IProduct,
+	IUser
+} from '@ecommerce/interfaces/ecommerce.interface';
 
 // * USER RESET.
 export const USER_RESTORE = createAction('[Ecommerce] Restore User');
@@ -218,16 +227,34 @@ export const LOADED_ECOMMERCE_PAYMENTS = createAction('[Ecommerce] Loaded Paymen
 export const UPDATE_ECOMMERCE_ORDER = createAction(
 	'[Ecommerce] Update Order',
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	props<{ voucher: any; payment: number; date: string; batch: number }>()
+	props<{ voucher: any; payment: number; date: string; batch: number; direction: string; lat: string; lng: string }>()
 );
-export const UPDATED_ECOMMERCE_ORDER = createAction(
-	'[Ecommerce] Updated Order',
-	props<{ order: number; payment: number; voucher: string }>()
-);
+export const UPDATED_ECOMMERCE_ORDER = createAction('[Ecommerce] Updated Order');
 
 // * RESER ORDER.
 export const RESET_ORDER = createAction('[Ecommerce] Reset Order');
 
 // * INVOICE.
 export const LOAD_ECOMMERCE_INVOICE = createAction('[Ecommerce] Load Invoice', props<{ invoice: number }>());
-export const LOADED_ECOMMERCE_INVOICE = createAction('[Ecommerce] Loaded Invoice', props<{ invoice: IOrder }>());
+export const LOADED_ECOMMERCE_INVOICE = createAction('[Ecommerce] Loaded Invoice', props<{ invoice: IInvoice }>());
+
+// * INVOICE UPDATE NOTE.
+export const UPDATE_ECOMMERCE_INVOICE_NOTE = createAction(
+	'[Ecommerce] Update Invoice Note',
+	props<{ invoice: number; note: string }>()
+);
+export const UPDATED_ECOMMERCE_INVOICE_NOTE = createAction(
+	'[Ecommerce] Updated Invoice Note',
+	props<{ note: string }>()
+);
+
+// * INVOICE UPDATE VOUCHER.
+export const UPDATE_ECOMMERCE_INVOICE_VOUCHER = createAction(
+	'[Ecommerce] Update Invoice Voucher',
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	props<{ invoice: number; voucher: any }>()
+);
+export const UPDATED_ECOMMERCE_INVOICE_VOUCHER = createAction(
+	'[Ecommerce] Updated Invoice Voucher',
+	props<{ voucher: string }>()
+);

@@ -28,7 +28,7 @@ export const QUERY_PRODUCT: string = `RProduct($product: Int!, $merchant: Int!, 
 export const QUERY_CART: string = `GIProducts($invoice: Int!, $page: Int!){gIProducts(invoiceId: $invoice, page: $page){quantity product {id title price stock frontPage}}}`;
 
 // * ORDER.
-export const QUERY_ORDER: string = `GInvoice($invoice: Int!){gInvoice(invoiceId: $invoice){reservation total message batchId addressDirection addressLat addressLng addressNumber type merchantLat merchantLng}}`;
+export const QUERY_ORDER: string = `GInvoice($invoice: Int!){gInvoice(invoiceId: $invoice){reservation total message batchId addressDirection addressLat addressLng addressNumber type merchantLat merchantLng merchantDirection}}`;
 
 // * CALENDAR.
 export const QUERY_CALENDAR: string = `GCalendar($year: Int!, $month: Int!, $day: Int!, $merchant: Int!, $details: Boolean!){gCalendar(year: $year, month: $month, day: $day, merchantId: $merchant){calendarId @include(if: $details) delay @include(if: $details) typeDelay @include(if: $details) workingDays @include(if: $details) disabledDates exceptionsDates}}`;
@@ -38,6 +38,9 @@ export const QUERY_BATCHES: string = `GBatches($calendar: Int!, $day: String!, $
 
 // * PAYMENT.
 export const QUERY_PAYMENTS: string = `Payments($page: Int!, $merchant: Int!){payments(page: $page, merchantId: $merchant, status: 1){id typePayment title cvu}}`;
+
+// * INVOICE.
+export const QUERY_INVOICE: string = `GOrder($order: Int!){gOrder(orderId: $order){merchantId userId code reservation total message status voucher note addressLat addressLng addressDirection products{quantity product{title price frontPage}}}}`;
 
 // ! ------------------------------ MUTATIONS ------------------------------
 
@@ -61,3 +64,6 @@ export const MUTATION_ORDER_CALENDAR: string = `UInvoiceR($invoice: Int!, $batch
 
 // * UPDATE ORDER ADDRESS.
 export const MUTATION_ORDER_ADDRESS: string = `UInvoiceA($invoice: Int!, $direction: String!, $lat: String!, $lng: String!, $type: String!, $id: Int!){uInvoiceA(invoiceId: $invoice direction: $direction lat: $lat lng: $lng type: $type addressNumber: $id)}`;
+
+// * UPDATE INVOICE NOTE.
+export const MUTATION_INVOICE_NOTE: string = `UOrderS($order: Int!, $note: String!){uOrderN(orderId: $order, note: $note)}`;

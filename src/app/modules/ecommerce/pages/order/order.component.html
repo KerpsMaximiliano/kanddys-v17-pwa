@@ -96,7 +96,7 @@
 					<b>Fecha de Entrega</b>
 				</p>
 				<p class="w tx-visible tx-2">
-					{{ invoice().data.calendar.data.reservation ?? 'Selecciona una fecha de entrega' }}
+					{{ date(info().data.calendar, info().data.from, info().data.to) ?? 'Selecciona una fecha de entrega' }}
 				</p>
 			</div>
 			<app-button [type]="'ICON'" [icon]="invoice().data.calendar.data.id ? 'edit' : 'arrow_forward_ios'" />

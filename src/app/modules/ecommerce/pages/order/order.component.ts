@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 // * Util.
 import { currency } from '@core/util/currency.pipe';
+import { date } from '@core/util/date.pipe';
 
 // * Shared.
 import { ButtonComponent } from '@core/components/button/button.component';
@@ -46,6 +47,7 @@ import { ButtonComponent } from '@core/components/button/button.component';
 })
 export class OrderComponent implements OnInit, OnDestroy {
 	public currency = currency;
+	public date = date;
 	public loaded = loaded;
 
 	// eslint-disable-next-line @ngrx/use-consistent-global-store-name

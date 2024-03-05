@@ -8,6 +8,7 @@ import {
 	LOADED_ECOMMERCE_BATCHES,
 	LOADED_ECOMMERCE_CALENDAR,
 	LOADED_ECOMMERCE_CART,
+	LOADED_ECOMMERCE_INVOICE,
 	LOADED_ECOMMERCE_ORDER,
 	LOADED_ECOMMERCE_PAGE_PRODUCT,
 	LOADED_ECOMMERCE_PAGE_SHOP,
@@ -18,15 +19,20 @@ import {
 	LOADED_USER_ADDRESSES,
 	LOAD_ECOMMERCE_BATCHES,
 	LOAD_ECOMMERCE_CALENDAR,
+	LOAD_ECOMMERCE_INVOICE,
 	LOAD_ECOMMERCE_PAYMENTS,
 	LOAD_MERCHANT_ADDRESSES,
 	LOAD_USER_ADDRESSES,
-	RESET_ORDER,
 	UPDATED_ECOMMERCE_CART,
+	UPDATED_ECOMMERCE_INVOICE_NOTE,
+	UPDATED_ECOMMERCE_INVOICE_VOUCHER,
+	UPDATED_ECOMMERCE_ORDER,
 	UPDATED_ECOMMERCE_ORDER_ADDRESS,
 	UPDATED_ECOMMERCE_ORDER_CALENDAR,
 	UPDATED_ECOMMERCE_ORDER_MESSAGE,
 	UPDATE_ECOMMERCE_CART_PRODUCT,
+	UPDATE_ECOMMERCE_INVOICE_NOTE,
+	UPDATE_ECOMMERCE_INVOICE_VOUCHER,
 	UPDATE_ECOMMERCE_ORDER_ADDRESS,
 	USER_CHECK,
 	USER_CHECKED,
@@ -39,10 +45,9 @@ import {
 
 // * Interfaces.
 import { ILoadableEntity, complete, failed, loaded, loading } from '@core/interfaces/state.interface';
-import { IEcommerce, IOrder, IProduct } from '@ecommerce/interfaces/ecommerce.interface';
+import { IAddress, IEcommerce, IOrder, IProduct } from '@ecommerce/interfaces/ecommerce.interface';
 
 // * Utils.
-import { date } from '@core/util/date.pipe';
 
 // * Initial state.
 export const ECOMMERCE_STATE: IEcommerce = {
@@ -126,6 +131,25 @@ export const ECOMMERCE_STATE: IEcommerce = {
 	info: {
 		status: loading,
 		data: {}
+	},
+	invoice: {
+		status: loading,
+		data: {
+			status: 'PENDING',
+			id: 0,
+			user: 0,
+			merchant: 0,
+			code: '',
+			products: [],
+			total: 0,
+			message: null,
+			reservation: '',
+			note: null,
+			addressDirection: '',
+			addressLat: '',
+			addressLng: '',
+			voucher: ''
+		}
 	}
 };
 
@@ -182,7 +206,8 @@ export const ecommerceReducer = createReducer(
 				data: {
 					...state.user.data,
 					logged: true,
-					email
+					email,
+					id: state.user.data.check ?? state.user.data.id
 				}
 			}
 		};
@@ -263,6 +288,16 @@ export const ecommerceReducer = createReducer(
 	// 	};
 	// }),
 	on(ADDED_USER_ADDRESS, (state, { address, update }): IEcommerce => {
+		let addresses: IAddress[] = [...state.user.data.address.items];
+		if (addresses.length === 0) {
+			addresses = [address];
+		} else {
+			if (update) {
+				addresses = [...addresses, address];
+			} else {
+				addresses[0] = address;
+			}
+		}
 		return {
 			...state,
 			user: {
@@ -271,8 +306,8 @@ export const ecommerceReducer = createReducer(
 					...state.user.data,
 					address: {
 						status: complete,
-						items: update ? [...state.user.data.address.items, address] : [address]
-						// items: [...state.user.data.address.items, address]
+						items: addresses
+						// items: update ? [...state.user.data.address.items, address] : [address]
 					}
 				}
 			}
@@ -337,7 +372,6 @@ export const ecommerceReducer = createReducer(
 			products: {
 				status: loaded,
 				items: [
-					...state.products.items,
 					...products.map((product) => ({
 						status: product.status,
 						data: { ...product.data, details: [], stock: 0, check: 0 }
@@ -350,11 +384,13 @@ export const ecommerceReducer = createReducer(
 					...state.order.data,
 					id: invoice.id,
 					count: invoice.count,
+					user: user.id,
+					merchant: merchant.id,
 					calendar: {
 						status: complete,
 						data: {
 							id: info.batch ?? null,
-							reservation: date(info.calendar, info.from, info.to)
+							reservation: info.calendar ?? ''
 						}
 					}
 				}
@@ -395,12 +431,14 @@ export const ecommerceReducer = createReducer(
 				data: {
 					...state.order.data,
 					id: order.id,
+					user: user.id,
+					merchant: merchant.id,
 					count: order.count,
 					calendar: {
 						status: complete,
 						data: {
 							id: info.batch ?? null,
-							reservation: date(info.calendar, info.from, info.to)
+							reservation: info.calendar ?? ''
 						}
 					}
 				}
@@ -748,11 +786,11 @@ export const ecommerceReducer = createReducer(
 		};
 	}),
 	// * RESET ORDER.
-	on(RESET_ORDER, (state): IEcommerce => {
+	on(UPDATED_ECOMMERCE_ORDER, (state): IEcommerce => {
 		return {
 			...state,
 			order: {
-				status: loaded,
+				status: complete,
 				data: {
 					...state.order.data,
 					address: {
@@ -782,6 +820,69 @@ export const ecommerceReducer = createReducer(
 					},
 					total: 0,
 					id: 0
+				}
+			}
+		};
+	}),
+	// * INVOICE.
+	on(LOAD_ECOMMERCE_INVOICE, (state): IEcommerce => {
+		return {
+			...state,
+			invoice: {
+				status: loading,
+				data: state.invoice.data
+			}
+		};
+	}),
+	on(LOADED_ECOMMERCE_INVOICE, (state, { invoice }): IEcommerce => {
+		return {
+			...state,
+			invoice: {
+				status: complete,
+				data: invoice
+			}
+		};
+	}),
+	// * INVOICE NOTE.
+	on(UPDATE_ECOMMERCE_INVOICE_NOTE, (state): IEcommerce => {
+		return {
+			...state,
+			invoice: {
+				status: loading,
+				data: state.invoice.data
+			}
+		};
+	}),
+	on(UPDATED_ECOMMERCE_INVOICE_NOTE, (state, { note }): IEcommerce => {
+		return {
+			...state,
+			invoice: {
+				status: complete,
+				data: {
+					...state.invoice.data,
+					note
+				}
+			}
+		};
+	}),
+	// * INVOICE VOUCHER.
+	on(UPDATE_ECOMMERCE_INVOICE_VOUCHER, (state): IEcommerce => {
+		return {
+			...state,
+			invoice: {
+				status: loading,
+				data: state.invoice.data
+			}
+		};
+	}),
+	on(UPDATED_ECOMMERCE_INVOICE_VOUCHER, (state, { voucher }): IEcommerce => {
+		return {
+			...state,
+			invoice: {
+				status: complete,
+				data: {
+					...state.invoice.data,
+					voucher
 				}
 			}
 		};

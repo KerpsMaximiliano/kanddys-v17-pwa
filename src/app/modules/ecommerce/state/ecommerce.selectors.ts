@@ -4,12 +4,13 @@ import { MemoizedSelector, createSelector } from '@ngrx/store';
 import { state } from '@core/state';
 
 // * Interfaces.
-import { ILoadableEntities, ILoadableEntity, IState, loading } from '@core/interfaces/state.interface';
+import { ILoadableEntities, ILoadableEntity, ILoading, IState, loading } from '@core/interfaces/state.interface';
 import {
 	IBatch,
 	ICalendar,
 	ICart,
 	IEcommerce,
+	IInvoice,
 	IMerchant,
 	IMessage,
 	IOrder,
@@ -110,6 +111,14 @@ export const selectEcommerceOrder = createSelector(
 	(state: IState): ILoadableEntity<IOrder> => state.ecommerce.order
 );
 
+// * ORDER ID.
+export const selectEcommerceOrderID = createSelector(state, (state: IState): { id: number; status: ILoading } => {
+	return {
+		id: state.ecommerce.order.data.id,
+		status: state.ecommerce.order.status
+	};
+});
+
 // * MESSAGE.
 export const selectEcommerceMessage = createSelector(state, (state: IState): IMessage => {
 	return {
@@ -153,8 +162,32 @@ export const selectEcommercePayments = createSelector(
 // * INVOICE.
 export const selectEcommerceInvoice = createSelector(
 	state,
-	(state: IState): ILoadableEntity<IOrder> => state.ecommerce.order
+	(state: IState): ILoadableEntity<IInvoice> => state.ecommerce.invoice
 );
 
 // * INVOICE ID.
-export const selectEcommerceInvoiceID = createSelector(state, (state: IState): number => state.ecommerce.order.data.id);
+export const selectEcommerceInvoiceID = createSelector(state, (state: IState): { id: number; status: ILoading } => {
+	return {
+		id: state.ecommerce.invoice.data.id,
+		status: state.ecommerce.invoice.status
+	};
+});
+
+// * INVOICE MAP.
+export const selectEcommerceInvoiceMap = createSelector(
+	state,
+	(state: IState): { status: ILoading; direction: string; lat: number; lng: number } => {
+		return {
+			status: state.ecommerce.invoice.status,
+			direction: state.ecommerce.invoice.data.addressDirection,
+			lat: Number(state.ecommerce.invoice.data.addressLat),
+			lng: Number(state.ecommerce.invoice.data.addressLng)
+		};
+	}
+);
+
+// * INVOICE VOUCHER.
+export const selectEcommerceInvoiceVoucher = createSelector(
+	state,
+	(state: IState): string => state.ecommerce.invoice.data.voucher
+);

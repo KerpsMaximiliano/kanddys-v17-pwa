@@ -13,6 +13,9 @@ import {
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, take } from 'rxjs';
 
+// * ENV.
+import { environment } from '@env/environment';
+
 // * Maps.
 import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -83,7 +86,7 @@ export class MapsComponent implements OnInit, OnDestroy {
 		center: { lat: 18.735693, lng: -70.162651 },
 		zoom: 17,
 		options: {
-			mapId: '2834c1be92998db5',
+			mapId: environment.apiMap,
 			disableDefaultUI: true,
 			clickableIcons: true
 		}

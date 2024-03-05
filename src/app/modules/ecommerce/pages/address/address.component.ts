@@ -3,6 +3,9 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit, S
 import { Store } from '@ngrx/store';
 import { Subject, first, takeUntil, tap } from 'rxjs';
 
+// * ENV.
+import { environment } from '@env/environment';
+
 // * Services.
 import { CoreService } from '@core/services/core.service';
 
@@ -110,10 +113,7 @@ export class AddressComponent implements OnInit, AfterViewInit, OnDestroy {
 	public ngAfterViewInit(): void {
 		// this.mode = this.address().mode;
 		this._http
-			.jsonp(
-				'https://maps.googleapis.com/maps/api/js?key=AIzaSyCqV0YIFADudJeeRE4KjZYosxW4usy5Wfg&libraries=places',
-				'callback'
-			)
+			.jsonp(`https://maps.googleapis.com/maps/api/js?key=${environment.apiMap}&libraries=places`, 'callback')
 			.pipe(takeUntil(this._subscriptions))
 			.subscribe();
 	}

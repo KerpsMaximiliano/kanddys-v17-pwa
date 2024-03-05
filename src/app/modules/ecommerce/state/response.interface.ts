@@ -129,6 +129,7 @@ interface IOrder {
 	addressNumber: number | null;
 	type?: 'DELIVERY' | 'PICK-UP';
 	batchId: number | null;
+	merchantDirection: string | null;
 	merchantLng: string | null;
 	merchantLat: string | null;
 }
@@ -156,6 +157,29 @@ interface IPayment {
 	cvu: string | null;
 }
 
+interface IInvoice {
+	merchantId: number;
+	userId: number;
+	code: string;
+	reservation: string | null;
+	total: number;
+	message: string | null;
+	status: 'COMPLETE' | 'PENDING';
+	voucher: string;
+	note: string | null;
+	addressLat: string;
+	addressLng: string;
+	addressDirection: string;
+	products: {
+		quantity: number;
+		product: {
+			title: string | null;
+			price: number;
+			frontPage: string | null;
+		};
+	}[];
+}
+
 // ! USER.
 
 export type IUserCheckResponse = IResponse<{ lUser: IUser }>;
@@ -171,6 +195,9 @@ export type IMerchantAddressesResponse = IResponse<{ merchantId: IMerchantAddres
 
 export type IPageShopResponse = IResponse<{ combinedShop: IPageShop }>;
 export type IPageProductResponse = IResponse<{ combinedProduct: IPageProduct }>;
+
+// ! COMPONENTS.
+
 export type IProductsResponse = IResponse<{ products: IProducts[] }>;
 export type IProductResponse = IResponse<{ rProduct: IProduct }>;
 export type ICartResponse = IResponse<{ gIProducts: ICart[] }>;
@@ -178,3 +205,11 @@ export type IOrderResponse = IResponse<{ gInvoice: IOrder }>;
 export type ICalendarResponse = IResponse<{ gCalendar: ICalendar }>;
 export type IBatchesResponse = IResponse<{ gBatches: IBatch[] }>;
 export type IPaymentsResponse = IResponse<{ payments: IPayment[] }>;
+export type IInvoiceResponse = IResponse<{ gOrder: IInvoice }>;
+
+// ! REST API.
+export interface IInvoiceUpdateResponse {
+	url: string | null;
+	code: string | null;
+	orderId: number | null;
+}

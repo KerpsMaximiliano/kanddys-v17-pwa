@@ -16,11 +16,11 @@ export const AUTH_ROUTES: Routes = [
 		// eslint-disable-next-line @typescript-eslint/promise-function-async
 		loadComponent: () => import('./pages/login/login.component').then((m) => m.LoginComponent)
 	},
-	// {
-	// 	path: 'info',
-	// 	// eslint-disable-next-line @typescript-eslint/promise-function-async
-	// 	loadComponent: () => import('./pages/info/info.component').then((m) => m.InfoComponent)
-	// },
+	{
+		path: 'info',
+		// eslint-disable-next-line @typescript-eslint/promise-function-async
+		loadComponent: () => import('./pages/info/info.component').then((m) => m.InfoComponent)
+	},
 	{
 		path: 'first',
 		// eslint-disable-next-line @typescript-eslint/promise-function-async

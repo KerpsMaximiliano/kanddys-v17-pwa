@@ -29,9 +29,9 @@
 } @else {
 	@defer (when merchant().status === loaded) {
 		<main class="h">
-			<section class="gp-8 w h" style="display: grid; grid-template-columns: repeat(2, 1fr)">
+			<section class="gp-8 w" style="display: grid; grid-template-columns: repeat(2, 1fr)">
 				@for (product of products().items; track $index) {
-					<button class="product flex gp-12" (click)="redirect('product', product.data.id)">
+					<button class="product flex gp-16" (click)="redirect('product', product.data.id)">
 						<div #content_image class="br-12 skeleton-loader">
 							@if (product.data.images[0]) {
 								<img

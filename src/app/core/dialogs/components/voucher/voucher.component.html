@@ -14,9 +14,32 @@
 			<p>+</p>
 		</button>
 	} @else {
-		<div class="w h" style="position: relative; display: grid; place-items: center">
+		<div class="w h grid" style="position: relative; place-items: center">
 			<img [src]="image" alt="Comprobante de pago" />
-			<app-button class="delete" [type]="'MINI'" [icon]="'delete'" color="#fff" background="red" (click)="reset()" />
+			<app-button
+				class="delete"
+				[type]="'MINI'"
+				[icon]="'delete'"
+				[color]="invoice().status === loading ? 'var(--grey-light)' : '#fff'"
+				[background]="invoice().status === loading ? 'var(--grey)' : 'red'"
+				(click)="reset()"
+			/>
+			@if (imageChanged) {
+				<app-button
+					class="success"
+					[type]="'MINI'"
+					[icon]="'done'"
+					color="#fff"
+					background="var(--violet)"
+					(click)="save()"
+				/>
+			} @else {
+				@if (invoice().status === loading) {
+					<div class="loading grid" style="place-items: center">
+						<app-loading />
+					</div>
+				}
+			}
 		</div>
 	}
 

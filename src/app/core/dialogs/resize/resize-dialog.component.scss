@@ -14,8 +14,10 @@
 #resizable {
 	background-color: #fff;
 	bottom: 0;
-	max-height: var(--vh);
-	max-width: 100vw;
+	height: var(--vh);
+	max-height: 950px;
+	width: 100vw;
+	max-width: 450px;
 	border-top-left-radius: 12px;
 	border-top-right-radius: 12px;
 }

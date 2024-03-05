@@ -7,6 +7,7 @@ import { CoreService } from '@core/services/core.service';
 
 // * GraphQL.
 import {
+	MUTATION_INVOICE_NOTE,
 	MUTATION_ORDER_ADD_PRODUCT,
 	MUTATION_ORDER_ADDRESS,
 	MUTATION_ORDER_CALENDAR,
@@ -16,6 +17,7 @@ import {
 	QUERY_BATCHES,
 	QUERY_CALENDAR,
 	QUERY_CART,
+	QUERY_INVOICE,
 	QUERY_MERCHANT_ADDRESS,
 	QUERY_ORDER,
 	QUERY_PAGE_PRODUCT,
@@ -34,6 +36,8 @@ import {
 	IBatchesResponse,
 	ICalendarResponse,
 	ICartResponse,
+	IInvoiceResponse,
+	IInvoiceUpdateResponse,
 	IMerchantAddressesResponse,
 	IOrderResponse,
 	IPageProductResponse,
@@ -56,6 +60,7 @@ import {
 	LOAD_ECOMMERCE_BATCHES,
 	LOAD_ECOMMERCE_CALENDAR,
 	LOAD_ECOMMERCE_CART,
+	LOAD_ECOMMERCE_INVOICE,
 	LOAD_ECOMMERCE_ORDER,
 	LOAD_ECOMMERCE_PAGE_PRODUCT,
 	LOAD_ECOMMERCE_PAGE_SHOP,
@@ -67,6 +72,7 @@ import {
 	LOADED_ECOMMERCE_BATCHES,
 	LOADED_ECOMMERCE_CALENDAR,
 	LOADED_ECOMMERCE_CART,
+	LOADED_ECOMMERCE_INVOICE,
 	LOADED_ECOMMERCE_ORDER,
 	LOADED_ECOMMERCE_PAGE_PRODUCT,
 	LOADED_ECOMMERCE_PAGE_SHOP,
@@ -76,11 +82,15 @@ import {
 	LOADED_MERCHANT_ADDRESSES,
 	LOADED_USER_ADDRESSES,
 	UPDATE_ECOMMERCE_CART,
+	UPDATE_ECOMMERCE_INVOICE_NOTE,
+	UPDATE_ECOMMERCE_INVOICE_VOUCHER,
 	UPDATE_ECOMMERCE_ORDER,
 	UPDATE_ECOMMERCE_ORDER_ADDRESS,
 	UPDATE_ECOMMERCE_ORDER_CALENDAR,
 	UPDATE_ECOMMERCE_ORDER_MESSAGE,
 	UPDATED_ECOMMERCE_CART,
+	UPDATED_ECOMMERCE_INVOICE_NOTE,
+	UPDATED_ECOMMERCE_INVOICE_VOUCHER,
 	UPDATED_ECOMMERCE_ORDER,
 	UPDATED_ECOMMERCE_ORDER_ADDRESS,
 	UPDATED_ECOMMERCE_ORDER_CALENDAR,
@@ -270,7 +280,7 @@ export class EcommerceEffects {
 				} else {
 					user = localStorage.getItem('user') ? Number(localStorage.getItem('user')) : undefined;
 				}
-				return this._core.query<IPageShopResponse['data']>(QUERY_PAGE_SHOP, { slug: action.slug, user }).pipe(
+				return this._core.query<IPageShopResponse['data']>(QUERY_PAGE_SHOP, { slug: action.slug, user }, true).pipe(
 					map((res) => {
 						this._core.state.ecommerce = {
 							user: res.combinedShop.userId,
@@ -278,10 +288,11 @@ export class EcommerceEffects {
 							invoice: res.combinedShop.invoiceId
 						};
 						localStorage.setItem('user', String(res.combinedShop.userId));
+						const logged: boolean = localStorage.getItem('email') ? true : false;
 						return LOADED_ECOMMERCE_PAGE_SHOP({
 							user: {
 								id: res.combinedShop.userId,
-								logged: localStorage.getItem('email') ? true : false
+								logged
 							},
 							merchant: {
 								id: res.combinedShop.merchantId,
@@ -531,7 +542,7 @@ export class EcommerceEffects {
 							message: res.gInvoice.message,
 							address: {
 								id: res.gInvoice.addressNumber ?? -3,
-								direction: res.gInvoice.addressDirection, // ! Falta propiedad (merchant direction).
+								direction: res.gInvoice.addressDirection ?? res.gInvoice.merchantDirection,
 								lat: res.gInvoice.addressLat ?? res.gInvoice.merchantLat,
 								lng: res.gInvoice.addressLng ?? res.gInvoice.merchantLng,
 								mode: res.gInvoice.type ?? 'PICK-UP'
@@ -744,33 +755,97 @@ export class EcommerceEffects {
 				const merchant: number | undefined = this._core.state.ecommerce.merchant;
 				if (invoice && user && merchant) {
 					const formData: FormData = new FormData();
-					const parts: string[] = action.date.split(' ');
-					const day: number = parseInt(parts[0]);
-					const month: number = new Date(Date.parse(parts[2] + ' 1, 2012')).getMonth() + 1;
-					const year: number = parseInt(parts[4]);
-					const date: Date = new Date(year, month - 1, day);
-					const formatted = date.toISOString().split('T')[0];
-					formData.append('voucher', action.voucher);
 					formData.append('invoiceId', String(invoice));
 					formData.append('paymentId', String(action.payment));
-					formData.append('date', formatted);
-					formData.append('batchId', String(action.batch));
 					formData.append('merchantId', String(merchant));
+					formData.append('batchId', String(action.batch));
+					formData.append('date', action.date);
 					formData.append('userId', String(user));
-					return this._core.post('/invoices/upload', formData).pipe(
+					formData.append('voucher', action.voucher);
+					formData.append('addressDirection', action.direction);
+					formData.append('addressLat', action.lat);
+					formData.append('addressLng', action.lng);
+					return this._core.post<IInvoiceUpdateResponse>('/invoices/upload', formData).pipe(
 						map((res) => {
-							this._core.redirect(`dlicianthus/invoice/${invoice}`);
-							return UPDATED_ECOMMERCE_ORDER({
-								order: invoice,
-								payment: action.payment,
-								voucher: res as string
-							});
+							this._core.redirect(`dlicianthus/invoice/${res.orderId}`);
+							return UPDATED_ECOMMERCE_ORDER();
 						}),
 						catchError(() => of({ type: '[ERROR_ECOMMERCE_ORDER]: POST_ORDER' }))
 					);
 				} else {
 					return of({ type: '[ERROR_ECOMMERCE_ORDER]: INVOICE - USER - MERCHANT: NOT_FOUND' });
 				}
+			})
+		);
+	});
+
+	// ! INVOICE.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly loadEcommerceInvoice$ = createEffect(() => {
+		return this._actions$.pipe(
+			ofType(LOAD_ECOMMERCE_INVOICE),
+			exhaustMap((action) =>
+				this._core.query<IInvoiceResponse['data']>(QUERY_INVOICE, { order: action.invoice }).pipe(
+					map((res) =>
+						LOADED_ECOMMERCE_INVOICE({
+							invoice: {
+								id: action.invoice,
+								message: res.gOrder.message,
+								merchant: res.gOrder.merchantId,
+								total: res.gOrder.total,
+								user: res.gOrder.userId,
+								reservation: res.gOrder.reservation ?? '',
+								products: res.gOrder.products.map((product) => {
+									return {
+										title: product.product.title,
+										price: product.product.price,
+										image: product.product.frontPage,
+										quantity: product.quantity
+									};
+								}),
+								addressDirection: res.gOrder.addressDirection,
+								addressLat: res.gOrder.addressLat,
+								addressLng: res.gOrder.addressLng,
+								code: res.gOrder.code,
+								note: res.gOrder.note,
+								status: res.gOrder.status,
+								voucher: res.gOrder.voucher
+							}
+						})
+					),
+					catchError(() => of({ type: '[ERROR_ECOMMERCE_INVOICE]: QUERY_INVOICE' }))
+				)
+			)
+		);
+	});
+
+	// ! UPDATE INVOICE NOTE.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateEcommerceInvoiceNote$ = createEffect(() => {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_INVOICE_NOTE),
+			exhaustMap((action) =>
+				this._core.mutation(MUTATION_INVOICE_NOTE, { order: action.invoice, note: action.note }).pipe(
+					map(() => UPDATED_ECOMMERCE_INVOICE_NOTE({ note: action.note })),
+					catchError(() => of({ type: '[ERROR_ECOMMERCE_INVOICE_NOTE]: MUTATION_INVOICE_NOTE' }))
+				)
+			)
+		);
+	});
+
+	// ! UPDATE INVOICE VOUCHER.
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	public readonly updateEcommerceInvoiceVoucher$ = createEffect(() => {
+		return this._actions$.pipe(
+			ofType(UPDATE_ECOMMERCE_INVOICE_VOUCHER),
+			exhaustMap((action) => {
+				const form: FormData = new FormData();
+				form.append('orderId', String(action.invoice));
+				form.append('voucher', action.voucher);
+				return this._core.put<IInvoiceUpdateResponse>(`/orders/update-voucher`, form).pipe(
+					map((res) => UPDATED_ECOMMERCE_INVOICE_VOUCHER({ voucher: res.url ?? '' })),
+					catchError(() => of({ type: '[ERROR_ECOMMERCE_INVOICE_VOUCHER]: PUT_INVOICE_VOUCHER' }))
+				);
 			})
 		);
 	});

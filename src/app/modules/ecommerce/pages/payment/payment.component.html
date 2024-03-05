@@ -2,7 +2,14 @@
 	<header class="flex bet pd-12">
 		<app-button [type]="'MINI'" [icon]="'arrow_back_ios'" color="var(--grey)" (click)="back()" />
 		@if (payment && image) {
-			<button class="h" type="button" (click)="save()">{{ request ? 'Confirmando...' : 'Confirmar el pago' }}</button>
+			<button class="h" type="button" (click)="save()">
+				@if (request) {
+					<app-loading />
+				} @else {
+					Comfirmar el pago
+				}
+				<!-- {{ request ? <app-loading /> : 'Confirmar el pago' }} -->
+			</button>
 		}
 	</header>
 
@@ -59,13 +66,18 @@
 				</button>
 			} @else {
 				<div class="w h" style="position: relative; display: grid; place-items: center">
-					<img [src]="image" alt="Comprobante de pago" />
+					<img
+						class="w"
+						[src]="image"
+						alt="Comprobante de pago"
+						style="max-width: 450px; height: auto; max-height: 100%"
+					/>
 					<app-button
 						class="delete"
 						[type]="'MINI'"
 						[icon]="'delete'"
-						color="#fff"
-						background="red"
+						[color]="request ? 'var(--grey-light)' : '#fff'"
+						[background]="request ? 'var(--grey)' : 'red'"
 						(click)="reset()"
 					/>
 				</div>

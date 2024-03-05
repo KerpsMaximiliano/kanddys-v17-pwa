@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+
+// * Services.
+import { CoreService } from '@core/services/core.service';
 
 // * Material.
 import { MatIconModule } from '@angular/material/icon';
@@ -11,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 	templateUrl: './info.component.html',
 	styleUrl: './info.component.scss'
 })
-export class InfoComponent {
+export class InfoComponent implements OnInit {
 	public options: { title: string; subtitle: string; icon: string; disabled: boolean }[] = [
 		{
 			title: 'Perfil Comercial',
@@ -68,4 +71,11 @@ export class InfoComponent {
 			disabled: true
 		}
 	];
+
+	private readonly _core: CoreService = inject(CoreService);
+
+	public ngOnInit(): void {
+		localStorage.clear();
+		this._core.redirect('');
+	}
 }
