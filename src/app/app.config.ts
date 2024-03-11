@@ -4,10 +4,10 @@ import { ApplicationConfig, isDevMode } from '@angular/core';
 import { provideHttpClient, withJsonpSupport } from '@angular/common/http';
 
 // * Animations.
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // * Routing.
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 
 // * Service worker.
 import { provideServiceWorker } from '@angular/service-worker';
@@ -29,10 +29,10 @@ import { ROUTES } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
-		provideAnimations(),
+		provideAnimationsAsync(),
 		provideHttpClient(withJsonpSupport()),
 		GRAPHQL_PROVIDER,
-		provideRouter(ROUTES),
+		provideRouter(ROUTES, withViewTransitions()),
 		provideStore(ROOT_REDUCERS),
 		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
 		provideServiceWorker('ngsw-worker.js', {

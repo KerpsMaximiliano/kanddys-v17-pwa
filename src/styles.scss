@@ -127,6 +127,60 @@ button {
 	grid-template-rows: max-content 1fr max-content;
 }
 
+/* -------------------- VIEW TRANSITIONS --------------------  */
+
+::view-transition-old {
+	animation: exit 2s ease 0s 1 normal forwards;
+}
+
+::view-transition-new {
+	animation: enter 3s ease 0s 1 normal forwards;
+}
+
+@keyframes enter {
+	from {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@-webkit-keyframes enter {
+	from {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes exit {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+}
+
+@-webkit-keyframes exit {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+}
+
 /* -------------------- TEXT OVERFLOW --------------------  */
 
 h1,
@@ -298,4 +352,9 @@ html {
 
 app-button {
 	touch-action: manipulation;
+}
+
+/* -------------------- GOOGLE MAPS -------------------- */
+.gmnoprint {
+	display: none;
 }

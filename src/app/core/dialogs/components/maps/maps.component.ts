@@ -191,6 +191,7 @@ export class MapsComponent implements OnInit, OnDestroy {
 		this.marker = { lat: 0, lng: 0 };
 	}
 
+	// ! UNSUBSCRIBE.
 	public selectFirst(): void {
 		this.autocompleteResults.pipe(take(1)).subscribe((predictions: IPrediction[]) => {
 			if (predictions.length > 0) {

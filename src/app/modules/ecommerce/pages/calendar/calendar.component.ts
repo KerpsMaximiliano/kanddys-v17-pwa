@@ -24,12 +24,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 
 // * Shared.
 import { ButtonComponent } from '@core/components/button/button.component';
+import { LoadingComponent } from '@core/components/loading/loading.component';
 
 @Component({
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	selector: 'app-ecommerce-calendar',
 	standalone: true,
-	imports: [CalendarHeaderComponent, MatDatepickerModule, MatNativeDateModule, ButtonComponent],
+	imports: [CalendarHeaderComponent, MatDatepickerModule, MatNativeDateModule, ButtonComponent, LoadingComponent],
 	templateUrl: './calendar.component.html',
 	styleUrl: './calendar.component.scss'
 })

@@ -8,7 +8,7 @@ import { HttpLink } from 'apollo-angular/http';
 function apolloOptionsFactory(): ApolloClientOptions<unknown> {
 	const httpLink = inject(HttpLink);
 	return {
-		link: httpLink.create({ uri: 'https://laia-dev.up.railway.app/graphql' }),
+		link: httpLink.create({ uri: 'https://laia-prod.up.railway.app/graphql' }),
 		cache: new InMemoryCache()
 	};
 }

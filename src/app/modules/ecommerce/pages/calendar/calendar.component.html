@@ -21,7 +21,10 @@
 			[headerComponent]="calendarHeader"
 		></mat-calendar>
 	} @placeholder {
-		<p class="pd-12">Cargando...</p>
+		<!-- <p class="pd-12">Cargando...</p> -->
+		<div class="grid w h" style="place-items: center">
+			<app-loading />
+		</div>
 	}
 
 	@if (batches().status !== loading) {
@@ -49,10 +52,16 @@
 					}
 				</section>
 			} @else {
-				<p class="pd-12">Cargando...</p>
+				<!-- <p class="pd-12">Cargando...</p> -->
+				<div class="grid w h" style="place-items: center">
+					<app-loading />
+				</div>
 			}
 		} @placeholder {
-			<p class="pd-12">Cargando...</p>
+			<div class="grid w h" style="place-items: center">
+				<app-loading />
+			</div>
+			<!-- <p class="pd-12">Cargando...</p> -->
 		}
 	}
 </main>

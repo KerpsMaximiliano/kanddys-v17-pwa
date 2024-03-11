@@ -52,12 +52,12 @@
 }
 
 @-webkit-keyframes slide-in {
-	0% {
+	from {
 		-webkit-transform: translateY(1000px);
 		transform: translateY(1000px);
 		opacity: 0;
 	}
-	100% {
+	to {
 		-webkit-transform: translateY(0);
 		transform: translateY(0);
 		opacity: 1;
@@ -65,12 +65,12 @@
 }
 
 @keyframes slide-in {
-	0% {
+	from {
 		-webkit-transform: translateY(1000px);
 		transform: translateY(1000px);
 		opacity: 0;
 	}
-	100% {
+	to {
 		-webkit-transform: translateY(0);
 		transform: translateY(0);
 		opacity: 1;
@@ -78,12 +78,12 @@
 }
 
 @-webkit-keyframes slide-out {
-	0% {
+	from {
 		-webkit-transform: translateY(0);
 		transform: translateY(0);
 		opacity: 1;
 	}
-	100% {
+	to {
 		-webkit-transform: translateY(1000px);
 		transform: translateY(1000px);
 		opacity: 0;
@@ -91,12 +91,12 @@
 }
 
 @keyframes slide-out {
-	0% {
+	from {
 		-webkit-transform: translateY(0);
 		transform: translateY(0);
 		opacity: 1;
 	}
-	100% {
+	to {
 		-webkit-transform: translateY(1000px);
 		transform: translateY(1000px);
 		opacity: 0;
@@ -104,19 +104,19 @@
 }
 
 @keyframes slide-midout {
-	0% {
+	from {
 		height: var(--ht);
 	}
-	100% {
+	to {
 		height: var(--nw);
 	}
 }
 
 @-webkit-keyframes slide-midout {
-	0% {
+	from {
 		height: var(--ht);
 	}
-	100% {
+	to {
 		height: var(--nw);
 	}
 }
