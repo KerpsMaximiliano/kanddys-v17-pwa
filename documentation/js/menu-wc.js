@@ -72,6 +72,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/CartComponent.html" data-type="entity-link" >CartComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/DedicationMessageComponent.html" data-type="entity-link" >DedicationMessageComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/EcommerceComponent.html" data-type="entity-link" >EcommerceComponent</a>
                             </li>
                             <li class="link">

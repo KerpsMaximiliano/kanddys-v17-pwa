@@ -721,7 +721,12 @@
 								merchant: res.gOrder.merchantId,
 								total: res.gOrder.total,
 								user: res.gOrder.userId,
+								userName: res.gOrder.userName,
+								userLastName: res.gOrder.userLastName,
+								userEmail: res.gOrder.userEmail,
 								reservation: res.gOrder.reservation ?? &#x27;&#x27;,
+								batchFrom: res.gOrder.batchFrom,
+								batchTo: res.gOrder.batchTo,
 								products: res.gOrder.products.map((product) &#x3D;&gt; {
 									return {
 										title: product.product.title,
@@ -731,6 +736,7 @@
 									};
 								}),
 								addressDirection: res.gOrder.addressDirection,
+								reservationType: res.gOrder.reservationType,
 								addressLat: res.gOrder.addressLat,
 								addressLng: res.gOrder.addressLng,
 								code: res.gOrder.code,
@@ -749,7 +755,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="818" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:818</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="820" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:820</a></div>
                         </td>
                     </tr>
 
@@ -1338,7 +1344,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="858" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:858</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="866" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:866</a></div>
                         </td>
                     </tr>
 
@@ -1378,7 +1384,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="872" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:872</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="880" class="link-to-prism">src/app/modules/ecommerce/state/ecommerce.effects.ts:880</a></div>
                         </td>
                     </tr>
 
@@ -1407,6 +1413,7 @@
 				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
 				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
 				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				console.log(action, &#x27;sssssss&#x27;);
 				if (invoice &amp;&amp; user &amp;&amp; merchant) {
 					const formData: FormData &#x3D; new FormData();
 					formData.append(&#x27;invoiceId&#x27;, String(invoice));
@@ -1419,6 +1426,7 @@
 					formData.append(&#x27;addressDirection&#x27;, action.direction);
 					formData.append(&#x27;addressLat&#x27;, action.lat);
 					formData.append(&#x27;addressLng&#x27;, action.lng);
+					formData.append(&#x27;reservationType&#x27;, String(action.addressType));
 					return this._core.post&lt;IInvoiceUpdateResponse&gt;(&#x27;/invoices/upload&#x27;, formData).pipe(
 						map((res) &#x3D;&gt; {
 							this._core.redirect(&#x60;dlicianthus/invoice/${res.orderId}&#x60;);
@@ -2475,6 +2483,7 @@ export class EcommerceEffects {
 				const invoice: number | undefined &#x3D; this._core.state.ecommerce.invoice;
 				const user: number | undefined &#x3D; this._core.state.ecommerce.user;
 				const merchant: number | undefined &#x3D; this._core.state.ecommerce.merchant;
+				console.log(action, &#x27;sssssss&#x27;);
 				if (invoice &amp;&amp; user &amp;&amp; merchant) {
 					const formData: FormData &#x3D; new FormData();
 					formData.append(&#x27;invoiceId&#x27;, String(invoice));
@@ -2487,6 +2496,7 @@ export class EcommerceEffects {
 					formData.append(&#x27;addressDirection&#x27;, action.direction);
 					formData.append(&#x27;addressLat&#x27;, action.lat);
 					formData.append(&#x27;addressLng&#x27;, action.lng);
+					formData.append(&#x27;reservationType&#x27;, String(action.addressType));
 					return this._core.post&lt;IInvoiceUpdateResponse&gt;(&#x27;/invoices/upload&#x27;, formData).pipe(
 						map((res) &#x3D;&gt; {
 							this._core.redirect(&#x60;dlicianthus/invoice/${res.orderId}&#x60;);
@@ -2516,7 +2526,12 @@ export class EcommerceEffects {
 								merchant: res.gOrder.merchantId,
 								total: res.gOrder.total,
 								user: res.gOrder.userId,
+								userName: res.gOrder.userName,
+								userLastName: res.gOrder.userLastName,
+								userEmail: res.gOrder.userEmail,
 								reservation: res.gOrder.reservation ?? &#x27;&#x27;,
+								batchFrom: res.gOrder.batchFrom,
+								batchTo: res.gOrder.batchTo,
 								products: res.gOrder.products.map((product) &#x3D;&gt; {
 									return {
 										title: product.product.title,
@@ -2526,6 +2541,7 @@ export class EcommerceEffects {
 									};
 								}),
 								addressDirection: res.gOrder.addressDirection,
+								reservationType: res.gOrder.reservationType,
 								addressLat: res.gOrder.addressLat,
 								addressLng: res.gOrder.addressLng,
 								code: res.gOrder.code,

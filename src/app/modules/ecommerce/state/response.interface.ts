@@ -160,8 +160,13 @@ interface IPayment {
 interface IInvoice {
 	merchantId: number;
 	userId: number;
+	userLastName: string | null;
+	userName: string | null;
+	userEmail: string;
 	code: string;
 	reservation: string | null;
+	batchFrom: string;
+	batchTo: string;
 	total: number;
 	message: string | null;
 	status: 'COMPLETE' | 'PENDING';
@@ -170,6 +175,7 @@ interface IInvoice {
 	addressLat: string;
 	addressLng: string;
 	addressDirection: string;
+	reservationType: string;
 	products: {
 		quantity: number;
 		product: {
@@ -178,6 +184,8 @@ interface IInvoice {
 			frontPage: string | null;
 		};
 	}[];
+	createdAt: string;
+	updatedAt: string | null;
 }
 
 // ! USER.

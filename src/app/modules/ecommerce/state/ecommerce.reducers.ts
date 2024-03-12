@@ -46,9 +46,9 @@ import {
 // * Interfaces.
 import { ILoadableEntity, complete, failed, loaded, loading } from '@core/interfaces/state.interface';
 import { IAddress, IEcommerce, IOrder, IProduct } from '@ecommerce/interfaces/ecommerce.interface';
-import { date } from '../../../core/util/date.pipe';
 
 // * Utils.
+import { date } from '@core/util/date.pipe';
 
 // * Initial state.
 export const ECOMMERCE_STATE: IEcommerce = {
@@ -139,16 +139,22 @@ export const ECOMMERCE_STATE: IEcommerce = {
 			status: 'PENDING',
 			id: 0,
 			user: 0,
+			userEmail: '',
+			userName: '',
+			userLastName: '',
 			merchant: 0,
 			code: '',
 			products: [],
 			total: 0,
 			message: null,
 			reservation: '',
+			batchFrom: '',
+			batchTo: '',
 			note: null,
 			addressDirection: '',
 			addressLat: '',
 			addressLng: '',
+			reservationType: '',
 			voucher: ''
 		}
 	}

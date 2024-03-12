@@ -5,73 +5,107 @@
 
 @defer (when invoice().status === complete) {
 	<main class="grid pd-0-12" style="padding-bottom: 44px">
-		<article class="flex bet">
-			<div class="flex gp-8">
-				<img class="br-50" src="/assets/images/dlicianthus.jpg" alt="Dlicianthus, tienda floral." />
-				<h1>Dlicianthus</h1>
-			</div>
-
-			<div>
-				<h2 class="tx-right">Factura</h2>
-				<p style="color: #707070">Enero 04, 2024</p>
-			</div>
+		<article class="grid gp-8">
+			<h2 class="tx-left tx-visible">Factura</h2>
+			<p>{{ invoice().data.code }}</p>
 		</article>
 
-		<section class="grid gp-16">
-			<p><strong>ID Venta:</strong> {{ invoice().data.code }}</p>
+		<section class="grid gp-8 bd pd-12 br-4">
+			<p class="orange">{{ invoice().data.status === 'PENDING' ? 'Pendiente' : 'Completa' }}</p>
 			<p><strong>Comprador:</strong> {{ invoice().data.user }}</p>
+			<p>{{ date(invoice().data.reservation) }}</p>
 		</section>
 
-		<section class="grid gp-12 bd pd-12 br-12">
+		<section class="grid gp-12 bd pd-12 br-4">
 			@for (product of invoice().data.products; track $index) {
 				@if ($index < 3) {
 					@if ($index === 1 || $index === 2) {
-						<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
+						<hr />
 					}
-					<button class="grid gp-12 w tx-left" style="grid-template-columns: 60px 1fr">
+
+					<button class="grid gp-12 w tx-left" style="grid-template-columns: 80px 1fr">
 						@if (product.image) {
-							<img
-								class="br-12"
-								[src]="product.image"
-								alt="Imagen del producto"
-								style="width: 60px; height: 60px; aspect-ratio: 1/1; object-fit: cover"
-							/>
+							<img class="br-4" [src]="product.image" alt="Imagen del producto" />
 						} @else {
-							<div class="br-12" style="width: 60px; height: 60px; background-color: var(--grey-light)"></div>
+							<div class="br-4 w h" style="background-color: var(--grey-light)"></div>
 						}
-						<div class="grid h" style="grid-template-rows: repeat(2, 1fr)">
-							<p>
-								<b>{{ product.title }}</b>
-							</p>
-							<div class="fle bet">
-								<p style="color: var(--grey)">Cantidad: {{ product.quantity }}</p>
-								<p>{{ currency(product.price) }}</p>
-							</div>
+
+						<div class="grid h gp-8" style="grid-template-rows: repeat(2, 1fr)">
+							<p class="orange">Cantidad: {{ product.quantity }}</p>
+							<b>{{ product.title }}</b>
+							<p>{{ currency(product.price) }}</p>
 						</div>
 					</button>
 				}
 			}
+
+			<hr />
+
+			<p class="flex bet"><strong>Total: </strong>{{ currency(invoice().data.total) }}</p>
 		</section>
 
-		<section class="flex bet">
-			<h3><strong>Total</strong></h3>
-			<p>{{ currency(invoice().data.total) }}</p>
+		<section class="grid gp-12 bd pd-12 br-4">
+			<button class="tx-left disabled">
+				<strong>Costo de la Venta(Egresos)</strong>
+				<p>Lleva el control de tus inversiones</p>
+			</button>
+
+			<hr />
+
+			<button type="button" class="tx-left">
+				<p>
+					<strong>{{ invoice().data.status === 'PENDING' ? 'Pago por confirmar' : 'Pago confirmado' }}</strong>
+				</p>
+				<p>Desde {{ invoice().data.reservation }}</p>
+			</button>
+
+			<hr />
+
+			<button type="button" class="tx-left" (click)="open('dmessage')">
+				<p>
+					<strong>Dedicatoria de Regalo</strong>
+				</p>
+				<p>Dedicatoria virtual. Dedicatoria tradicional.</p>
+			</button>
+
+			<hr />
+
+			<button type="button" class="tx-left">
+				<p>
+					<strong>Fecha de entrega</strong>
+				</p>
+				<p>{{ date(invoice().data.reservation, invoice().data.batchFrom, invoice().data.batchTo) }}</p>
+			</button>
+
+			<hr />
+
+			<button type="button" class="tx-left" (click)="open('map')">
+				<p>
+					<strong>{{
+						invoice().data.reservationType === 'DELIVERY' ? 'Dirección de entrega' : 'Dirección de la tienda'
+					}}</strong>
+				</p>
+				<p>{{ invoice().data.addressDirection }}</p>
+			</button>
+
+			<!-- @if (invoice().data.user !== invoice().data.merchant) {
+				<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
+				<button class="tx-left">
+					<p>
+						<strong> Escribe una nota para ti </strong>
+					</p>
+					<p>Solo tu la podrás ver</p>
+				</button>
+			} @else {
+				<hr style="background-color: var(--grey-light); border: none; height: 1px; margin: 0 -12px" />
+				<button class="tx-left">
+					<p>
+						<strong> Chats con {{ getName() }} </strong>
+					</p>
+					<p>ElultimomensajeID</p>
+				</button>
+			} -->
 		</section>
-
-		<button class="option flex gp-8" (click)="open('voucher')">
-			<app-button [type]="'ICON'" [icon]="'image'" color="var(--violet)" />
-			{{ invoice().data.status === 'PENDING' ? 'Pago por confimar' : 'Pago confirmado' }}
-		</button>
-
-		<button class="flex bet">
-			<p><strong>Dedicatoria de Regalo</strong></p>
-			<p class="option">Ver</p>
-		</button>
-
-		<button class="flex bet" (click)="open('map')">
-			<p><strong>Dirección y contacto de entrega</strong></p>
-			<p class="option">Ver</p>
-		</button>
 	</main>
 } @placeholder {
 	<app-loading />

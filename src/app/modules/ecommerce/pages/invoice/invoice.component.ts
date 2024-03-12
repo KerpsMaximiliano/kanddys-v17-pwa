@@ -22,6 +22,7 @@ import { selectEcommerceInvoice } from '@ecommerce/state/ecommerce.selectors';
 
 // * Utils.
 import { currency } from '@core/util/currency.pipe';
+import { date } from '@core/util/date.pipe';
 
 // * Shared.
 import { ButtonComponent } from '@core/components/button/button.component';
@@ -37,6 +38,7 @@ import { LoadingComponent } from '@core/components/loading/loading.component';
 })
 export class InvoiceComponent implements OnInit, AfterViewInit, OnDestroy {
 	public readonly currency = currency;
+	public readonly date = date;
 	public readonly complete = complete;
 
 	// eslint-disable-next-line @ngrx/use-consistent-global-store-name
@@ -51,9 +53,9 @@ export class InvoiceComponent implements OnInit, AfterViewInit, OnDestroy {
 	public readonly invoice: Signal<ILoadableEntity<IInvoice>> = this._store.selectSignal(selectEcommerceInvoice);
 
 	public ngOnInit(): void {
-		const invoice: number | undefined = this._route.snapshot.params['id'];
-		if (invoice && !isNaN(invoice)) {
-			this._store.dispatch(LOAD_ECOMMERCE_INVOICE({ invoice }));
+		const invoice: string | undefined = this._route.snapshot.params['id'];
+		if (invoice && !isNaN(Number(invoice))) {
+			this._store.dispatch(LOAD_ECOMMERCE_INVOICE({ invoice: Number(invoice) }));
 		} else {
 			this.redirect('');
 			return;
@@ -65,6 +67,20 @@ export class InvoiceComponent implements OnInit, AfterViewInit, OnDestroy {
 			.jsonp(`https://maps.googleapis.com/maps/api/js?key=${environment.apiMap}&libraries=places`, 'callback')
 			.pipe(takeUntil(this._subscriptions))
 			.subscribe();
+	}
+
+	public getName(): string {
+		const lastName = this.invoice().data.userLastName;
+		const name = this.invoice().data.userName;
+		if (name && lastName) {
+			return name + ' ' + lastName;
+		} else if (name) {
+			return name;
+		} else if (lastName) {
+			return lastName;
+		} else {
+			return this.invoice().data.userEmail;
+		}
 	}
 
 	public open(dialog: string): void {

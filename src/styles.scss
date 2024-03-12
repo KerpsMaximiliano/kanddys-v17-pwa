@@ -6,6 +6,7 @@
 	--grey: #7b7b7b;
 	--grey-light: #d9d9d9;
 	--white: #fff;
+	--orange: #bb5112;
 }
 
 * {
@@ -327,6 +328,10 @@ p {
 
 .over-y {
 	overflow-y: scroll;
+}
+
+.orange {
+	color: var(--orange);
 }
 
 /* -------------------- MATERIAL -------------------- */

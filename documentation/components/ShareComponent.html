@@ -270,6 +270,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#openWsp" >openWsp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#qr" >qr</a>
                             </li>
                             <li>
@@ -337,8 +341,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="94"
-                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:94</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -376,8 +380,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:73</a></div>
                         </td>
                     </tr>
 
@@ -415,8 +419,47 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="82"
-                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:82</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openWsp"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>openWsp</b></span>
+                        <a href="#openWsp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openWsp()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -454,8 +497,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:81</a></div>
                         </td>
                     </tr>
 
@@ -493,8 +536,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/core/dialogs/components/share/share.component.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -969,6 +1012,10 @@ export class ShareComponent {
 		this._mode &#x3D; mode;
 	}
 
+	public openWsp(): void {
+		window.location.href &#x3D; &#x27;https://wa.me/3425535355&#x27;;
+	}
+
 	public share(qr: boolean): void {
 		navigator
 			.share({
@@ -1020,6 +1067,13 @@ export class ShareComponent {
         <pre class="line-numbers"><code class="language-html">&lt;main style&#x3D;&quot;padding: 24px 0&quot;&gt;
 	&lt;section class&#x3D;&quot;bd&quot; [class.bd]&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;INITIAL&#x27;&quot;&gt;
 		@if (mode &#x3D;&#x3D;&#x3D; &#x27;INITIAL&#x27;) {
+			&lt;!-- &lt;button class&#x3D;&quot;w flex bet pd-12&quot;&gt;
+				WhatsApp de MerchantID
+				&lt;app-button [type]&#x3D;&quot;&#x27;ICON&#x27;&quot; [icon]&#x3D;&quot;&#x27;chat&#x27;&quot; (click)&#x3D;&quot;openWsp()&quot; /&gt;
+			&lt;/button&gt; --&gt;
+
+			&lt;hr /&gt;
+
 			&lt;button class&#x3D;&quot;w flex bet pd-12&quot;&gt;
 				Compartir enlace
 				&lt;app-button [type]&#x3D;&quot;&#x27;ICON&#x27;&quot; [icon]&#x3D;&quot;&#x27;share&#x27;&quot; (click)&#x3D;&quot;share(false)&quot; /&gt;
@@ -1102,8 +1156,8 @@ export class ShareComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><main style="padding: 24px 0">	<section class="bd" [class.bd]="mode === \'INITIAL\'">		@if (mode === \'INITIAL\') {			<button class="w flex bet pd-12">				Compartir enlace				<app-button [type]="\'ICON\'" [icon]="\'share\'" (click)="share(false)" />			</button>			<hr />			<button class="w flex bet pd-12">				Copiar enlace				<app-button [type]="\'ICON\'" [icon]="\'link\'" (click)="mode = \'COPY\'; copy()" />			</button>			<hr />			<button class="w flex bet pd-12">				Código QR				<app-button [type]="\'ICON\'" [icon]="\'qr_code\'" (click)="qr()" />			</button>		}		@if (mode === \'COPY\') {			@defer (when mode === \'COPY\') {				<button class="w flex bet pd-12">					Enlace copiado en el portapapeles					<app-button [type]="\'ICON\'" [icon]="\'close\'" (click)="close()" />				</button>			}		}		@if (mode === \'QR\') {			@defer (when mode === \'QR\') {				<article class="grid gp-16">					<qrcode						#qrCode						[qrdata]="qrData"						[width]="256"						[errorCorrectionLevel]="\'M\'"						class="grid"						style="place-items: center"					/>					<app-button [type]="\'XR\'" label="Descargar" (click)="download()" />					<app-button						[type]="\'XR\'"						label="Compartir código QR"						color="#000"						background="#E8E8E8"						(click)="share(true)"					/>				</article>			}		}	</section></main></div>'
-    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'app-ecommerce-address'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalendarComponent', 'selector': 'app-ecommerce-calendar'},{'name': 'CalendarHeaderComponent', 'selector': 'app-calendar-header'},{'name': 'CartComponent', 'selector': 'app-dialog-content-cart'},{'name': 'EcommerceComponent', 'selector': 'app-ecommerce'},{'name': 'FirstComponent', 'selector': 'app-auth-first'},{'name': 'InfoComponent', 'selector': 'app-auth-info'},{'name': 'InvoiceComponent', 'selector': 'app-ecommerce-invoice'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'LoginComponent', 'selector': 'app-auth-login'},{'name': 'MapComponent', 'selector': 'app-dialog-content-map'},{'name': 'MapsComponent', 'selector': 'app-dialog-content-maps'},{'name': 'MessageComponent', 'selector': 'app-ecommerce-message'},{'name': 'OrderComponent', 'selector': 'app-ecommerce-order'},{'name': 'PaymentComponent', 'selector': 'app-ecommerce-payment'},{'name': 'ProductComponent', 'selector': 'app-ecommerce-product'},{'name': 'ResizeDialogComponent', 'selector': 'app-dialog-resizable'},{'name': 'ShareComponent', 'selector': 'app-dialog-content-share'},{'name': 'ShopComponent', 'selector': 'app-ecommerce-shop'},{'name': 'VoucherComponent', 'selector': 'app-dialog-content-voucher'}];
+        var COMPONENT_TEMPLATE = '<div><main style="padding: 24px 0">	<section class="bd" [class.bd]="mode === \'INITIAL\'">		@if (mode === \'INITIAL\') {			<!-- <button class="w flex bet pd-12">				WhatsApp de MerchantID				<app-button [type]="\'ICON\'" [icon]="\'chat\'" (click)="openWsp()" />			</button> -->			<hr />			<button class="w flex bet pd-12">				Compartir enlace				<app-button [type]="\'ICON\'" [icon]="\'share\'" (click)="share(false)" />			</button>			<hr />			<button class="w flex bet pd-12">				Copiar enlace				<app-button [type]="\'ICON\'" [icon]="\'link\'" (click)="mode = \'COPY\'; copy()" />			</button>			<hr />			<button class="w flex bet pd-12">				Código QR				<app-button [type]="\'ICON\'" [icon]="\'qr_code\'" (click)="qr()" />			</button>		}		@if (mode === \'COPY\') {			@defer (when mode === \'COPY\') {				<button class="w flex bet pd-12">					Enlace copiado en el portapapeles					<app-button [type]="\'ICON\'" [icon]="\'close\'" (click)="close()" />				</button>			}		}		@if (mode === \'QR\') {			@defer (when mode === \'QR\') {				<article class="grid gp-16">					<qrcode						#qrCode						[qrdata]="qrData"						[width]="256"						[errorCorrectionLevel]="\'M\'"						class="grid"						style="place-items: center"					/>					<app-button [type]="\'XR\'" label="Descargar" (click)="download()" />					<app-button						[type]="\'XR\'"						label="Compartir código QR"						color="#000"						background="#E8E8E8"						(click)="share(true)"					/>				</article>			}		}	</section></main></div>'
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'app-ecommerce-address'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalendarComponent', 'selector': 'app-ecommerce-calendar'},{'name': 'CalendarHeaderComponent', 'selector': 'app-calendar-header'},{'name': 'CartComponent', 'selector': 'app-dialog-content-cart'},{'name': 'DedicationMessageComponent', 'selector': 'app-dedication-message'},{'name': 'EcommerceComponent', 'selector': 'app-ecommerce'},{'name': 'FirstComponent', 'selector': 'app-auth-first'},{'name': 'InfoComponent', 'selector': 'app-auth-info'},{'name': 'InvoiceComponent', 'selector': 'app-ecommerce-invoice'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'LoginComponent', 'selector': 'app-auth-login'},{'name': 'MapComponent', 'selector': 'app-dialog-content-map'},{'name': 'MapsComponent', 'selector': 'app-dialog-content-maps'},{'name': 'MessageComponent', 'selector': 'app-ecommerce-message'},{'name': 'OrderComponent', 'selector': 'app-ecommerce-order'},{'name': 'PaymentComponent', 'selector': 'app-ecommerce-payment'},{'name': 'ProductComponent', 'selector': 'app-ecommerce-product'},{'name': 'ResizeDialogComponent', 'selector': 'app-dialog-resizable'},{'name': 'ShareComponent', 'selector': 'app-dialog-content-share'},{'name': 'ShopComponent', 'selector': 'app-ecommerce-shop'},{'name': 'VoucherComponent', 'selector': 'app-dialog-content-voucher'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ShareComponent'};
 </script>

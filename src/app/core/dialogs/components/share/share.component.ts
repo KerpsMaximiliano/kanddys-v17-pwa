@@ -51,6 +51,10 @@ export class ShareComponent {
 		this._mode = mode;
 	}
 
+	public openWsp(): void {
+		window.location.href = 'https://wa.me/3425535355';
+	}
+
 	public share(qr: boolean): void {
 		navigator
 			.share({

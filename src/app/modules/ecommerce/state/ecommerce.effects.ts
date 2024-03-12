@@ -787,6 +787,7 @@ export class EcommerceEffects {
 				const invoice: number | undefined = this._core.state.ecommerce.invoice;
 				const user: number | undefined = this._core.state.ecommerce.user;
 				const merchant: number | undefined = this._core.state.ecommerce.merchant;
+				console.log(action, 'sssssss');
 				if (invoice && user && merchant) {
 					const formData: FormData = new FormData();
 					formData.append('invoiceId', String(invoice));
@@ -799,6 +800,7 @@ export class EcommerceEffects {
 					formData.append('addressDirection', action.direction);
 					formData.append('addressLat', action.lat);
 					formData.append('addressLng', action.lng);
+					formData.append('reservationType', String(action.addressType));
 					return this._core.post<IInvoiceUpdateResponse>('/invoices/upload', formData).pipe(
 						map((res) => {
 							this._core.redirect(`dlicianthus/invoice/${res.orderId}`);
@@ -828,7 +830,12 @@ export class EcommerceEffects {
 								merchant: res.gOrder.merchantId,
 								total: res.gOrder.total,
 								user: res.gOrder.userId,
+								userName: res.gOrder.userName,
+								userLastName: res.gOrder.userLastName,
+								userEmail: res.gOrder.userEmail,
 								reservation: res.gOrder.reservation ?? '',
+								batchFrom: res.gOrder.batchFrom,
+								batchTo: res.gOrder.batchTo,
 								products: res.gOrder.products.map((product) => {
 									return {
 										title: product.product.title,
@@ -838,6 +845,7 @@ export class EcommerceEffects {
 									};
 								}),
 								addressDirection: res.gOrder.addressDirection,
+								reservationType: res.gOrder.reservationType,
 								addressLat: res.gOrder.addressLat,
 								addressLng: res.gOrder.addressLng,
 								code: res.gOrder.code,

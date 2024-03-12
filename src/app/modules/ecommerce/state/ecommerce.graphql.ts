@@ -40,7 +40,7 @@ export const QUERY_BATCHES: string = `GBatches($calendar: Int!, $day: String!, $
 export const QUERY_PAYMENTS: string = `Payments($page: Int!, $merchant: Int!){payments(page: $page, merchantId: $merchant, status: 1){id typePayment title cvu}}`;
 
 // * INVOICE.
-export const QUERY_INVOICE: string = `GOrder($order: Int!){gOrder(orderId: $order){merchantId userId code reservation total message status voucher note addressLat addressLng addressDirection products{quantity product{title price frontPage}}}}`;
+export const QUERY_INVOICE: string = `GOrder($order: Int!){gOrder(orderId: $order){merchantId userId code reservation reservationType userEmail userLastName userName total message status voucher note addressLat addressLng batchFrom batchTo createdAt updatedAt addressDirection products{quantity product{title price stock frontPage}}}}`;
 
 // ! ------------------------------ MUTATIONS ------------------------------
 

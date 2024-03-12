@@ -123,9 +123,19 @@ export class PaymentComponent implements OnInit, OnDestroy {
 				const direction: string | null = order.data.address.data.direction;
 				const lat: string | null = order.data.address.data.lat;
 				const lng: string | null = order.data.address.data.lng;
-				if (batch && date && payment && direction && lat && lng) {
+				const addressType: 'DELIVERY' | 'PICK-UP' | undefined = order.data.address.data.mode;
+				if (batch && date && payment && direction && lat && lng && addressType) {
 					this._store.dispatch(
-						UPDATE_ECOMMERCE_ORDER({ batch, date, payment, voucher: this._blob, direction, lat, lng })
+						UPDATE_ECOMMERCE_ORDER({
+							batch,
+							date,
+							payment,
+							voucher: this._blob,
+							direction,
+							lat,
+							lng,
+							addressType
+						})
 					);
 				} else {
 					this.request = false;

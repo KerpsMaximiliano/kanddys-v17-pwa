@@ -1225,8 +1225,17 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>createAction(
 	&#x27;[Ecommerce] Update Order&#x27;,
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	props&lt;{ voucher: any; payment: number; date: string; batch: number; direction: string; lat: string; lng: string }&gt;()
+	props&lt;{
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		voucher: any;
+		payment: number;
+		date: string;
+		batch: number;
+		direction: string;
+		lat: string;
+		lng: string;
+		addressType: string;
+	}&gt;()
 )</code>
                     </td>
                 </tr>
@@ -1694,10 +1703,10 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
 	providers: [
-		provideAnimations(),
+		provideAnimationsAsync(),
 		provideHttpClient(withJsonpSupport()),
 		GRAPHQL_PROVIDER,
-		provideRouter(ROUTES),
+		provideRouter(ROUTES, withViewTransitions()),
 		provideStore(ROOT_REDUCERS),
 		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
 		provideServiceWorker(&#x27;ngsw-worker.js&#x27;, {
@@ -1930,16 +1939,22 @@
 			status: &#x27;PENDING&#x27;,
 			id: 0,
 			user: 0,
+			userEmail: &#x27;&#x27;,
+			userName: &#x27;&#x27;,
+			userLastName: &#x27;&#x27;,
 			merchant: 0,
 			code: &#x27;&#x27;,
 			products: [],
 			total: 0,
 			message: null,
 			reservation: &#x27;&#x27;,
+			batchFrom: &#x27;&#x27;,
+			batchTo: &#x27;&#x27;,
 			note: null,
 			addressDirection: &#x27;&#x27;,
 			addressLat: &#x27;&#x27;,
 			addressLng: &#x27;&#x27;,
+			reservationType: &#x27;&#x27;,
 			voucher: &#x27;&#x27;
 		}
 	}
@@ -3071,7 +3086,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x60;GOrder($order: Int!){gOrder(orderId: $order){merchantId userId code reservation total message status voucher note addressLat addressLng addressDirection products{quantity product{title price frontPage}}}}&#x60;</code>
+                        <i>Default value : </i><code>&#x60;GOrder($order: Int!){gOrder(orderId: $order){merchantId userId code reservation reservationType userEmail userLastName userName total message status voucher note addressLat addressLng batchFrom batchTo createdAt updatedAt addressDirection products{quantity product{title price stock frontPage}}}}&#x60;</code>
                     </td>
                 </tr>
 

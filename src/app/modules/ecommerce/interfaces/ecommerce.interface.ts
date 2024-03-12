@@ -111,6 +111,9 @@ export interface IInvoice {
 	id: number;
 	merchant: number;
 	user: number;
+	userLastName: string | null;
+	userName: string | null;
+	userEmail: string;
 	code: string;
 	products: {
 		image: string | null;
@@ -120,12 +123,15 @@ export interface IInvoice {
 	}[];
 	total: number;
 	reservation: string;
+	batchFrom: string;
+	batchTo: string;
 	message: string | null;
 	voucher: string;
 	note: string | null;
 	addressLat: string;
 	addressLng: string;
 	addressDirection: string;
+	reservationType: string;
 	status: 'COMPLETE' | 'PENDING';
 }
 

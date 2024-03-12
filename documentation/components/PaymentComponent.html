@@ -384,8 +384,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="137"
-                                    class="link-to-prism">src/app/modules/ecommerce/pages/payment/payment.component.ts:137</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/modules/ecommerce/pages/payment/payment.component.ts:147</a></div>
                         </td>
                     </tr>
 
@@ -1109,9 +1109,19 @@ export class PaymentComponent implements OnInit, OnDestroy {
 				const direction: string | null &#x3D; order.data.address.data.direction;
 				const lat: string | null &#x3D; order.data.address.data.lat;
 				const lng: string | null &#x3D; order.data.address.data.lng;
-				if (batch &amp;&amp; date &amp;&amp; payment &amp;&amp; direction &amp;&amp; lat &amp;&amp; lng) {
+				const addressType: &#x27;DELIVERY&#x27; | &#x27;PICK-UP&#x27; | undefined &#x3D; order.data.address.data.mode;
+				if (batch &amp;&amp; date &amp;&amp; payment &amp;&amp; direction &amp;&amp; lat &amp;&amp; lng &amp;&amp; addressType) {
 					this._store.dispatch(
-						UPDATE_ECOMMERCE_ORDER({ batch, date, payment, voucher: this._blob, direction, lat, lng })
+						UPDATE_ECOMMERCE_ORDER({
+							batch,
+							date,
+							payment,
+							voucher: this._blob,
+							direction,
+							lat,
+							lng,
+							addressType
+						})
 					);
 				} else {
 					this.request &#x3D; false;
@@ -1247,7 +1257,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="box">	<header class="flex bet pd-12">		<app-button [type]="\'MINI\'" [icon]="\'arrow_back_ios\'" color="var(--grey)" (click)="back()" />		@if (payment && image) {			<button class="h" (click)="save()">				@if (request) {					<div class="grid" style="place-items: center; width: 36px; height: 36px">						<app-loading />					</div>				} @else {					Confirmar el pago				}				<!-- {{ request ? <app-loading /> : \'Confirmar el pago\' }} -->			</button>		}	</header>	<main class="pd-12 fle col gp-16" [class.image]="payment">		@if (!payment) {			<h1 class="tx-center tx-visible">¿Cómo pagaras tu compra?</h1>			<h2 class="tx-center tx-visible">Selecciona el método de pago</h2>			@defer (when payments().status === complete) {				@if (payments().items.length > 0) {					<section class="grid gp-16 pd-12 br-12" style="border: 1px solid #e0e0e3">						@for (item of payments().items; track $index) {							<button								class="grid gp-16 w tx-left"								style="grid-template-columns: 1fr max-content"								(click)="payment = item"							>								<div class="flex-col">									<p class="w"><b>Transferencia Bancaria</b></p>									<p class="w">En el {{ item.title }}</p>								</div>								<app-button [type]="\'ICON\'" [icon]="\'arrow_forward_ios\'" />							</button>						}						<!-- <hr style="background-color: #e0e0e3; border: none; height: 1px; margin: 0 -12px" /> -->					</section>				}			} @placeholder {				<app-loading />			}		} @else {			<div>				<h1>Transferencia Bancaria</h1>				<p>En el {{ payment.title }}</p>			</div>			<p class="tx-visible text">				Por favor transfiera en el <b>{{ payment.title }}</b				>, cuenta <b>{{ payment.cvu }}</b> y suba aquí una foto de la pantalla.			</p>			@if (!image) {				<button					aria-label="Subir imagen"					class="w h grid br-12 update"					style="place-items: center"					(click)="onClickInput()"				>					+				</button>			} @else {				<div class="w h" style="position: relative; display: grid; place-items: center">					<img						class="w"						[src]="image"						alt="Comprobante de pago"						style="max-width: 450px; height: auto; max-height: 100%; object-fit: contain"					/>					<app-button						class="delete"						[type]="\'MINI\'"						[icon]="\'delete\'"						[color]="request ? \'var(--grey-light)\' : \'#fff\'"						[background]="request ? \'var(--grey)\' : \'red\'"						(click)="reset()"					/>				</div>			}			<input type="file" #fileInput hidden (change)="onFileSelected($event)" accept="image/png, image/jpeg" />		}	</main></div></div>'
-    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'app-ecommerce-address'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalendarComponent', 'selector': 'app-ecommerce-calendar'},{'name': 'CalendarHeaderComponent', 'selector': 'app-calendar-header'},{'name': 'CartComponent', 'selector': 'app-dialog-content-cart'},{'name': 'EcommerceComponent', 'selector': 'app-ecommerce'},{'name': 'FirstComponent', 'selector': 'app-auth-first'},{'name': 'InfoComponent', 'selector': 'app-auth-info'},{'name': 'InvoiceComponent', 'selector': 'app-ecommerce-invoice'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'LoginComponent', 'selector': 'app-auth-login'},{'name': 'MapComponent', 'selector': 'app-dialog-content-map'},{'name': 'MapsComponent', 'selector': 'app-dialog-content-maps'},{'name': 'MessageComponent', 'selector': 'app-ecommerce-message'},{'name': 'OrderComponent', 'selector': 'app-ecommerce-order'},{'name': 'PaymentComponent', 'selector': 'app-ecommerce-payment'},{'name': 'ProductComponent', 'selector': 'app-ecommerce-product'},{'name': 'ResizeDialogComponent', 'selector': 'app-dialog-resizable'},{'name': 'ShareComponent', 'selector': 'app-dialog-content-share'},{'name': 'ShopComponent', 'selector': 'app-ecommerce-shop'},{'name': 'VoucherComponent', 'selector': 'app-dialog-content-voucher'}];
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'app-ecommerce-address'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalendarComponent', 'selector': 'app-ecommerce-calendar'},{'name': 'CalendarHeaderComponent', 'selector': 'app-calendar-header'},{'name': 'CartComponent', 'selector': 'app-dialog-content-cart'},{'name': 'DedicationMessageComponent', 'selector': 'app-dedication-message'},{'name': 'EcommerceComponent', 'selector': 'app-ecommerce'},{'name': 'FirstComponent', 'selector': 'app-auth-first'},{'name': 'InfoComponent', 'selector': 'app-auth-info'},{'name': 'InvoiceComponent', 'selector': 'app-ecommerce-invoice'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'LoginComponent', 'selector': 'app-auth-login'},{'name': 'MapComponent', 'selector': 'app-dialog-content-map'},{'name': 'MapsComponent', 'selector': 'app-dialog-content-maps'},{'name': 'MessageComponent', 'selector': 'app-ecommerce-message'},{'name': 'OrderComponent', 'selector': 'app-ecommerce-order'},{'name': 'PaymentComponent', 'selector': 'app-ecommerce-payment'},{'name': 'ProductComponent', 'selector': 'app-ecommerce-product'},{'name': 'ResizeDialogComponent', 'selector': 'app-dialog-resizable'},{'name': 'ShareComponent', 'selector': 'app-dialog-content-share'},{'name': 'ShopComponent', 'selector': 'app-ecommerce-shop'},{'name': 'VoucherComponent', 'selector': 'app-dialog-content-voucher'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PaymentComponent'};
 </script>

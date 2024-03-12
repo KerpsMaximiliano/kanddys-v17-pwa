@@ -6,28 +6,33 @@ h1 {
 h2 {
 	font-size: 31px;
 	font-weight: 400;
-	color: #707070;
 }
 
-h3,
-strong {
+/* ! CHECK */
+/* strong {
 	font-size: 17px;
 	font-weight: 600;
-}
+} */
 
 main {
 	gap: 24px;
 }
 
-article {
-	& div img {
-		aspect-ratio: 1/1;
-		height: 48px;
-		width: 48px;
-		object-fit: cover;
-	}
+main section button img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+}
 
-	& div p {
-		color: var(--grey);
-	}
+hr {
+	background-color: var(--grey-light);
+	border: none;
+	height: 1px;
+	margin: 0 -12px;
+}
+
+.disabled,
+.disabled * {
+	color: var(--grey-light);
 }

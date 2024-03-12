@@ -226,8 +226,17 @@ export const LOADED_ECOMMERCE_PAYMENTS = createAction('[Ecommerce] Loaded Paymen
 // * UPDATE ORDER.
 export const UPDATE_ECOMMERCE_ORDER = createAction(
 	'[Ecommerce] Update Order',
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	props<{ voucher: any; payment: number; date: string; batch: number; direction: string; lat: string; lng: string }>()
+	props<{
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		voucher: any;
+		payment: number;
+		date: string;
+		batch: number;
+		direction: string;
+		lat: string;
+		lng: string;
+		addressType: string;
+	}>()
 );
 export const UPDATED_ECOMMERCE_ORDER = createAction('[Ecommerce] Updated Order');
 

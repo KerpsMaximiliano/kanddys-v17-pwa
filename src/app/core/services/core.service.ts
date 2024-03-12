@@ -137,6 +137,9 @@ export class CoreService {
 					case 'voucher':
 						chunk = await import('@core/dialogs/components/voucher/voucher.component');
 						break;
+					case 'dmessage':
+						chunk = await import('@core/dialogs/components/dedicationmessage/dedicationmessage.component');
+						break;
 				}
 				const dialogComponent = Object.values(chunk)[0] as ComponentType<unknown>;
 				return dialogComponent;

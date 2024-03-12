@@ -1,6 +1,13 @@
 <main style="padding: 24px 0">
 	<section class="bd" [class.bd]="mode === 'INITIAL'">
 		@if (mode === 'INITIAL') {
+			<!-- <button class="w flex bet pd-12">
+				WhatsApp de MerchantID
+				<app-button [type]="'ICON'" [icon]="'chat'" (click)="openWsp()" />
+			</button> -->
+
+			<hr />
+
 			<button class="w flex bet pd-12">
 				Compartir enlace
 				<app-button [type]="'ICON'" [icon]="'share'" (click)="share(false)" />

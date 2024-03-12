@@ -473,6 +473,7 @@ export class MapsComponent implements OnInit, OnDestroy {
 		this.marker &#x3D; { lat: 0, lng: 0 };
 	}
 
+	// ! UNSUBSCRIBE.
 	public selectFirst(): void {
 		this.autocompleteResults.pipe(take(1)).subscribe((predictions: IPrediction[]) &#x3D;&gt; {
 			if (predictions.length &gt; 0) {

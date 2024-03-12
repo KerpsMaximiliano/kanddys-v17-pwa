@@ -1560,6 +1560,9 @@ export class CoreService {
 					case &#x27;voucher&#x27;:
 						chunk &#x3D; await import(&#x27;@core/dialogs/components/voucher/voucher.component&#x27;);
 						break;
+					case &#x27;dmessage&#x27;:
+						chunk &#x3D; await import(&#x27;@core/dialogs/components/dedicationmessage/dedicationmessage.component&#x27;);
+						break;
 				}
 				const dialogComponent &#x3D; Object.values(chunk)[0] as ComponentType&lt;unknown&gt;;
 				return dialogComponent;
